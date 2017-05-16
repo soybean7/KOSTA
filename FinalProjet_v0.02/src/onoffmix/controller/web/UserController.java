@@ -17,6 +17,27 @@ public class UserController {
 	public String login(HttpSession session, String inputEmail, String inputPassword) {
 		return null;
 	}
+	
+	private String MCguilty;
+	private String Usom;
+	private String handsomeKang;
+	private String wisdomLee;
+	private String emotinalWords;
+	
+	public String loveLine(){
+		String result;
+		
+		result = MCguilty +" feels fear when he tell " + Usom;
+		
+		String result12;
+		
+		return result;
+	}
+	
+	public void printScreen(){
+		System.out.println(loveLine());
+	}
+	
 }
 
 
