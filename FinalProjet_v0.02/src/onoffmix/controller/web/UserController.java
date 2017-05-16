@@ -1,4 +1,4 @@
-package onoffmix.controller;
+package onoffmix.controller.web;
 
 import javax.servlet.http.HttpSession;
 
