@@ -7,7 +7,7 @@ public class UserController {
 	
 	private String MCguilty;
 	private String Usom;
-	private String hansomeKang;
+	private String handsomeKang;
 	private String wisdomLee;
 	private String emotinalWords;
 	
