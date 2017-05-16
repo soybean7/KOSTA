@@ -18,20 +18,24 @@ public class UserController {
 		return null;
 	}
 	
-	private String MCguilty;
+	private String MCGuilty;
 	private String Usom;
 	private String handsomeKang;
 	private String wisdomLee;
 	private String emotinalWords;
 	
 	public String loveLine(){
+
 		String result;
 		
-		result = MCguilty +" feels fear when he tell " + Usom;
-		
-		String result12;
+		result = MCGuilty +" feels fear when he tell " + Usom;
 		
 		return result;
+	}
+	
+	public void madnessForLove(){
+		String result = "love is done.";
+		System.out.println(result);
 	}
 	
 	public void printScreen(){
