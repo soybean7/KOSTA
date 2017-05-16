@@ -16,7 +16,7 @@ public class UserController {
 		
 		result = MCguilty +" feels fear when he tell " + Usom;
 		
-		String result1;
+		String result12;
 		
 		return result;
 	}
