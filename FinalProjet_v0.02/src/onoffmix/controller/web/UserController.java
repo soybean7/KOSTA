@@ -2,52 +2,59 @@ package onoffmix.controller.web;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 
+import onoffmix.domain.User;
+import onoffmix.service.UserService;
 
-@Controller
-@RequestMapping("user")
 public class UserController {
 	
-//	@Autowired
-//	private UserService userService;
-
-	@RequestMapping("login.do")
-	public String login(HttpSession session, String inputEmail, String inputPassword) {
+	@Autowired
+	private UserService service;
+	
+	public String registUser(User user){
 		return null;
 	}
 	
-	private String MCGuilty;
-	private String Usom;
-	private String handsomeKang;
-	private String wisdomLee;
-	private String emotinalWords;
+	public String login(User user, HttpSession session){
+		return null;
+	}
 	
-	public String loveLine(){
+	public String showModifyUser(HttpSession session, Model model){
+		return null;
+	}
+	
+	public String modifyUser(User user, Model model){
+		return null;
+	}
+	
+	public Boolean deleteUser(HttpSession session, Model model){
+		return null;
+	}
+	
+	public String searchAllReportUser(Model model){
+		return null;
+	}
+	
+	public String searchByEmail(HttpSession session, Model model){
+		return null;
+	}
+	
+	public String searchByName(String name, Model model){
+		return null;
+	}
+	
+	public String searchReportUserByEmail(String email, Model model){
+		return null;
+	}
+	
+	public String searchReportUserByName(String name, Model model){
+		return null;
+	}
+	
+	public String reportUser(String email, String date){
+		return null;
+	}
 
-		String result;
-		
-		result = MCGuilty +" feels fear when he tell " + Usom;
-		
-		return result;
-	}
-	
-	public void madnessForLove(){
-		String result = "love is done.";
-		System.out.println(result);
-	}
-	
-	public void printScreen(){
-		System.out.println(loveLine());
-	}
-	
 }
-
-
-//@RequestMapping("regist.ajax")
-//@ResponseBody 
-//public ~~
-//
-//@RequestMapping(value = "regist.do", method = RequestMethod.POST)
-//pubic ~~

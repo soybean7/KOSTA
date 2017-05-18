@@ -3,11 +3,19 @@ package onoffmix.service.logic;
 import java.sql.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import onoffmix.domain.Meeting;
 import onoffmix.service.MeetingService;
+import onoffmix.store.MeetingStore;
 
+@Service
 public class MeetingServiceLogic implements MeetingService{
 
+	@Autowired
+	private MeetingStore store;
+	
 	@Override
 	public int registMeeting(Meeting meeting) {
 		return 0;

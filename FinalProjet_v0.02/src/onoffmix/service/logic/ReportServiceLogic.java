@@ -2,12 +2,20 @@ package onoffmix.service.logic;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import onoffmix.domain.Meeting;
 import onoffmix.domain.User;
 import onoffmix.service.ReportService;
+import onoffmix.store.ReportStore;
 
+@Service
 public class ReportServiceLogic implements ReportService{
 
+	@Autowired
+	private ReportStore store;
+	
 	@Override
 	public void reportMeeting(int meetingId) {
 		

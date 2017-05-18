@@ -3,10 +3,18 @@ package onoffmix.service.logic;
 import java.sql.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import onoffmix.domain.Ad;
 import onoffmix.service.AdService;
+import onoffmix.store.AdStore;
 
+@Service
 public class AdServiceLogic implements AdService{
+	
+	@Autowired
+	private AdStore store;
 
 	@Override
 	public int registAd(Ad ad) {

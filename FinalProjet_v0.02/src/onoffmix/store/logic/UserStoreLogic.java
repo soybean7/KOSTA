@@ -2,9 +2,12 @@ package onoffmix.store.logic;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import onoffmix.domain.User;
 import onoffmix.store.UserStore;
 
+@Repository
 public class UserStoreLogic implements UserStore {
 
 	@Override

@@ -2,10 +2,13 @@ package onoffmix.store.logic;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import onoffmix.domain.Meeting;
 import onoffmix.domain.User;
 import onoffmix.store.ReportStore;
 
+@Repository
 public class ReportStoreLogic implements ReportStore{
 
 	@Override

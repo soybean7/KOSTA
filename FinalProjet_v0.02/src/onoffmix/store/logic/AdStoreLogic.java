@@ -3,9 +3,12 @@ package onoffmix.store.logic;
 import java.sql.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import onoffmix.domain.Ad;
 import onoffmix.store.AdStore;
 
+@Repository
 public class AdStoreLogic implements AdStore{
 
 	@Override

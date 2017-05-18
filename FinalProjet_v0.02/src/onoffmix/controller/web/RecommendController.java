@@ -1,0 +1,73 @@
+package onoffmix.controller.web;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+
+import onoffmix.domain.Meeting;
+import onoffmix.service.RecommendService;
+
+public class RecommendController {
+	
+	@Autowired
+	private RecommendService service;
+	
+	public String registRecommend(Meeting meeting, HttpSession session, Model model){
+		return null;
+	}
+	
+	public String showModifyRecommend(int meetingId, Model model){
+		return null;
+	}
+	
+	public String modifyRecommend(Meeting meeting, Model model){
+		return null;
+	}
+	
+	public String deleteRecommend(int meetingId){
+		return null;
+	}
+	
+	public String datailRecommend(int meetingId, Model model){
+		return null;
+	}
+	
+	public String searchAll(Model model){
+		return null;
+	}
+	
+	public String searchById(int meetingId, Model model){
+		return null;
+	}
+	
+	public String searchByName(String name, Model model){
+		return null;
+	}
+	
+	public String searchByRegion(String region, Model model){
+		return null;
+	}
+	
+	public String searchByHashtag(String hashtag, Model model){
+		return null;
+	}
+	
+	public String searchByCategory(String category, Model model){
+		return null;
+	}
+	
+	public String loveRecommend(int meetingId, Model model){
+		return null;
+	}
+	
+	public String selectLoveRecommendBySort(String sortType, Model model){
+		return null;
+	}
+	
+	public String selectLoveRecommendByUsermail(String email, Model model){
+		return null;
+	}
+
+
+}

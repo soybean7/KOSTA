@@ -5,9 +5,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Repository;
+
 import onoffmix.domain.Meeting;
 import onoffmix.store.MeetingStore;
 
+@Repository
 public class MeetingStoreLogic implements MeetingStore{
 
 	@Override
