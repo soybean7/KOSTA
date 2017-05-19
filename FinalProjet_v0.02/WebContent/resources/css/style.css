@@ -3897,7 +3897,7 @@ section,
 }
 .convocation_slider{
 	float: left;
-	width:100%;
+	width:300px;// 2017-05-19 김승희
 	margin-bottom: 20px;
 }
 .convocation_slider .owl-pagination{
