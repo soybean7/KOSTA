@@ -290,7 +290,7 @@
 
 					<!-- 신청내역 -->
 					
-					<button>신청한 모임 내역</button> 
+					<button onclick="location.href='myMeetingRequestList.jsp'">신청한 모임 내역</button> 
 					<button style="background-color:#00906F; color:white;">개설한 모임 내역</button>
 					
 					

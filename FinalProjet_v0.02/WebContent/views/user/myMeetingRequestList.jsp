@@ -291,7 +291,7 @@
 					<!-- 신청내역 -->
 					
 					<button style="background-color:#00906F; color:white;">신청한 모임 내역</button> 
-					<button>개설한 모임 내역</button>
+					<button onclick="location.href='myMeetingRegistList.jsp'">개설한 모임 내역</button>
 					
 					
 					<table>
