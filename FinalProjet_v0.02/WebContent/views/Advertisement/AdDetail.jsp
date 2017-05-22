@@ -136,6 +136,7 @@
     							<a href="#"><img src="${ctx}/resources/extra-images/logo_2.png" alt=""></a>
     						</div>
     					</div>
+    					
     					<div class="col-md-10">
     						<!--kode nav_2 start-->
     						<div class="nav_2" id="navigation">
