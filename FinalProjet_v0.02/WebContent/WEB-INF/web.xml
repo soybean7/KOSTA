@@ -13,8 +13,13 @@
   	<url-pattern>*.ajax</url-pattern>
   </servlet-mapping>
   
-  <error-page>
+<!--   <error-page>
   	<location>/views/common/errorPage.jsp</location>
+  </error-page> -->
+  
+  <error-page>
+	<error-code>404</error-code>
+	<location>/views/common/404.jsp</location>
   </error-page>
   
   <welcome-file-list>
