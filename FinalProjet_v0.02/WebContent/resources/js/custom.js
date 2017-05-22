@@ -364,7 +364,10 @@ jQuery(document).ready(function($){
 function initialize() {
 	var MY_MAPTYPE_ID = 'custom_style';
 	var map;
-	var brooklyn = new google.maps.LatLng(40.6743890, -73.9455);
+    var xValue = parseFloat(document.getElementById('xValue').value);
+    var yValue = parseFloat(document.getElementById('yValue').value);
+    var brooklyn = new google.maps.LatLng(xValue, yValue);
+//	var brooklyn = new google.maps.LatLng(37.551619, 126.924989);
 	var featureOpts = [
 		{
 		  stylers: [
@@ -399,7 +402,7 @@ function initialize() {
 	];	
 
 	var mapOptions = {
-		zoom: 13,
+		zoom: 16,
 		scrollwheel: false,
 		center: brooklyn,
 		mapTypeControlOptions: {
