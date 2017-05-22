@@ -41,172 +41,22 @@
 	<!-- SIDE MENU -->
 	<link rel="stylesheet" href="${ctx}/resource/css/jquery.sidr.dark.css">
         
-<script type="text/javascript">
-    function initialize() {
-     
-        var mapOptions = {
-                            zoom: 7, // 지도를 띄웠을 때의 줌 크기
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        };
-         
-         
-        var map = new google.maps.Map(document.getElementById("google-map-canvas"), // div의 id과 값이 같아야 함. "map-canvas"
-                                    mapOptions);
-         
-        var size_x = 40; // 마커로 사용할 이미지의 가로 크기
-        var size_y = 40; // 마커로 사용할 이미지의 세로 크기
-     
-        // 마커로 사용할 이미지 주소
-        var image = new google.maps.MarkerImage( '주소 여기에 기입!',
-                                                    new google.maps.Size(size_x, size_y),
-                                                    '',
-                                                    '',
-                                                    new google.maps.Size(size_x, size_y));
-         
-        // Geocoding *****************************************************
-        var address = '삼성모바일디스플레이 천안사업장'; // DB에서 주소 가져와서 검색하거나 왼쪽과 같이 주소를 바로 코딩.
-        var marker = null;
-        var geocoder = new google.maps.Geocoder();
-        geocoder.geocode( { 'address': address}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                map.setCenter(results[0].geometry.location);
-                marker = new google.maps.Marker({
-                                map: map,
-                                icon: image, // 마커로 사용할 이미지(변수)
-                                title: 'Samsung Display', // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
-                                position: results[0].geometry.location
-                            });
- 
-                var content = "Samsung Display"; // 말풍선 안에 들어갈 내용
-             
-                // 마커를 클릭했을 때의 이벤트. 말풍선 뿅~
-                var infowindow = new google.maps.InfoWindow({ content: content});
-                google.maps.event.addListener(marker, "click", function() {infowindow.open(map,marker);});
-            } else {
-                alert("Geocode was not successful for the following reason: " + status);
-            }
-        });
-        // Geocoding // *****************************************************
-         
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-        
-        
 </head>
 
 <body>
 	<!--KF KODE WRAPPER WRAP START-->
-    <div class="kode_wrapper">
     <!-- register Modal -->
-    <div class="modal fade" id="reg-box" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <div class="modal-content">
             	<!--SIGNIN AS USER START-->
                     <!--FORM FIELD START-->
-                    <div class="form">
-                        <div class="input-container">
-                            <input type="text" placeholder="Name">
-                            <i class="fa fa-user"></i>
-                        </div>
-                        <div class="input-container">
-                            <input type="text" placeholder="E-mail">
-                            <i class="fa fa-envelope-o"></i>
-                        </div>
-                        <div class="input-container">
-                            <input type="password" placeholder="Password">
-                            <i class="fa fa-unlock"></i>
-                        </div>
-                        <div class="input-container">
-                            <label>
-                                <span class="radio">
-                                    <input type="checkbox" name="foo" value="1" checked>
-                                    <span class="radio-value" aria-hidden="true"></span>
-                                </span>
-                                <span>Remember me</span>
-                            </label>
-                        </div>
-                        <div class="input-container">
-                            <button class="btn-style">Sign Up</button>
-                        </div>
-                    </div>
                     <!--FORM FIELD END-->
                     <!--OPTION START-->
-                    <div class="option">
-                        <h5>Or Using</h5>
-                    </div>
                     <!--OPTION END-->
                     <!--OPTION START-->
-                    <div class="social-login">
-                        <a href="#" class="google"><i class="fa fa-google-plus"></i>Google Account</a>
-                        <a href="#" class="facebook"><i class="fa fa-facebook"></i>Facebook Account</a>
-                    </div>
                     <!--OPTION END-->
-                </div>
                 <!--SIGNIN AS USER END-->
-                <div class="user-box-footer">
-                    Already have an account? <a href="#">Sign In</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
     <!-- register Modal end-->
     
     <!-- SIGNIN MODEL START -->
-    <div class="modal fade" id="signin-box" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <div class="modal-content">
-                <div class="user-box">
-                    <h2>Sign In</h2>
-                    <!--FORM FIELD START-->
-                    <div class="form">
-                        <div class="input-container">
-                            <input type="text" placeholder="E-mail">
-                            <i class="fa fa-envelope-o"></i>
-                        </div>
-                        <div class="input-container">
-                            <input type="password" placeholder="Password">
-                            <i class="fa fa-unlock"></i>
-                        </div>
-                        <div class="input-container">
-                            <label>
-                                <span class="radio">
-                                    <input type="checkbox" name="foo" value="1" checked>
-                                    <span class="radio-value" aria-hidden="true"></span>
-                                </span>
-                                <span>Remember me</span>
-                            </label>
-                        </div>
-                        <div class="input-container">
-                            <button class="btn-style">Sign In</button>
-                        </div>
-                    </div>
-                    <!--FORM FIELD END-->
-                    <!--OPTION START-->
-                    <div class="option">
-                        <h5>Or Using</h5>
-                    </div>
-                    <!--OPTION END-->
-                    <!--OPTION START-->
-                    <div class="social-login">
-                        <a href="#" class="google"><i class="fa fa-google-plus"></i>Google Account</a>
-                        <a href="#" class="facebook"><i class="fa fa-facebook"></i>Facebook Account</a>
-                    </div>
-                    <!--OPTION END-->
-                
-                </div>
-                <div class="user-box-footer">
-                    <p>Don't have an account?<br><a href="#">Sign up as a User</a></p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
     <!-- SIGNIN MODEL END -->
     
     <!--SIDE MENU -->
@@ -489,256 +339,36 @@
 						</div>
 
 						<!--KF_EDU_SIDEBAR_WRAP START-->
-    					<div class="col-md-4">
-    						<div class="kf-sidebar">
 
     							<!--KF_SIDEBAR_SEARCH_WRAP START-->
-    							<div class="widget widget-search">
-                                	<h2>Search Course</h2>
-    								<form>
-    									<input type="search" placeholder="Keyword...">
-    								</form>
-    							</div>
     							<!--KF_SIDEBAR_SEARCH_WRAP END-->
 
     							<!--KF_SIDEBAR_ARCHIVE_WRAP START-->
-    							<div class="widget widget-archive ">
-    								<h2>Archives</h2>
-    								<ul class="sidebar_archive_des">
-    									<li>
-    										<a href=""><i class="fa fa-angle-right"></i>January</a>
-    									</li>
-    									<li>
-    										<a href=""><i class="fa fa-angle-right"></i>February</a>
-    									</li>
-    									<li>
-    										<a href=""><i class="fa fa-angle-right"></i>March</a>
-    									</li>
-    									<li>
-    										<a href=""><i class="fa fa-angle-right"></i>April</a>
-    									</li>
-    									<li>
-    										<a href=""><i class="fa fa-angle-right"></i>May</a>
-    									</li>
-    								</ul>
-    							</div>
     							<!--KF_SIDEBAR_ARCHIVE_WRAP END-->
 
 
     							 
 
     							<!--KF EDU SIDEBAR COURSES CATEGORieS WRAP START-->
-	    						<div class="widget widget-categories">
-	    							<h2>categories</h2>
-									<ul>
-										<li><a href=""><i class="fa fa-caret-right"></i>Business &amp; Economics</a></li>
-										<li><a href=""><i class="fa fa-caret-right"></i>Politics &amp; History</a></li>
-										<li><a href=""><i class="fa fa-caret-right"></i>Medical Sciences &amp; Health</a></li>
-										<li><a href=""><i class="fa fa-caret-right"></i>Fine Arts</a></li>
-										<li><a href=""><i class="fa fa-caret-right"></i>Tourism &amp; Culture</a></li>
-										<li><a href=""><i class="fa fa-caret-right"></i>Sports</a></li>
-									</ul>
-	    						</div>
 	    						<!--KF EDU SIDEBAR COURSES CATEGORieS WRAP END-->
 
 	    						<!--KF SIDE BAR COURSES LIST WRAP START WRAP START-->
-	    						<div class="widget widget-courses-list">
-	    							<h2>Latest Courses</h2>
-	    							<ul>
-	    								<li>
-                                        	<figure>
-                                            	<img src="${ctx}/resources/extra-images/courseslist1.jpg" alt=""/>
-	    										<a href="#">View Detail</a>
-	    									</figure>
-	    								</li>
-
-	    								<li>
-                                        	<figure>
-                                            	<img src="${ctx}/resources/extra-images/courseslist2.jpg" alt=""/>
-	    										<a href="#">View Detail</a>
-	    									</figure>
-	    								</li>
-
-	    								<li>
-                                        	<figure>
-                                            	<img src="${ctx}/resources/extra-images/courseslist3.jpg" alt=""/>
-	    										<a href="#">View Detail</a>
-	    									</figure>
-	    								</li>
-
-	    								<li>
-                                        	<figure>
-                                            	<img src="${ctx}/resources/extra-images/courseslist4.jpg" alt=""/>
-	    										<a href="#">View Detail</a>
-	    									</figure>
-	    								</li>
-
-	    								<li>
-                                        	<figure>
-                                            	<img src="${ctx}/resources/extra-images/courseslist5.jpg" alt=""/>
-	    										<a href="#">View Detail</a>
-	    									</figure>
-	    								</li>
-
-	    								<li>
-                                        	<figure>
-                                            	<img src="${ctx}/resources/extra-images/courseslist6.jpg" alt=""/>
-	    										<a href="#">View Detail</a>
-	    									</figure>
-	    								</li>
-	    							</ul>
-	    						</div>
 	    						<!--KF SIDE BAR COURSES LIST WRAP START WRAP END-->
 
 	    						<!--KF SIDE BAR TAG CLOUD WRAP START-->
-	    						<div class="widget widget-tag-cloud">
-	    							<h2>Tags Cloud</h2>
-	    							<ul>
-	    								<li><a href="#">Science</a></li>
-	    								<li><a href="#">Development</a></li>
-	    								<li><a href="#">Fine Arts</a></li>
-	    								<li><a href="#">Research</a></li>
-	    								<li><a href="#">Admissions</a></li>
-	    								<li><a href="#">PHD</a></li>
-	    								<li><a href="#">History &amp; Politics</a></li>
-	    								<li><a href="#">Sports</a></li>
-	    							</ul>
-
-	    						</div>
 	    						<!--KF SIDE BAR TAG CLOUD WRAP END-->
 
-    						</div>
-    					</div>
 						<!--KF EDU SIDEBAR WRAP END-->
 
-					</div>
-				</div>
-    		</section>
-    	</div>
         <!--Content Wrap End-->
         <!--NEWS LETTERS START-->
-		<div class="edu2_ft_topbar_wrap">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="edu2_ft_topbar_des">
-							<h5>Subcribe weekly newsletter</h5>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="edu2_ft_topbar_des">
-							<form>
-								<input type="email" placeholder="Enter Valid Email Address">
-								<button><i class="fa fa-paper-plane"></i>Submit</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<!--NEWS LETTERS END-->
 		<!--FOOTER START-->
-		<footer>
-			<!--EDU2 FOOTER CONTANT WRAP START-->
-				<div class="container">
-					<div class="row">
-						<!--EDU2 FOOTER CONTANT DES START-->
-						<div class="col-md-3">
-							<div class="widget widget-links">
-								<h5>Information</h5>
-								<ul>
-									<li><a href="#">About us</a></li>
-									<li><a href="#">Our Stories</a></li>
-									<li><a href="#">My Account</a></li>
-									<li><a href="#">Our History</a></li>
-									<li><a href="#">Specialist Info</a></li>
-								</ul>
-							</div>
-						</div>
-						<!--EDU2 FOOTER CONTANT DES END-->
-
-						<!--EDU2 FOOTER CONTANT DES START-->
-						<div class="col-md-3">
-							<div class="widget widget-links">
-								<h5>Student Help</h5>
-								<ul>
-									<li><a href="#">My Info</a></li>
-									<li><a href="#">My Questions</a></li>
-									<li><a href="#">F.A.Q</a></li>
-									<li><a href="#">Search Courses</a></li>
-									<li><a href="#">Latest Informations</a></li>
-								</ul>
-							</div>
-						</div>
-						<!--EDU2 FOOTER CONTANT DES END-->
-
-						<!--EDU2 FOOTER CONTANT DES START-->
-						<div class="col-md-3">
-							<div class="widget wiget-instagram">
-								<h5>Instagram</h5>
-								<ul>
-									<li><a href="#"><img src="${ctx}/resources/extra-images/instagram-1.jpg" alt=""/></a></li>
-									<li><a href="#"><img src="${ctx}/resources/extra-images/instagram-2.jpg" alt=""/></a></li>
-									<li><a href="#"><img src="${ctx}/resources/extra-images/instagram-3.jpg" alt=""/></a></li>
-									<li><a href="#"><img src="${ctx}/resources/extra-images/instagram-4.jpg" alt=""/></a></li>
-									<li><a href="#"><img src="${ctx}/resources/extra-images/instagram-5.jpg" alt=""/></a></li>
-									<li><a href="#"><img src="${ctx}/resources/extra-images/instagram-6.jpg" alt=""/></a></li>
-								</ul>
-							</div>
-						</div>
-						<!--EDU2 FOOTER CONTANT DES END-->
-
-						<!--EDU2 FOOTER CONTANT DES START-->
-						<div class="col-md-3">
-							<div class="widget widget-contact">
-								<h5>Contact</h5>
-								<ul>
-									<li>PO Box UN152468, 1 Street North, New Towm, California, USA</li>
-									<li>Phone : <a href="#"> 5 (012) 4565 789</a></li>
-									<li>Fax : <a href="#"> 5 (012) 4565 789</a></li>
-									<li>Email : <a href="#"> Info@info.com</a></li>
-								</ul>
-							</div>
-						</div>
-						<!--EDU2 FOOTER CONTANT DES END-->
-					</div>
-				</div>
-		</footer>
+		<%@ include file = "/views/header/footer.jspf"%> 
 		<!--FOOTER END-->
 		<!--COPYRIGHTS START-->
-		<div class="edu2_copyright_wrap">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3">
-						<div class="edu2_ft_logo_wrap">
-							<a href="#"><img src="${ctx}/resources/extra-images/ft_logo.png" alt=""/></a>
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="copyright_des">
-							<span>&copy; All Rights reserved. Powered By <a href="#">KODEFOREST</a></span>
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<ul class="cards_wrap">
-							<li><a href="#"><img src="${ctx}/resources/extra-images/visacard.png" alt=""/></a></li>
-							<li><a href="#"><img src="${ctx}/resources/extra-images/mastercard.png" alt=""/></a></li>
-							<li><a href="#"><img src="${ctx}/resources/extra-images/americancard.png" alt=""/></a></li>
-							<li><a href="#"><img src="${ctx}/resources/extra-images/card.png" alt=""/></a></li>
-							<li><a href="#"><img src="${ctx}/resources/extra-images/descoverycard.png" alt=""/></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
 		<!--COPYRIGHTS START-->
-    </div>
     <!--KF KODE WRAPPER WRAP END-->
-
-<%@ include file = "/views/header/footer.jspf"%> 
-    
 
 	<!--Bootstrap core JavaScript-->
 	<script src="${ctx}/resources/js/jquery.js"></script>
