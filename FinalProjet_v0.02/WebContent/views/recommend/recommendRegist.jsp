@@ -41,6 +41,7 @@
 	<link href="${ctx}/resources/css/selectric.css" rel="stylesheet">
 	<!-- SIDE MENU -->
 	<link rel="stylesheet" href="${ctx}/resources/css/jquery.sidr.dark.css">
+ 	
 <style>
     
         #btn_div {
@@ -310,23 +311,33 @@
                                         <!-- 모임 대표 이미지 끝 -->
                                     </td>
                                     <td width="60%" class="td_left">
+                                   
                                         <!-- 모임 내용 -->
-                                        <span style="display: inline-block;">
-                                        <br>
-                                        <input type="text" size="30" placeholder="제목" id="modifyTitle"/>
                                         
                                         <br>
-
+                                        	<form class="form-inline">
+                                        		<span>카테고리/모임명 : </span>
+                                        		<div class="form-group">
+                                        			<select class="form-control" name="category">
+														<option value="volvo">카테고리선택</option>
+													</select> 
+												</div>
+												<input class = "form-control" type="text" size="30" placeholder="제목" id="modifyTitle"/>
+											</form>
+											
+											
+                                        <br>
+										
                                         <img src="https://image.flaticon.com/icons/svg/58/58960.svg" height="20"> <input type="text" size="20" placeholder="장소" id="modifyPlace"/> <br>
                                         <br>
-                                        <textarea placeholder="내용" rows="10" cols = "50" name="memo" id="memo" style="width:400; height:400; border:0;overflow-y:hidden;background:clear;"></textarea>
+                                        <textarea class="form-control" placeholder="내용" rows="10" cols = "50" name="memo" id="memo" style="width:400; height:400; border:0;overflow-y:hidden;background:clear;"></textarea>
                                         <br>
                                         
-                                        </span>
                                         <div style="color:blue">
                                        		 해시태그 삽입
                                         </div>
                                         <!-- 모임 내용 끝 -->
+                                     
                                     </td>
                                     </tr>
                                     <tr>
@@ -339,7 +350,19 @@
                                         </span> -->
                                     </td>
                                     <td class="td_center">
-                                    <b>제안기간 : <input type="text" size="30" placeholder="날짜"/> </b><br><br>
+                                    <b>제안기간 : </b> 
+                                    <div class="container">
+   										 <div class="row">
+        									<div class='col-sm-6'>
+            <input type='text' class="form-control" id='datetimepicker4' />
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker4').datetimepicker();
+            });
+        </script>
+    </div>
+</div><br><br>
                                     
                                       
                                    
@@ -414,6 +437,7 @@
 	<script src="${ctx}/resources/js/custom.js"></script>
 	<!--Map-->
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false?key=AIzaSyDR4TBGOfhyhldkwQ17KVIbS0pf36J8X6w"></script>
+
 
     
 </body>
