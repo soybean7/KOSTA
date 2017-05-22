@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+
+<!--Footer START-->
+
+<div class="edu2_ft_topbar_wrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="edu2_ft_topbar_des">
+							<h5>MOIGO.COM</h5>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="edu2_ft_topbar_des">
+							<form>
+								<input type="email" placeholder="Enter Valid Email Address">
+								<button><i class="fa fa-paper-plane"></i>Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--Footer END-->
+		
+</body>
+</html>
