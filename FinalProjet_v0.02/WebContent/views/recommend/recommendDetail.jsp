@@ -257,7 +257,7 @@
         </div>
     </div>
     <!-- SIGNIN MODEL END -->
-    <!--SIDE MENU -->
+    	<!--SIDE MENU -->
 			<%@ include file = "/views/header/side.jspf" %>
     	<!--HEADER-->
     		<%@ include file = "/views/header/header.jspf"%>  
