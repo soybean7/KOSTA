@@ -14,97 +14,39 @@
 	<title>광고 수정   </title>
 
 	<!-- Bootstrap core CSS -->
-	<link href=${ctx}/resources/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${ctx}/resources/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Full Calender CSS -->
-	<link href=${ctx}/resources/css/fullcalendar.css" rel="stylesheet">
+	<link href="${ctx}/resources/css/fullcalendar.css" rel="stylesheet">
 	<!-- Owl Carousel CSS -->
-	<link href=${ctx}/resources/css/owl.carousel.css" rel="stylesheet">
+	<link href="${ctx}/resources/css/owl.carousel.css" rel="stylesheet">
 	<!-- Pretty Photo CSS -->
-	<link href=${ctx}/resources/css/prettyPhoto.css" rel="stylesheet">
+	<link href="${ctx}/resources/css/prettyPhoto.css" rel="stylesheet">
 	<!-- Bx-Slider StyleSheet CSS -->
-	<link href=${ctx}/resources/css/jquery.bxslider.css" rel="stylesheet"> 
+	<link href="${ctx}/resources/css/jquery.bxslider.css" rel="stylesheet"> 
 	<!-- Font Awesome StyleSheet CSS -->
-	<link href=${ctx}/resources/css/font-awesome.min.css" rel="stylesheet">
-	<link href="svg/style.css" rel="stylesheet">
+	<link href="${ctx}/resources/css/font-awesome.min.css" rel="stylesheet">
+	<link href="${ctx}/resources/svg/style.css" rel="stylesheet">
 	<!-- Widget CSS -->
-	<link href=${ctx}/resources/css/widget.css" rel="stylesheet">
+	<link href="${ctx}/resources/css/widget.css" rel="stylesheet">
 	<!-- Typography CSS -->
-	<link href=${ctx}/resources/css/typography.css" rel="stylesheet">
+	<link href="${ctx}/resources/css/typography.css" rel="stylesheet">
 	<!-- Shortcodes CSS -->
-	<link href=${ctx}/resources/css/shortcodes.css" rel="stylesheet">
+	<link href="${ctx}/resources/css/shortcodes.css" rel="stylesheet">
 	<!-- Custom Main StyleSheet CSS -->
 	<link href="style.css" rel="stylesheet">
 	<!-- Color CSS -->
-	<link href=${ctx}/resources/css/color.css" rel="stylesheet">
+	<link href="${ctx}/resources/css/color.css" rel="stylesheet">
 	<!-- Responsive CSS -->
-	<link href=${ctx}/resources/css/responsive.css" rel="stylesheet">
+	<link href="${ctx}/resources/css/responsive.css" rel="stylesheet">
 	<!-- SELECT MENU -->
-	<link href=${ctx}/resources/css/selectric.css" rel="stylesheet">
+	<link href="${ctx}/resources/css/selectric.css" rel="stylesheet">
 	<!-- SIDE MENU -->
-	<link rel="stylesheet" href=${ctx}/resources/css/jquery.sidr.dark.css">
+	<link rel="stylesheet" href="${ctx}/resources/css/jquery.sidr.dark.css">
         
 </head>
 
 <body>
 	<!--KF KODE WRAPPER WRAP START-->
-    <div class="kode_wrapper">
-    <!-- register Modal -->
-    <div class="modal fade" id="reg-box" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <div class="modal-content">
-            	<!--SIGNIN AS USER START-->
-                <div class="user-box">
-                	<h2>Sign up as a User</h2>
-                    <!--FORM FIELD START-->
-                    <div class="form">
-                        <div class="input-container">
-                            <input type="text" placeholder="Name">
-                            <i class="fa fa-user"></i>
-                        </div>
-                        <div class="input-container">
-                            <input type="text" placeholder="E-mail">
-                            <i class="fa fa-envelope-o"></i>
-                        </div>
-                        <div class="input-container">
-                            <input type="password" placeholder="Password">
-                            <i class="fa fa-unlock"></i>
-                        </div>
-                        <div class="input-container">
-                            <label>
-                                <span class="radio">
-                                    <input type="checkbox" name="foo" value="1" checked>
-                                    <span class="radio-value" aria-hidden="true"></span>
-                                </span>
-                                <span>Remember me</span>
-                            </label>
-                        </div>
-                        <div class="input-container">
-                            <button class="btn-style">Sign Up</button>
-                        </div>
-                    </div>
-                    <!--FORM FIELD END-->
-                    <!--OPTION START-->
-                    <div class="option">
-                        <h5>Or Using</h5>
-                    </div>
-                    <!--OPTION END-->
-                    <!--OPTION START-->
-                    <div class="social-login">
-                        <a href="#" class="google"><i class="fa fa-google-plus"></i>Google Account</a>
-                        <a href="#" class="facebook"><i class="fa fa-facebook"></i>Facebook Account</a>
-                    </div>
-                    <!--OPTION END-->
-                </div>
-                <!--SIGNIN AS USER END-->
-                <div class="user-box-footer">
-                    Already have an account? <a href="#">Sign In</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
     <!-- register Modal end-->
     
     <!-- SIGNIN MODEL START -->
@@ -489,8 +431,6 @@
     </div>
     <!--KF KODE WRAPPER WRAP END-->
 
-    
-
 	<!--Bootstrap core JavaScript-->
 	<script src="${ctx}/resources/js/jquery.js"></script>
 	<script src="${ctx}/resources/js/bootstrap.min.js"></script>
@@ -520,7 +460,6 @@
 	<script src="${ctx}/resources/js/jquery.sidr.min.js"></script>
 	<!--Custom JavaScript-->
 	<script src="${ctx}/resources/js/custom.js"></script>
-
     
 </body>
 </html>
