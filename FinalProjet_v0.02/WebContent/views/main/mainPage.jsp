@@ -159,146 +159,10 @@
     </div>
     <!-- SIGNIN MODEL END -->
     
-    <div id="sidr">
-		<div class="logo_wrap">
-			<a href="#"><img src="${ctx}/resources/extra-images/logo.png" alt=""></a>
-		</div>
-		<div class="clearfix clear"></div>
-		<!-- Your content -->
-		<div class="kf-sidebar">
-			<!--KF_SIDEBAR_SEARCH_WRAP START-->
-			<div class="widget widget-search">
-				<h2>모임 검색</h2>
-				<form>
-					<input type="search" placeholder="Keyword...">
-				</form>
-			</div>
-			<!--KF_SIDEBAR_SEARCH_WRAP END-->
-
-			<!--KF_SIDEBAR_ARCHIVE_WRAP START-->
-			<div class="widget widget-archive ">
-				<h2>Archives</h2>
-				<ul class="sidebar_archive_des">
-					<li>
-						<a href=""><i class="fa fa-angle-right"></i>January 2016</a>
-					</li>
-					<li>
-						<a href=""><i class="fa fa-angle-right"></i>February 2016</a>
-					</li>
-					<li>
-						<a href=""><i class="fa fa-angle-right"></i>March 2016</a>
-					</li>
-					<li>
-						<a href=""><i class="fa fa-angle-right"></i>April 2016</a>
-					</li>
-					<li>
-						<a href=""><i class="fa fa-angle-right"></i>May 2016</a>
-					</li>
-					<li>
-						<a href=""><i class="fa fa-angle-right"></i>June 2016</a>
-					</li>
-					<li>
-						<a href=""><i class="fa fa-angle-right"></i>August 2016</a>
-					</li>
-				</ul>
-			</div>
-			<!--KF_SIDEBAR_ARCHIVE_WRAP END-->
-
-			<p class="copy-right-sidr">Design and Developed by KodeForest @ All Rights Reserved by KodeForest</p>
-		</div>
-	</div>
-    	<!--HEADER START-->
-    	<header id="header_2">
-    		<!--kode top bar start-->
-    		<div class="top_bar_2">
-	    		<div class="container">
-	    			<div class="row">
-	    				<div class="col-md-5">
-	    					<div class="pull-left">
-	    						<em class="contct_2"><i class="fa fa-phone"></i> 모이고 전화번호 010 4730 8877 </em>
-	    					</div>
-	    				</div>
-	    				<div class="col-md-7">
-    						<div class="lng_wrap">
-	    						<div class="dropdown">
-									<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-									<i class="fa fa-globe"></i>마이페이지
-										<span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-										<li><a href="#"><i><img src="${ctx}/resources/images/english.jpg" alt=""></i>회원정보수정</a></li>
-										<li><a href="#"><i><img src="${ctx}/resources/images/german.jpg" alt=""></i>비밀번호변경</a></li>
-										<li><a href="#"><i><img src="${ctx}/resources/images/german.jpg" alt=""></i>신청내역</a></li> 
-										<li><a href="#"><i><img src="${ctx}/resources/images/german.jpg" alt=""></i>결제내역</a></li> 
-										 
-									</ul>
-								</div>
-	    					</div>
-    						<ul class="login_wrap">
-    							<li><a href="#" data-toggle="modal" data-target="#reg-box"><i class="fa fa-user"></i>Register</a></li>
-    							<li><a href="#" data-toggle="modal" data-target="#signin-box"><i class="fa fa-sign-in"></i>Sign In</a></li>
-    						</ul>
-	    					<ul class="top_nav">
-	    						<li><a href="blog-detail.html">서비스안내</a></li>
-	    						<li><a href="event-detail.html">고객센터</a></li>
-	    					</ul>
-	    					
-	    				</div>
-	    			</div>
-	    		</div>
-	    	</div>
-    		<!--kode top bar end-->
-        	
-	    	<!--kode navigation start-->
-    		<div class="kode_navigation">
-    			<div id="mobile-header">
-                	<a id="responsive-menu-button" href="#sidr-main"><i class="fa fa-bars"></i></a>
-                </div>
-    			<div class="container">
-    				<div class="row">
-    					<div class="col-md-2">
-    						<div class="logo_wrap">
-    							<a href="#"><img src="${ctx}/resources/extra-images/logo_2.png" alt=""></a>
-    						</div>
-    					</div>
-    					<div class="col-md-10">
-    						<!--kode nav_2 start-->
-    						<div class="nav_2" id="navigation">
-    							<ul>
-    								<li><a href="#">홈</a></li>
-									<li><a href="#">모임제안</a>
-										<ul>
-		                                    <li><a href="#">제안모임이란</a></li>
-		                                    <li><a href="#">제안모임 찾기</a></li>
-		                                </ul>
-		                            </li>
-		                            <li><a href="#">모임관리</a>
-		                            	<ul>
-		                                    <li><a href="#">신청자 관리</a></li>
-		                                    <li><a href="#">모임 수정</a></li>
-		                                    <li><a href="#">모임 폐쇄</a></li>
-		                                </ul>
-		                            </li>
-		                            <li><a href="#">Gallery</a>
-		                            	<ul>
-		                                	<li><a href="gallery-masonary-2col.html">Masonary 2 Col </a></li>
-		                                	<li><a href="gallery-masonary.html">Masonary 3 Col </a></li>
-		                                	<li><a href="gallery-masonary-4col.html">Masonary 4 Col </a></li>
-		                                    <li><a href="filterable-gallery.html">Simple gallery</a></li>
-		                                </ul>
-		                            </li>
-		                            <li><a id="simple-menu" href="#sidr"><i class="fa fa-bars"></i></a></li>
-    							</ul>
-    						</div>
-    						<!--kode nav_2 end-->
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-    		<!--kode navigation end-->
-		</header>
-		<!--HEADER END-->
-        
+    	<!--SIDE MENU -->
+			<%@ include file = "/views/header/side.jspf" %>
+    	<!--HEADER-->
+    		<%@ include file = "/views/header/header.jspf"%>      
 
         <!--Banner Wrap Start-->
         <div class="kf_inr_banner padding_more">
@@ -741,27 +605,8 @@
 	 			</div>
 	 		</section>
         <!--Content Wrap End-->
-<!--NEWS LETTERS START-->
-		<div class="edu2_ft_topbar_wrap">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="edu2_ft_topbar_des">
-							<h5>MOIGO.COM</h5>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="edu2_ft_topbar_des">
-							<form>
-								<input type="email" placeholder="Enter Valid Email Address">
-								<button><i class="fa fa-paper-plane"></i>Submit</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--NEWS LETTERS END-->
+		<!--FOOTER-->
+		<%@ include file = "/views/header/footer.jspf"%> 
     <!--KF KODE WRAPPER WRAP END-->
 
 
