@@ -43,26 +43,11 @@
 
 
 <style>
-        .td_basic {
-            padding:15px;
-            font-family: "MD이솝체";
-            border-bottom: 1px solid #ddd;
-        }
-        .td_left {
-            padding:15px;
-            font-family: "MD이솝체";
-            padding-left: 80px;
-            border-bottom: 1px solid #ddd;
-        }
         .td_center {
             padding:15px;
             font-family: "MD이솝체";
             text-align: center;
             border-bottom: 1px solid #ddd;
-            border-right: 0px none;
-            border-left: 0px none;
-        }
-        .td_basic, .td_left, .td_center {
             border-right: 0px none;
             border-left: 0px none;
         }
@@ -257,13 +242,13 @@
 						<!--KF INR BANNER DES Wrap Start-->
 						<div class="kf_inr_ban_des">
 							<div class="inr_banner_heading">
-								<h3>회원정보수정</h3>
+								<h3>비밀번호변경</h3>
 							</div>
 
 							<div class="kf_inr_breadcrumb">
 								<ul>
 									<li><a href="#">마이페이지</a></li>
-									<li><a href="#">회원정보수정</a></li>
+									<li><a href="#">비밀번호변경</a></li>
 								</ul>
 							</div>
 						</div>
@@ -298,36 +283,17 @@
 					<!-- 회원정보수정 시작 -->
 					<table>
 						<tr>
-							<td rowspan="2" style="width: 30%;" class="td_center">
-							<img
-								width="300" 
-								src="data:image/png;base64,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"><br>
-								<button>이미지 변경</button></td>
-							<td class="td_left"><img height="20"
-								src="https://image.freepik.com/free-icon/user_318-134392.jpg">
-								<input class="input_text" type="text" value="홍길동">
+							<td class="td_center">
+								<span style="color:red;">
+								탈퇴하시겠습니까?<br>
+								탈퇴시 모든 정보가 삭제됩니다.
+								</span>
 							</td>
 						</tr>
 						<tr>
-							<td class="td_left"><img height="20"
-								src="https://image.freepik.com/free-icon/email-filled-closed-envelope_318-75717.jpg">
-								abc@def.com<br> <img height="20"
-								src="https://image.freepik.com/free-icon/old-typical-phone_318-31536.jpg">
-								
-								<input class="input_text" type="text" value="010-123-4567" ><br> 
-								
-								<img height="20" alt="가입일"
-									src="https://image.freepik.com/free-icon/calendar_318-77221.jpg">
-								0000-00-00<br></td>
-						</tr>
-						<tr>
-							<td colspan="2" class="td_center">
-							<textarea class="input_text" style="width:100%;" rows="10" placeholder="안녕하세요 홍길동입니다."></textarea>
-						</tr>
-						<tr>
-							<td colspan="2" class="td_center">
+							<td class="td_center">
 							<button type="reset">취소</button>
-							<button type="submit">수정완료</button>
+							<button type="submit">회원탈퇴</button>
 							</td>
 						</tr>
 					</table>
