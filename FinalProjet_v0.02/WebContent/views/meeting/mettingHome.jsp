@@ -113,6 +113,36 @@
     								</div>
     							</div>
     						</div>
+    						
+    						<div class="kf_event_list_wrap">
+    							<div class="row">
+    								<div class="col-lg-6 col-md-5 col-sm-5">
+    									<!--EVENT LIST THUMB Start-->
+    									<div class="kf_event_list_thumb">
+    										<figure>
+												<img src="${ctx}/resources/extra-images/archive-1.jpg" alt=""/>
+                                                <div class="defaultCountdown"></div>
+											</figure>
+    									</div>
+    									<!--EVENT LIST THUMB END-->
+    								</div>
+
+    								<div class="col-lg-6 col-md-7 col-sm-7">
+    									<!--EVENT LIST DES Start-->
+    									<div class="kf_event_list_des">
+    										<h4><a href="#">모임명 <span>족구모임</span></a></h4>
+    										<p></p>
+    										<ul class="kf_event_list_links">
+    											<li><i class="fa fa-user"></i><a href="#">강명준</a></li>
+    											<li><i class="fa fa-calendar"></i><a href="#">참여신청 : 5월 15일 1:30 ~ 5월 29일 2:00</a></li>
+    											<li><i class="fa fa-calendar"></i><a href="#">모임기간 : 5월 29일 4:00 ~ 5:00</a></li>
+    										</ul>
+    									</div>
+    									<!--EVENT LIST DES END-->
+    								</div>
+    							</div>
+    						</div>
+    						
     						<!--EVENT LIST Wrap END-->
 
     					</div>
