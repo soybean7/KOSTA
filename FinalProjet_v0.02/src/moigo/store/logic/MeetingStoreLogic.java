@@ -30,12 +30,26 @@ public class MeetingStoreLogic implements MeetingStore{
 
 	@Override
 	public int updateMeeting(Meeting meeting) {
-		return 0;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		int updateCount = mapper.updateMeeting(meeting);
+		session.close();
+		
+		return updateCount;
 	}
 
 	@Override
-	public boolean deleteMeeting(int meetingId) {
-		return false;
+	public int deleteMeeting(int meetingId) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		int deleteCount = mapper.deleteMeeting(meetingId);
+		session.close();
+		
+		return deleteCount;
 	}
 
 	@Override

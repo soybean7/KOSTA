@@ -12,7 +12,7 @@ public interface MeetingMapper {
 
 	int updateMeeting(Meeting meeting);
 
-	boolean deleteMeeting(int meetingId);
+	int deleteMeeting(int meetingId);
 
 	List<Meeting> selectAllMeeting();
 
