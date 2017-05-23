@@ -18,7 +18,8 @@ public class RecommendServiceLogic implements RecommendService{
 	
 	@Override
 	public int registMeeting(Meeting meeting) {
-		return 0;
+		
+		return store.insertMeeting(meeting);
 	}
 
 	@Override
@@ -33,7 +34,9 @@ public class RecommendServiceLogic implements RecommendService{
 
 	@Override
 	public List<Meeting> searchAllMeeting() {
-		return null;
+		
+		
+		return store.selectAllMeeting();
 	}
 
 	@Override

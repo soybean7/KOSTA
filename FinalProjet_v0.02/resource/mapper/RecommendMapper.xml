@@ -4,6 +4,34 @@
 <mapper namespace="store.mybatis.mapper.RecommendMapper">
 
 	<resultMap type="Recommend" id="recommendMap">
+		<id column="meeting_id" property="meetingId" />
+		<result column="title" property="title" />
+		<result column="start_date" property="startDate" />
+		<result column="end_date" property="endDate" />
+		<result column="place" property="place" />
+		<result column="guidence" property="guidence" />
+		<result column="content" property="content" />
+		<result column="rec_sympathy" property="sympathy" />
+		<result column="reg_date" property="regDate"/>
+		<result column="reg_email" property="regUser"/>
 	</resultMap>
 	
+	<insert id="insertMeeting" parameterType="Meeting">
+		INSERT INTO MEETING_TB(meeting_id, title, start_date, end_date, place_ guidence, content, rec_sympathy, reg_date, reg_email)
+		VALUE(#{meetingId}, #{title}, #{startDate}, #{endDate}, #{place}, #{guidence}, #{content),#{sympathy}, #{regDate}, #{regUser})
+	</insert>
+	
+	<select id="selectAllMeeting" resultMap="recommendMap">
+		SELECT meeting_id,
+			   title,
+			   start_date,
+			   end_date,
+			   place,
+			   guidence,
+			   content,
+			   rec_sympathy,
+			   reg_date,
+			   reg_email
+	   FROM MEETING_TB
+	</select>
 </mapper>

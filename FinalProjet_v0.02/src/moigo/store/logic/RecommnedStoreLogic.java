@@ -2,17 +2,26 @@ package moigo.store.logic;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import moigo.domain.Meeting;
 import moigo.store.RecommendStore;
+import moigo.store.mybatis.MoigoSessionFactory;
+import moigo.store.mybatis.mapper.RecommendMapper;
 
 @Repository
 public class RecommnedStoreLogic implements RecommendStore{
 
 	@Override
 	public int insertMeeting(Meeting meeting) {
-		return 0;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		RecommendMapper mapper = session.getMapper(RecommendMapper.class);
+		
+		mapper.insertMeeting(meeting);
+		session.close();
+		
+		return meeting.getMeetingId();
 	}
 
 	@Override
@@ -27,7 +36,13 @@ public class RecommnedStoreLogic implements RecommendStore{
 
 	@Override
 	public List<Meeting> selectAllMeeting() {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		RecommendMapper mapper = session.getMapper(RecommendMapper.class);
+		
+		List<Meeting> recommendMeetings = mapper.selectAllMeeting();
+		session.close();
+		
+		return recommendMeetings;
 	}
 
 	@Override
