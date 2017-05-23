@@ -34,7 +34,7 @@
 			   PHONENUMBER,
 			   PASSWORD,
 		FROM USER_TB
-		WHERE EMAIL = #{email}   
+		WHERE upper(EMAIL) LIKE '%' || upper(#{email}) || '%'   
 	</select>
 	
 	<select id="selectUserByName" parameterType="String" resultMap="UserMap">
@@ -43,7 +43,7 @@
 			   PHONENUMBER,
 			   PASSWORD,
 		FROM USER_TB
-		WHERE NAME = #{name}   
+		WHERE upper(NAME) LIKE '%' || upper(#{name}) || '%'   
 	</select>
 	
 		<select id="selectUser" parameterType="String" resultMap="UserMap">
