@@ -367,7 +367,7 @@ function initialize() {
     var xValue = parseFloat(document.getElementById('xValue').value);
     var yValue = parseFloat(document.getElementById('yValue').value);
     var brooklyn = new google.maps.LatLng(xValue, yValue);
-//	var brooklyn = new google.maps.LatLng(37.551619, 126.924989);
+//	var hahaha = new google.maps.LatLng(37.551619, 126.924989);
 	var featureOpts = [
 		{
 		  stylers: [
