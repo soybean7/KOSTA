@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import moigo.service.UserService;
 
 @Controller
-public class UserController {
+public class UserMobileController {
 	
 	@Autowired
 	private UserService userService;

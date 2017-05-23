@@ -23,6 +23,6 @@ public interface MeetingStore {
 	List<Meeting> selectMeetingByReqeust(String email);
 	List<Meeting> selectMeetingByDone(String email);
 	void registRequestMeeting(int meetingId, String userEmail);
-	void deleteRequestMeeting(int meetingId, HttpSession session);
+	void deleteRequestMeeting(int meetingId, String userEmail);
 
 }

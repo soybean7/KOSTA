@@ -18,79 +18,76 @@ public class MeetingServiceLogic implements MeetingService{
 	
 	@Override
 	public int registMeeting(Meeting meeting) {
-		return 0;
+		return store.insertMeeting(meeting);
 	}
 
 	@Override
 	public int modifyMeeting(Meeting meeting) {
-		return 0;
+		return store.updateMeeting(meeting);
 	}
 
 	@Override
 	public boolean removeMeeting(int meetingId) {
-		return false;
+		return store.deleteMeeting(meetingId) > 0;
 	}
 
 	@Override
 	public List<Meeting> searchAllMeeting() {
-		return null;
+		return store.selectAllMeeting();
 	}
 
 	@Override
 	public Meeting searchMeetingById(int meetingId) {
-		return null;
+		return store.selectMeetingById(meetingId);
 	}
 
 	@Override
 	public List<Meeting> searchMeetingByTitle(String title) {
-		return null;
+		return store.selectMeetingByTitle(title);
 	}
 
 	@Override
 	public List<Meeting> searchMeetingByContent(String content) {
-		return null;
+		return store.selectMeetingByContent(content);
 	}
 
 	@Override
 	public List<Meeting> searchMeetingByDate(Date date) {
-		return null;
+		return store.selectMeetingByDate(date);
 	}
 
 	@Override
 	public List<Meeting> searchMeetingByPlace(String place) {
-		return null;
+		return store.selectMeetingByPlace(place);
 	}
 
 	@Override
 	public List<Meeting> searchMeetingByCategory(String category) {
-		return null;
+		return store.selectMeetingByCategory(category);
 	}
 
 	@Override
 	public List<Meeting> searchMeetingByHashtag(String hashtag) {
-		return null;
+		return store.selectMeetingByHashtag(hashtag);
 	}
 
 	@Override
 	public List<Meeting> searchMeetingByRequest(String email) {
-		return null;
+		return store.selectMeetingByReqeust(email);
 	}
 
 	@Override
 	public List<Meeting> searchMeetingByDone(String email) {
-		return null;
+		return store.selectMeetingByDone(email);
 	}
 
 	@Override
 	public void cancelRequestMeeting(int meetingId, String userEmail) {
-		
+		store.deleteRequestMeeting(meetingId, userEmail);
 	}
 
 	@Override
 	public void joinRequestMeeting(int meetingId, String userEmail) {
-		
+		store.registRequestMeeting(meetingId, userEmail);
 	}
-	
-	
-
 }

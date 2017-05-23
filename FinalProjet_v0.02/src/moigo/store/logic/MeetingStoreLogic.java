@@ -1,9 +1,8 @@
 package moigo.store.logic;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -54,62 +53,148 @@ public class MeetingStoreLogic implements MeetingStore{
 
 	@Override
 	public List<Meeting> selectAllMeeting() {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		List<Meeting> list = mapper.selectAllMeeting();
+		session.close();
+		
+		return list;
 	}
 
 	@Override
 	public Meeting selectMeetingById(int meetingId) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		Meeting meeting = mapper.selectMeetingById(meetingId);
+		session.close();
+		
+		return meeting;
 	}
 
 	@Override
 	public List<Meeting> selectMeetingByTitle(String title) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		List<Meeting> list = mapper.selectMeetingByTitle(title);
+		session.close();
+		
+		return list;
 	}
 
 	@Override
 	public List<Meeting> selectMeetingByContent(String content) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		List<Meeting> list = mapper.selectMeetingByContent(content);
+		session.close();
+		
+		return list;
 	}
 
 	@Override
 	public List<Meeting> selectMeetingByDate(Date date) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		List<Meeting> list = mapper.selectMeetingByDate(date);
+		session.close();
+		
+		return list;
 	}
 
 	@Override
 	public List<Meeting> selectMeetingByPlace(String place) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		List<Meeting> list = mapper.selectMeetingByPlace(place);
+		session.close();
+		
+		return list;
 	}
 
 	@Override
 	public List<Meeting> selectMeetingByCategory(String category) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		List<Meeting> list = mapper.selectMeetingByCategory(category);
+		session.close();
+		
+		return list;
 	}
 
 	@Override
 	public List<Meeting> selectMeetingByHashtag(String hashtag) {
-		return null;
-	}
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
 
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		List<Meeting> list = mapper.selectMeetingByHashtag(hashtag);
+		session.close();
+		
+		return list;
+	}
+	
 	@Override
 	public List<Meeting> selectMeetingByReqeust(String email) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		List<Meeting> list = mapper.selectMeetingByReqeust(email);
+		session.close();
+		
+		return list;
 	}
 
 	@Override
 	public List<Meeting> selectMeetingByDone(String email) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		List<Meeting> list = mapper.selectMeetingByDone(email);
+		session.close();
+		
+		return list;
 	}
 
 	@Override
 	public void registRequestMeeting(int meetingId, String userEmail) {
-		
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+//		two parameter,, HASHMAP or DOMAIN
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("meetingId", meetingId);
+		map.put("userEmail", userEmail);
+		mapper.registRequestMeeting(map);
+		session.close();
 	}
 
 	@Override
-	public void deleteRequestMeeting(int meetingId, HttpSession session) {
-		
+	public void deleteRequestMeeting(int meetingId, String userEmail) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+//		two parameter,, HASHMAP or DOMAIN
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("meetingId", meetingId);
+		map.put("userEmail", userEmail);
+		mapper.deleteRequestMeeting(map);
+		session.close();
 	}
 	
 }

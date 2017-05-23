@@ -1,6 +1,7 @@
 package moigo.store.mybatis.mapper;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -34,7 +35,7 @@ public interface MeetingMapper {
 
 	List<Meeting> selectMeetingByDone(String email);
 
-	void registRequestMeeting(int meetingId, String userEmail);
+	void registRequestMeeting(HashMap<String, Object> map);
 
-	void deleteRequestMeeting(int meetingId, HttpSession session);
+	void deleteRequestMeeting(HashMap<String, Object> map);
 }
