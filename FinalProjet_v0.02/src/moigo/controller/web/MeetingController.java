@@ -20,6 +20,7 @@ public class MeetingController {
 	@Autowired
 	private MeetingService meetingService;
 	
+	@RequestMapping("")
 	public String registMeeting(Meeting meeting, HttpSession session, Model model){
 		return null;
 	}

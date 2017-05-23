@@ -314,11 +314,13 @@
 							<table>
 								<tr>
 									<td width="10%" class="td_center">
-										<!-- 모임 대표 이미지 --> <img
-										src="${ctx}/resources/extra-images/col-3-thum7.jpg"
+										<!-- 모임 대표 이미지 --> <%-- <img
+										src="${ctx}/resources/extra-images/col-3-thum7.jpg" id="image"
 										height="200" width="200" style="display: inline-block;" alt="" />
 										<!-- 모임 대표 이미지 끝 --> <br> <br>
-										<button>이미지 변경</button>
+										<button id="changeBtn">이미지 변경</button> --%>
+										<img id="preview" src="" width="300" alt="이미지">
+										<input type="file" id="getfile" accept="image/*">
 									</td>
 									<td width="90%" class="td_center">
 										<!-- 모임 내용 -->
@@ -841,9 +843,24 @@
 	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
 	<script type="text/javascript">
-		$(function() {
+		$(document).ready(function() {
 			$('#datetimepicker1').datetimepicker();
 		});
+		
+		var file = document.querySelector('#getfile');
+
+		file.onchange = function () {
+		    var fileList = file.files ;
+
+		    // 읽기
+		    var reader = new FileReader();
+		    reader.readAsDataURL(fileList [0]);
+
+		    //로드 한 후
+		    reader.onload = function  () {
+		        document.querySelector('#preview').src = reader.result ;
+		    };
+		};
 	</script>
 </body>
 </html>

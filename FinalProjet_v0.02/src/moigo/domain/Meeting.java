@@ -6,6 +6,15 @@ import java.util.List;
 public class Meeting {
 	private int meetingId;
 	private String title;
+	private String image;
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	private String category;
 	private Date date;
 	private Date startDate;
