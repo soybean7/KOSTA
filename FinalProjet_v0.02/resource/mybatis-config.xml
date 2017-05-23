@@ -21,6 +21,6 @@
 	</environments>
 	
 	<mappers>
-		<!-- <mapper resource="mapper/만든맵퍼이름.xml" /> -->
+		<mapper resource="mapper/MeetingMapper.xml" />
 	</mappers>
 </configuration>

@@ -8,17 +8,17 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class OnoffmixSessionFactory {
+public class MoigoSessionFactory {
 	
-	private static OnoffmixSessionFactory instance;
+	private static MoigoSessionFactory instance;
 	private static SqlSessionFactory sqlSessionFactory;
 	private final String resource = "mybatis-config.xml";
 	
-	private OnoffmixSessionFactory() {}
+	private MoigoSessionFactory() {}
 	
-	public static OnoffmixSessionFactory getInstance() {
+	public static MoigoSessionFactory getInstance() {
 		if(instance == null) {
-			instance = new OnoffmixSessionFactory();
+			instance = new MoigoSessionFactory();
 		}
 		return instance;
 	}
