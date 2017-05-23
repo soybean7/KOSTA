@@ -5,17 +5,27 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import moigo.domain.Meeting;
 import moigo.store.MeetingStore;
+import moigo.store.mybatis.MoigoSessionFactory;
+import moigo.store.mybatis.mapper.MeetingMapper;
 
 @Repository
 public class MeetingStoreLogic implements MeetingStore{
 
 	@Override
 	public int insertMeeting(Meeting meeting) {
-		return 0;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		mapper.insertMeeting(meeting);
+		session.close();
+		
+		return meeting.getMeetingId();
 	}
 
 	@Override
