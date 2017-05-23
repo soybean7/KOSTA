@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="store.mybatis.mapper.UserMapper">
+
+	<resultMap type="User" id="UserMap">
+		<id column="EMAIL" property="email" />
+		<result column="NAME" property="name" />
+		<result column="PHONENUMBER" property="phoneNumber" />
+		<result column="PASSWORD" property="password" />
+	</resultMap>
+	
+	<insert id="insertUser" parameterType="User">
+		INSERT INTO USER_TB(EMAIL, NAME, PHONENUMBER, PASSWORD)
+		VALUES(#{email}, #{name}, #{phoneNumber}, #{password})
+	</insert>
+	
+	<update id="updateUser" parameterType="User">
+		UPDATE USER_TB 
+		SET NAME = #{name},
+			PHONENUMBER = #{phoneNumber},
+			PASSWORD = #{password}
+			WHERE EMAIL = #{email}
+	</update>
+	
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM USER_TB
+		WHERE EMAIL = #{email}
+	</delete>
+	
+	<select id="selectUserByEmail" parameterType="String" resultMap="UserMap">
+		SELECT EMAIL,
+			   NAME,
+			   PHONENUMBER,
+			   PASSWORD,
+		FROM USER_TB
+		WHERE EMAIL = #{email}   
+	</select>
+	
+	<select id="selectUserByName" parameterType="String" resultMap="UserMap">
+		SELECT EMAIL,
+			   NAME,
+			   PHONENUMBER,
+			   PASSWORD,
+		FROM USER_TB
+		WHERE NAME = #{name}   
+	</select>
+	
+		<select id="selectUser" parameterType="String" resultMap="UserMap">
+		SELECT EMAIL,
+			   NAME,
+			   PHONENUMBER,
+			   PASSWORD,
+		FROM USER_TB
+		WHERE NAME = #{name}   
+	</select>
+	
+</mapper>
