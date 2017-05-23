@@ -5,7 +5,7 @@
 
 	<typeAliases>
 		<!-- 도메인추가 -->
-		<!-- <typeAlias type="onoffmix.domain.??" alias="??" /> -->
+		<typeAlias type="moigo.domain.Meeting" alias="Meeting" />
 	</typeAliases>
 
 	<environments default="dev">

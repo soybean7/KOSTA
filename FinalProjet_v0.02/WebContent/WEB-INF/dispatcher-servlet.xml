@@ -21,6 +21,6 @@
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
 
 	<mvc:interceptors>
-		<bean class="onoffmix.interceptor.CharacterEncodingIntercepter" />
+		<bean class="moigo.interceptor.CharacterEncodingIntercepter" />
 	</mvc:interceptors>
 </beans>
