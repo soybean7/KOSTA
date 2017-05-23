@@ -407,7 +407,7 @@
 	<!--Custom JavaScript-->
 	<script src="${ctx}/resources/js/custom.js"></script>
 	<!--Map-->
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false?key=AIzaSyDR4TBGOfhyhldkwQ17KVIbS0pf36J8X6w"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false?key=AIzaSyBbg_zAD8oRt51tOHXM2XhOOjgUTtRGZF0"></script>
 
     
 </body>
