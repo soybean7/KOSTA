@@ -11,7 +11,7 @@ public interface MeetingStore {
 	
 	int insertMeeting(Meeting meeting);
 	int updateMeeting(Meeting meeting);
-	boolean deleteMeeting(int meetingId);
+	int deleteMeeting(int meetingId);
 	List<Meeting> selectAllMeeting();
 	Meeting selectMeetingById(int meetingId);
 	List<Meeting> selectMeetingByTitle(String title);
