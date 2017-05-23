@@ -3,71 +3,125 @@ package moigo.store.logic;
 import java.sql.Date;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import moigo.domain.Ad;
 import moigo.store.AdStore;
+import moigo.store.mybatis.MoigoSessionFactory;
+import moigo.store.mybatis.mapper.AdMapper;
 
 @Repository
 public class AdStoreLogic implements AdStore{
+	
 
 	@Override
 	public int insertAd(Ad ad) {
-		return 0;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		AdMapper mapper = session.getMapper(AdMapper.class);
+		
+		mapper.insertAd(ad);
+		session.close();
+
+		return ad.getAdId();
 	}
 
 	@Override
 	public int approveAd(Ad ad) {
+		
 		return 0;
 	}
 
 	@Override
 	public int updateAd(Ad ad) {
-		return 0;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		AdMapper mapper = session.getMapper(AdMapper.class);
+		
+		int updateCount = mapper.updateAd(ad);
+		session.close();
+		return updateCount;
 	}
 
 	@Override
 	public boolean deleteAd(int adId) {
-		return false;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		AdMapper mapper = session.getMapper(AdMapper.class);
+		
+		boolean deleteCount = mapper.deleteAd(adId);
+		session.close();
+		return deleteCount;
 	}
 
 	@Override
 	public Ad selectAdById(int adId) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		AdMapper mapper = session.getMapper(AdMapper.class);
+		
+		Ad ad= mapper.selectAdById(adId);
+		session.close();
+		return ad;
 	}
 
 	@Override
 	public List<Ad> selectAdByEmail(String email) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		AdMapper mapper = session.getMapper(AdMapper.class);
+		
+		List<Ad> list = mapper.selectAdByEmail(email);
+		return list;
 	}
 
 	@Override
 	public List<Ad> selectAdByPhoneNumber(String phoneNumber) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		AdMapper mapper = session.getMapper(AdMapper.class);
+		
+		List<Ad> list = mapper.selectAdByPhoneNumber(phoneNumber);
+		return list;
 	}
 
 	@Override
 	public List<Ad> selectAdByName(String name) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		AdMapper mapper = session.getMapper(AdMapper.class);
+		
+		List<Ad> list = mapper.selectAdByName(name);
+		return list;
 	}
 
 	@Override
 	public List<Ad> selectAllAd() {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		AdMapper mapper = session.getMapper(AdMapper.class);
+		
+		List<Ad> list = mapper.selectAllAd();
+		return list;
 	}
 
 	@Override
 	public List<Ad> selectAdByDate(Date start, Date end) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		AdMapper mapper = session.getMapper(AdMapper.class);
+		
+		List<Ad> list = mapper.selectAllAd();
+		return list;
 	}
 
 	@Override
 	public List<Ad> selectAdBySysdate() {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		AdMapper mapper = session.getMapper(AdMapper.class);
+		
+		List<Ad> list = mapper.selectAdBySysdate();
+		return list;
 	}
 
 	@Override
 	public Ad selectAdByMeetingId(int meetingId) {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		AdMapper mapper = session.getMapper(AdMapper.class);
+		
+		Ad ad = mapper.selectAdByMeetingId(meetingId);
+		return ad;
 	}
 }
