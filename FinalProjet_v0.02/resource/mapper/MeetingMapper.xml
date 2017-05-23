@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="store.mybatis.mapper.Mapper">
+<mapper namespace="store.mybatis.mapper.MeetingMapper">
 
-	<resultMap type="??" id="??Map">
-		<id column="id" property="??Id" />
-		<result column="~~" property="~~" />
+	<resultMap type="Meeting" id="meetingMap">
+		<id column="meeting_id" property="meetingId" />
+		<result column="title" property="title" />
+		<result column="meeting_date" property="date" />
+		<result column="start_date" property="startDate" />
+		<result column="end_date" property="endDate" />
+		<result column="place" property="place" />
+		<result column="fee" property="fee" />
+		<result column="participants" property="participants" />
+		<result column="guidence" property="guidence" />
+		<result column="content" property="content" />
+		<result column="contact" property="contact" />
+		<result column="report_count" property="reportCount" />
+		<result column="reg_date" property="regDate" />
+		<result column="user_email" property="regUser" />
+		<result column="rec_sympathy" property="sympathy" />
 	</resultMap>
 	
-	<insert id="create" parameterType="??">
-		<selectKey keyProperty="??Id" resultType="string" order="BEFORE">
-	  		SELECT ??_seq.nextval FROM DUAL
+	<insert id="create" parameterType="Meeting">
+		<selectKey keyProperty="meetingId" resultType="int" order="BEFORE">
+	  		SELECT meeting_seq.nextval FROM DUAL
 	  	</selectKey>
-		INSERT INTO ??(id, ~~)
-		VALUES(#{??Id}, ~~)
+		INSERT INTO MEETING_TB(meeting_id, title, meeting_date, start_date, end_date, place, fee, guidence, content, contact, reg_date, user_email, meet_sugget)
+		VALUES(#{meetingId}, #{title}, sysdate, #{startDate}, #{endDate}, #{place}, #{fee}, #{guidence}, #{content}, #{contact}, #{reg_date}, #{regUser}, 'meeting')
 	</insert>
 	
 	<select id="retrieve" parameterType="String" resultType="??">

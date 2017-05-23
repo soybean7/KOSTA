@@ -19,11 +19,20 @@ public class Meeting {
 	private String contact;
 	private int reportCount;
 	private Date regDate;
-	private User regUser;
+	private String regUser;
 	private List<User> joinUser;
 	private String sugContents;
 	private Date sugStartDate;
 	private Date sugEndDate;
+	private int sympathy;
+
+	public int getSympathy() {
+		return sympathy;
+	}
+
+	public void setSympathy(int sympathy) {
+		this.sympathy = sympathy;
+	}
 
 	public int getMeetingId() {
 		return meetingId;
@@ -145,11 +154,11 @@ public class Meeting {
 		this.regDate = regDate;
 	}
 
-	public User getRegUser() {
+	public String getRegUser() {
 		return regUser;
 	}
 
-	public void setRegUser(User regUser) {
+	public void setRegUser(String regUser) {
 		this.regUser = regUser;
 	}
 
