@@ -18,7 +18,6 @@
 		<result column="report_count" property="reportCount" />
 		<result column="reg_date" property="regDate" />
 		<result column="user_email" property="regUser" />
-		<result column="rec_sympathy" property="sympathy" />
 	</resultMap>
 	
 	<insert id="create" parameterType="Meeting">
@@ -26,11 +25,26 @@
 	  		SELECT meeting_seq.nextval FROM DUAL
 	  	</selectKey>
 		INSERT INTO MEETING_TB(meeting_id, title, meeting_date, start_date, end_date, place, fee, guidence, content, contact, reg_date, user_email, meet_sugget)
-		VALUES(#{meetingId}, #{title}, sysdate, #{startDate}, #{endDate}, #{place}, #{fee}, #{guidence}, #{content}, #{contact}, #{reg_date}, #{regUser}, 'meeting')
+		VALUES(#{meetingId}, #{title}, #{date}, #{startDate}, #{endDate}, #{place}, #{fee}, #{guidence}, #{content}, #{contact}, sysdate, #{regUser}, 'meeting')
 	</insert>
 	
-	<select id="retrieve" parameterType="String" resultType="??">
-		
+	<select id="retrieve" parameterType="int" resultMap="meetingMap">
+		SELECT meeting_id,
+			   title,
+			   meeting_date,
+			   start_date,
+			   end_date,
+			   place,
+			   fee,
+			   participants,
+			   guidence,
+			   content,
+			   contact,
+			   report_count,
+			   reg_date,
+			   user_email
+		FROM MEETING_TB
+		WHERE meeting_id = #{meetingId}
 	</select>
 	
 	<update id="update" parameterType="??">
