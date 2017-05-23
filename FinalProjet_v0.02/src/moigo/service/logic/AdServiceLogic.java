@@ -18,8 +18,6 @@ public class AdServiceLogic implements AdService{
 
 	@Override
 	public int registAd(Ad ad) {
-		System.out.println("regist complete");
-		System.out.println("Why not?");
 		return 0;
 	}
 
