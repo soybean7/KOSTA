@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
@@ -40,4 +41,48 @@
 		reg_email
 		FROM MEETING_TB
 	</select>
+=======
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="moigo.store.mybatis.mapper.RecommendMapper">
+
+	<resultMap type="Meeting" id="recommendMap">
+		<id column="meeting_id" property="meetingId" />
+		<result column="title" property="title" />
+		<result column="start_date" property="startDate" />
+		<result column="end_date" property="endDate" />
+		<result column="place" property="place" />
+		<result column="guidence" property="guidence" />
+		<result column="content" property="content" />
+		<result column="rec_sympathy" property="sympathy" />
+		<result column="reg_date" property="regDate" />
+		<result column="reg_email" property="regUser" />
+	</resultMap>
+
+	<insert id="insertMeeting" parameterType="Meeting">
+<!-- 
+		<selectKey keyProperty="meetingId" resultType="int" order="BEFORE">
+			SELECT meeting_seq.nextval FROM DUAL
+		</selectKey> -->	
+		INSERT INTO MEETING_TB(meeting_id, title, start_date, end_date, place_
+		guidence, content)
+		VALUE(#{meetingId}, #{title}, #{startDate}, #{endDate}, #{place},
+		#{guidence}, #{content))
+	</insert>
+
+	<select id="selectAllMeeting" resultMap="recommendMap">
+		SELECT meeting_id,
+		title,
+		start_date,
+		end_date,
+		place,
+		guidence,
+		content,
+		rec_sympathy,
+		reg_date,
+		reg_email
+		FROM MEETING_TB
+	</select>
+>>>>>>> branch 'master' of https://github.com/soybean7/KOSTA
 </mapper>
