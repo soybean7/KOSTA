@@ -68,6 +68,7 @@ public class AdStoreLogic implements AdStore{
 		AdMapper mapper = session.getMapper(AdMapper.class);
 		
 		List<Ad> list = mapper.selectAdByEmail(email);
+		session.close();
 		return list;
 	}
 
@@ -77,6 +78,7 @@ public class AdStoreLogic implements AdStore{
 		AdMapper mapper = session.getMapper(AdMapper.class);
 		
 		List<Ad> list = mapper.selectAdByPhoneNumber(phoneNumber);
+		session.close();
 		return list;
 	}
 
@@ -86,6 +88,7 @@ public class AdStoreLogic implements AdStore{
 		AdMapper mapper = session.getMapper(AdMapper.class);
 		
 		List<Ad> list = mapper.selectAdByName(name);
+		session.close();
 		return list;
 	}
 
@@ -95,6 +98,7 @@ public class AdStoreLogic implements AdStore{
 		AdMapper mapper = session.getMapper(AdMapper.class);
 		
 		List<Ad> list = mapper.selectAllAd();
+		session.close();
 		return list;
 	}
 
@@ -104,6 +108,7 @@ public class AdStoreLogic implements AdStore{
 		AdMapper mapper = session.getMapper(AdMapper.class);
 		
 		List<Ad> list = mapper.selectAllAd();
+		session.close();
 		return list;
 	}
 
@@ -113,6 +118,7 @@ public class AdStoreLogic implements AdStore{
 		AdMapper mapper = session.getMapper(AdMapper.class);
 		
 		List<Ad> list = mapper.selectAdBySysdate();
+		session.close();
 		return list;
 	}
 
@@ -122,6 +128,7 @@ public class AdStoreLogic implements AdStore{
 		AdMapper mapper = session.getMapper(AdMapper.class);
 		
 		Ad ad = mapper.selectAdByMeetingId(meetingId);
+		session.close();
 		return ad;
 	}
 }
