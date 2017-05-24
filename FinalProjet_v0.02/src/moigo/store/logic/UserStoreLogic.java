@@ -49,8 +49,6 @@ public class UserStoreLogic implements UserStore {
 	public User selectUser(String userEmail) {
 		User user = mapper.selectUser(userEmail);
 		return user;
-	}
-	
-	
+	}	
 
 }
