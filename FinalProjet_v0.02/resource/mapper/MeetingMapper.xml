@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
@@ -247,4 +248,255 @@
 		DELETE FROM MEETING_USER_TB
 		WHERE meeting_id = #{meetingId} AND user_email = #{userEmail}
 	</delete>
+=======
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="moigo.store.mybatis.mapper.MeetingMapper">
+
+	<resultMap type="Meeting" id="meetingMap">
+		<id column="meeting_id" property="meetingId" />
+		<result column="title" property="title" />
+		<result column="meeting_date" property="date" />
+		<result column="start_date" property="startDate" />
+		<result column="end_date" property="endDate" />
+		<result column="place" property="place" />
+		<result column="fee" property="fee" />
+		<result column="participants" property="participants" />
+		<result column="guidence" property="guidence" />
+		<result column="content" property="content" />
+		<result column="contact" property="contact" />
+		<result column="report_count" property="reportCount" />
+		<result column="reg_date" property="regDate" />
+		<result column="user_email" property="regUser" />
+	</resultMap>
+	
+	<insert id="insertMeeting" parameterType="Meeting">
+		<selectKey keyProperty="meetingId" resultType="int" order="BEFORE">
+	  		SELECT meeting_seq.nextval FROM DUAL
+	  	</selectKey>
+		INSERT INTO MEETING_TB(meeting_id, title, meeting_date, start_date, end_date, place, fee, guidence, content, contact, reg_date, user_email, meet_sugget)
+		VALUES(#{meetingId}, #{title}, #{date}, #{startDate}, #{endDate}, #{place}, #{fee}, #{guidence}, #{content}, #{contact}, #{regDate}, #{regUser}, 'meeting')
+	</insert>
+	
+	<update id="updateMeeting" parameterType="Meeting">
+		UPDATE MEETING_TB 
+		SET title = #{title},
+			meeting_date = #{date},
+			start_date = #{startDate},
+			end_date = #{endDate},
+			place = #{place},
+			fee = #{fee},
+			guidence = #{guidence},
+			content = #{content}, 
+			contact = #{contact}			
+		WHERE meeting_id = #{meetingId}
+	</update>
+	
+	<delete id="deleteMeeting" parameterType="int">
+		DELETE FROM MEETING_TB
+		WHERE meeting_id = #{meetingId}
+	</delete>
+	
+	<select id="selectAllMeeting" resultMap="meetingMap">
+		SELECT meeting_id,
+			   title,
+			   meeting_date,
+			   start_date,
+			   end_date,
+			   place,
+			   fee,
+			   participants,
+			   guidence,
+			   content,
+			   contact,
+			   report_count,
+			   reg_date,
+			   user_email
+		FROM MEETING_TB 
+		WHERE meet_sugget = 'meeting'
+	</select>
+	
+	<select id="selectMeetingById" parameterType="int" resultMap="meetingMap">
+		SELECT meeting_id,
+			   title,
+			   meeting_date,
+			   start_date,
+			   end_date,
+			   place,
+			   fee,
+			   participants,
+			   guidence,
+			   content,
+			   contact,
+			   report_count,
+			   reg_date,
+			   user_email
+		FROM MEETING_TB
+		WHERE meeting_id = #{meetingId} AND meet_sugget = 'meeting'
+	</select>
+	
+	<select id="selectMeetingByTitle" parameterType="String" resultMap="meetingMap">
+		SELECT meeting_id,
+			   title,
+			   meeting_date,
+			   start_date,
+			   end_date,
+			   place,
+			   fee,
+			   participants,
+			   guidence,
+			   content,
+			   contact,
+			   report_count,
+			   reg_date,
+			   user_email
+		FROM MEETING_TB
+		WHERE upper(title) LIKE '%' || upper(#{title}) || '%' AND meet_sugget = 'meeting'
+	</select>
+	
+	<select id="selectMeetingByContent" parameterType="String" resultMap="meetingMap">
+		SELECT meeting_id,
+			   title,
+			   meeting_date,
+			   start_date,
+			   end_date,
+			   place,
+			   fee,
+			   participants,
+			   guidence,
+			   content,
+			   contact,
+			   report_count,
+			   reg_date,
+			   user_email
+		FROM MEETING_TB
+		WHERE upper(content) LIKE '%' || upper(#{content}) || '%' AND meet_sugget = 'meeting'
+	</select>
+	
+	<select id="selectMeetingByDate" parameterType="Date" resultMap="meetingMap">
+		SELECT meeting_id,
+			   title,
+			   meeting_date,
+			   start_date,
+			   end_date,
+			   place,
+			   fee,
+			   participants,
+			   guidence,
+			   content,
+			   contact,
+			   report_count,
+			   reg_date,
+			   user_email
+		FROM MEETING_TB
+		WHERE meeting_date = #{date} AND meet_sugget = 'meeting'
+	</select>
+	
+	<select id="selectMeetingByPlace" parameterType="String" resultMap="meetingMap">
+		SELECT meeting_id,
+			   title,
+			   meeting_date,
+			   start_date,
+			   end_date,
+			   place,
+			   fee,
+			   participants,
+			   guidence,
+			   content,
+			   contact,
+			   report_count,
+			   reg_date,
+			   user_email
+		FROM MEETING_TB
+		WHERE place = #{place} AND meet_sugget = 'meeting'
+	</select>
+	
+	<select id="selectMeetingByCategory" parameterType="String" resultMap="meetingMap">
+		SELECT M.meeting_id,
+			   M.title,
+			   M.meeting_date,
+			   M.start_date,
+			   M.end_date,
+			   M.place,
+			   M.fee,
+			   M.participants,
+			   M.guidence,
+			   M.content,
+			   M.contact,
+			   M.report_count,
+			   M.reg_date,
+			   M.user_email
+		FROM MEETING_TB M, CATEGORY_TB C, CATEGORY_MEETING_TB A
+		WHERE M.meeting_id = A.meeting_id AND C.category = #{category} AND A.category_id = C.category_id AND M.meet_sugget = 'meeting'
+	</select>
+	
+	<select id="selectMeetingByHashtag" parameterType="String" resultMap="meetingMap">
+		SELECT M.meeting_id,
+			   M.title,
+			   M.meeting_date,
+			   M.start_date,
+			   M.end_date,
+			   M.place,
+			   M.fee,
+			   M.participants,
+			   M.guidence,
+			   M.content,
+			   M.contact,
+			   M.report_count,
+			   M.reg_date,
+			   M.user_email
+		FROM MEETING_TB M, HASHTAG_TB H, HASHTAG_MEETING_TB A
+		WHERE M.meeting_id = A.meeting_id AND H.hashtag = #{hashtag} AND A.hashtag_id = H.hashtag_id AND M.meet_sugget = 'meeting'
+	</select>
+	
+	<select id="selectMeetingByReqeust" parameterType="String" resultMap="meetingMap">
+		SELECT M.meeting_id,
+			   M.title,
+			   M.meeting_date,
+			   M.start_date,
+			   M.end_date,
+			   M.place,
+			   M.fee,
+			   M.participants,
+			   M.guidence,
+			   M.content,
+			   M.contact,
+			   M.report_count,
+			   M.reg_date,
+			   M.user_email
+		FROM MEETING_TB M, MEETING_USER_TB U
+		WHERE U.user_email = #{email} AND U.meeting_id = M.meeting_id AND M.meet_sugget = 'meeting'
+	</select>
+	
+	<select id="selectMeetingByDone" parameterType="String" resultMap="meetingMap">
+		SELECT M.meeting_id,
+			   M.title,
+			   M.meeting_date,
+			   M.start_date,
+			   M.end_date,
+			   M.place,
+			   M.fee,
+			   M.participants,
+			   M.guidence,
+			   M.content,
+			   M.contact,
+			   M.report_count,
+			   M.reg_date,
+			   M.user_emaill
+		FROM MEETING_TB M, MEETING_USER_TB Ut
+		WHERE U.user_email = #{email} AND U.meeting_id = M.meeting_id AND M.meet_sugget = 'meeting'
+
+	</select>
+		
+	<insert id="registRequestMeeting" parameterType="hashmap">
+		INSERT INTO MEETING_USER_TB(meeting_id, user_email)
+		VALUES(#{meetingId}, #{userEmail})
+	</insert>
+	
+	<delete id="deleteRequestMeeting" parameterType="hashmap">
+		DELETE FROM MEETING_USER_TB
+		WHERE meeting_id = #{meetingId} AND user_email = #{userEmail}
+	</delete>
+>>>>>>> branch 'master' of https://github.com/soybean7/KOSTA
 </mapper>
