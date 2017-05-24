@@ -300,7 +300,8 @@
 	<!--Banner Wrap End-->
 
 	<!--Content Wrap Start-->
-
+	<form id="frm" name="frm" enctype="multipart/form-data">
+	
 	<div class="kf_content_wrap">
 		<section>
 			<div class="container">
@@ -312,6 +313,8 @@
 
 							<!-- BLOG DETAIL THUMBNAIL START-->
 							<table>
+								
+
 								<tr>
 									<td width="10%" class="td_center">
 										<!-- 모임 대표 이미지 --> <%-- <img
@@ -329,7 +332,7 @@
 												<div class="col-md-10">
 
 													<div class="panel-body">
-														<form class="form-horizontal">
+														<div class="form-horizontal">
 															<div class="form-group">
 																<span class="col-md-2 control-label"> 카테고리/모임명</span>
 
@@ -462,7 +465,7 @@
 																<div class="col-md-8">
 																	<div class="row">
 																		<div class="col-md-10">
-																			<input type="text" class="form-control" />
+																			<input type="text" name="hashtag" class="form-control" />
 																		</div>
 																		<div class="col-md-2">
 																			<button>추가</button>
@@ -530,24 +533,21 @@
 																</div>
 															</div>
 
-														</form>
+														</div>
 
 
 													</div>
 
 													<div class="form-group">
-														<a href="#" class="btn btn-primary">primary</a> <a
-															href="#" class="btn btn-success">success</a>
+														<button class="btn btn-primary" type="submit">등록</button>
 													</div>
 
 												</div>
 
 											</div>
 										</div>
-
 									</td>
 								</tr>
-
 
 							</table>
 							<!-- BLOG DETAIL THUMBNAIL END-->
@@ -563,248 +563,9 @@
 				</div>
 			</div>
 
-			<!-- <div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">Heading here</h4>
-							</div>
-
-							body시작 
-							<div class="panel-body">
-								<form class="form-horizontal">
-									<div class="form-group">
-										<label for="inputfirstname" class="col-md-4 control-label">
-											카테고리/모임명</label>
-
-										<div class="col-md-8">
-											<div class="row">
-												<div class="col-md-3">
-													<select name="" class="form-control">
-														<option value="">카테고리</option>
-														<option value="">카테고리</option>
-														<option value="">카테고리</option>
-														<option value="">카테고리</option>
-														<option value="">카테고리</option>
-														<option selected value="">카테고리</option>
-													</select>
-												</div>
-												<div class="col-md-8">
-													<input type="text" class="form-control"
-														placeholder="Enter First Name..." />
-												</div>
-											</div>
-										</div>
-									</div>
-
-
-									<div class="form-group">
-										<label for="inputscreenname" class="col-md-4 control-label">
-											모임일시</label>
-										<div class="col-md-8">
-											<input type="text" class="form-control"
-												placeholder="Enter Screen Name..." />
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="inputscreenname" class="col-md-4 control-label">
-											신청일시</label>
-										<div class="col-md-8">
-											<input type="text" class="form-control"
-												placeholder="Enter Screen Name..." />
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="inputscreenname" class="col-md-4 control-label">
-											모임장소</label>
-										<div class="col-md-8">
-											<div class="row">
-												<div class="col-md-10">
-													<input type="text" class="form-control"
-														placeholder="Enter Screen Name..." />
-												</div>
-												<div class="col-md-2">
-													<button>추가</button>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="inputscreenname" class="col-md-4 control-label">
-											유/무료선택</label>
-										<div class="col-md-8 ">
-											<label> <input type="radio" name="gender"> 유료
-												신청
-											</label> <label> <input type="radio" name="gender">
-												무료 신청
-											</label>
-										</div>
-									</div>
-
-
-									<div class="form-group">
-										<label for="inputscreenname" class="col-md-4 control-label">
-											그룹설정</label>
-										<div class="col-md-8">
-
-
-											<table class="table table-striped table-bordered table-hover">
-
-												<thead>
-													<tr>
-														<th>총인원</th>
-														<th>참가비용</th>
-														<th>선정방법</th>
-														<th>동반인원</th>
-
-													</tr>
-												</thead>
-												<tbody>
-													<tr class="odd gradeX">
-														<td><input type="number" size="5"
-															class="form-control" /> <span>명</span></td>
-														<td><input type="number" size="5"
-															class="form-control" />원</td>
-														<td><select name="" class="form-control">
-																<option value="">010</option>
-																<option value="">011</option>
-																<option value="">017</option>
-																<option selected value="">선착순</option>
-														</select></td>
-														<td><select name="" class="form-control">
-																<option value="">010</option>
-																<option value="">011</option>
-																<option value="">017</option>
-																<option selected value="">없음</option>
-														</select></td>
-
-													</tr>
-
-												</tbody>
-											</table>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="inputscreenname" class="col-md-4 control-label">
-											간단한 모임소개 입력</label>
-										<div class="col-md-8">
-											<textarea class="form-control"
-												placeholder="Enter Screen Name..." rows="5"></textarea>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="inputscreenname" class="col-md-4 control-label">
-											상세내용 입력</label>
-										<div class="col-md-8">
-											<textarea class="form-control"
-												placeholder="Enter Screen Name..." rows="5"></textarea>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="inputscreenname" class="col-md-4 control-label">
-											해시태그</label>
-										<div class="col-md-8">
-											<div class="row">
-												<div class="col-md-10">
-													<input type="text" class="form-control"
-														placeholder="Enter Screen Name..." />
-												</div>
-												<div class="col-md-2">
-													<button>추가</button>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="inputscreenname" class="col-md-4 control-label">
-											신청 문의 연락처 설정</label>
-
-										<div class="col-md-8">
-											<div class="row">
-												<div class="col-md-2">
-													<span>연락처</span>
-												</div>
-
-												<div class="col-md-2">
-													<select name="" class="form-control">
-														<option value="">010</option>
-														<option value="">011</option>
-														<option value="">017</option>
-													</select>
-												</div>
-
-												<div class="col-md-3">
-													<input type="text" class="form-control"
-														placeholder="Enter Screen Name..." />
-												</div>
-
-												<div class="col-md-3">
-													<input type="text" class="form-control"
-														placeholder="Enter Screen Name..." />
-												</div>
-											</div>
-
-										</div>
-
-										<label for="inputscreenname" class="col-md-4 control-label">
-										</label>
-										<div class="col-md-8">
-											<div class="row">
-												<div class="col-md-2">
-													<span>이메일</span>
-												</div>
-
-
-												<div class="col-md-3">
-													<input type="text" class="form-control"
-														placeholder="Enter Screen Name..." />
-												</div>
-												<div class="col-md-1">
-													<span>@</span>
-												</div>
-												<div class="col-md-3">
-													<select name="" class="form-control">
-														<option value="">네이버</option>
-														<option value="">다음</option>
-														<option value="">네이트</option>
-														<option selected value="">선택</option>
-													</select>
-												</div>
-
-
-
-											</div>
-
-										</div>
-									</div>
-								</form>
-							</div>
--->
-
-			<!-- 
-							<div class="panel-footer">
-								<form class="form-horizontal">
-									<div class="form-group">
-										<div class="col-md-8">
-											<input type="submit" name="submit" value="submit"
-												class="btn btn-default">
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-				</div>
-			</div>-->
 		</section>
 	</div>
+	</form>
 	<!--Content Wrap End-->
 	<%@ include file="/views/header/footer.jspf"%>
 
