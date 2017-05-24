@@ -255,8 +255,7 @@
 					</div>
 					<div class="user-box-footer">
 						<p>
-							Don't have an account?<br>
-							<a href="#">Sign up as a User</a>
+							Don't have an account?<br> <a href="#">Sign up as a User</a>
 						</p>
 					</div>
 					<div class="clearfix"></div>
@@ -326,91 +325,97 @@
 												<div class="col-md-10">
 
 													<div class="panel-body">
-														<form class="form-horizontal">
-															<div class="form-group">
-																<span class="col-md-2 control-label"> 카테고리/모임명</span>
+														<form class="form-horizontal"
+															action="${ctx}/registRecommend.do" method="POST">
+															<fieldset>
+																<div class="form-group">
+																	<span class="col-md-2 control-label"> 카테고리/모임명</span>
 
-																<div class="col-md-8">
-																	<div class="row">
-																		<div class="col-md-3">
-																			<select name="" class="form-control">
-																				<option value="">카테고리</option>
-																				<option value="">카테고리</option>
-																				<option value="">카테고리</option>
-																				<option value="">카테고리</option>
-																				<option value="">카테고리</option>
-																				<option selected value="">카테고리</option>
-																			</select>
-																		</div>
-																		<div class="col-md-9">
-																			<input type="text" class="form-control" />
-																		</div>
-																	</div>
-																</div>
-															</div>
-
-
-															<div class="form-group">
-																<span class="col-md-2 control-label">제안일시</span>
-																<div class="col-md-8">
-																	<input type="text" class="form-control" />
-																</div>
-															</div>
-
-															<div class="form-group">
-																<span class="col-md-2 control-label"> 모임장소</span>
-																<div class="col-md-8">
-																	<div class="row">
-																		<div class="col-md-10">
-																			<input type="text" class="form-control" />
-																		</div>
-																		<div class="col-md-2">
-																			<button>검색</button>
+																	<div class="col-md-8">
+																		<div class="row">
+																			<div class="col-md-3">
+																				<select  class="form-control">
+																					<option value="">카테고리</option>
+																					<option value="">카테고리</option>
+																					<option value="">카테고리</option>
+																					<option value="">카테고리</option>
+																					<option value="">카테고리</option>
+																					<option selected value="">카테고리</option>
+																				</select>
+																			</div>
+																			<div class="col-md-9">
+																				<input type="text" name="title" class="form-control" />
+																			</div>
 																		</div>
 																	</div>
 																</div>
-															</div>
 
-														
-															<div class="form-group">
-																<span class="col-md-2 control-label"> 간단한 모임소개 입력</span>
-																<div class="col-md-8">
-																	<textarea class="form-control" rows="5"></textarea>
+
+																<div class="form-group">
+																	<span class="col-md-2 control-label">제안일시</span>
+																	<div class="col-md-8">
+																		<input type="number" 
+																			class="form-control" /> <input type="number"
+																			 class="form-control" />
+																	</div>
 																</div>
-															</div>
 
-															<div class="form-group">
-																<span class="col-md-2 control-label"> 상세내용 입력</span>
-																<div class="col-md-8">
-																	<textarea class="form-control" rows="5"></textarea>
-																</div>
-															</div>
-
-															<div class="form-group">
-																<span class="col-md-2 control-label"> 해시태그</span>
-																<div class="col-md-8">
-																	<div class="row">
-																		<div class="col-md-10">
-																			<input type="text" class="form-control" />
-																		</div>
-																		<div class="col-md-2">
-																			<button>추가</button>
+																<div class="form-group">
+																	<span class="col-md-2 control-label"> 모임장소</span>
+																	<div class="col-md-8">
+																		<div class="row">
+																			<div class="col-md-10">
+																				<input type="text" name="place" class="form-control" />
+																			</div>
+																			<div class="col-md-2">
+																				<button>검색</button>
+																			</div>
 																		</div>
 																	</div>
 																</div>
-															</div>
 
-															
 
+																<div class="form-group">
+																	<span class="col-md-2 control-label"> 간단한 모임소개
+																		입력</span>
+																	<div class="col-md-8">
+																		<textarea class="form-control" name="guidence"
+																			rows="5"></textarea>
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<span class="col-md-2 control-label"> 상세내용 입력</span>
+																	<div class="col-md-8">
+																		<textarea class="form-control" name="content" rows="5"></textarea>
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<span class="col-md-2 control-label"> 해시태그</span>
+																	<div class="col-md-8">
+																		<div class="row">
+																			<div class="col-md-10">
+																				<input type="text" class="form-control" />
+																			</div>
+																			<div class="col-md-2">
+																				<button>추가</button>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<button type="submit" class="btn btn-primary">primary</button>
+																	<button type="reset" class="btn btn-success">success</button>
+																</div>
+															</fieldset>
 														</form>
 
 
 													</div>
 
-													<div class="form-group">
-														<a href="#" class="btn btn-primary">primary</a> <a
-															href="#" class="btn btn-success">success</a>
-													</div>
+
 
 												</div>
 

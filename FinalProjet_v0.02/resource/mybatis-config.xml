@@ -22,5 +22,6 @@
 	
 	<mappers>
 		<mapper resource="mapper/MeetingMapper.xml" />
+		<mapper resource="mapper/RecommendMapper.xml" />
 	</mappers>
 </configuration>

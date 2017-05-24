@@ -17,10 +17,11 @@ public class RecommendController {
 	@Autowired
 	private RecommendService service;
 	
-	@RequestMapping(value="registRecommend.do", method=RequestMethod.GET)
+	@RequestMapping(value="registRecommend.do", method=RequestMethod.POST)
 	public String registRecommend(Meeting meeting, HttpSession session, Model model){
 		service.registMeeting(meeting);
-		return null;
+		System.out.println("controller");
+		return "recommend/recommendList";
 	}
 	
 	public String showModifyRecommend(int meetingId, Model model){

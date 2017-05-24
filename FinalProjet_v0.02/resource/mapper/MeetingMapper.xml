@@ -233,7 +233,7 @@
 			   M.reg_date,
 			   M.user_emaill
 		FROM MEETING_TB M, MEETING_USER_TB Ut
-		WHERE U.user_email = #{email} AND U.meeting_id = M.meeting_id AND M.meeting_date < sysdate
+		WHERE U.user_email = #{email} AND U.meeting_id = M.meeting_id
 	</select>
 		
 	<insert id="registRequestMeeting" parameterType="hashmap">
