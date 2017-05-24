@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="store.mybatis.mapper.MeetingMapper">
+<mapper namespace="moigo.store.mybatis.mapper.MeetingMapper">
 
 	<resultMap type="Meeting" id="meetingMap">
 		<id column="meeting_id" property="meetingId" />
@@ -25,7 +25,7 @@
 	  		SELECT meeting_seq.nextval FROM DUAL
 	  	</selectKey>
 		INSERT INTO MEETING_TB(meeting_id, title, meeting_date, start_date, end_date, place, fee, guidence, content, contact, reg_date, user_email, meet_sugget)
-		VALUES(#{meetingId}, #{title}, #{date}, #{startDate}, #{endDate}, #{place}, #{fee}, #{guidence}, #{content}, #{contact}, sysdate, #{regUser}, 'meeting')
+		VALUES(#{meetingId}, #{title}, #{date}, #{startDate}, #{endDate}, #{place}, #{fee}, #{guidence}, #{content}, #{contact}, #{regDate}, #{regUser}, 'meeting')
 	</insert>
 	
 	<update id="updateMeeting" parameterType="Meeting">
@@ -62,7 +62,8 @@
 			   report_count,
 			   reg_date,
 			   user_email
-		FROM MEETING_TB
+		FROM MEETING_TB 
+		WHERE meet_sugget = 'meeting'
 	</select>
 	
 	<select id="selectMeetingById" parameterType="int" resultMap="meetingMap">
@@ -81,7 +82,7 @@
 			   reg_date,
 			   user_email
 		FROM MEETING_TB
-		WHERE meeting_id = #{meetingId}
+		WHERE meeting_id = #{meetingId} AND meet_sugget = 'meeting'
 	</select>
 	
 	<select id="selectMeetingByTitle" parameterType="String" resultMap="meetingMap">
@@ -100,7 +101,7 @@
 			   reg_date,
 			   user_email
 		FROM MEETING_TB
-		WHERE upper(title) LIKE '%' || upper(#{title}) || '%'
+		WHERE upper(title) LIKE '%' || upper(#{title}) || '%' AND meet_sugget = 'meeting'
 	</select>
 	
 	<select id="selectMeetingByContent" parameterType="String" resultMap="meetingMap">
@@ -119,7 +120,7 @@
 			   reg_date,
 			   user_email
 		FROM MEETING_TB
-		WHERE upper(content) LIKE '%' || upper(#{content}) || '%'
+		WHERE upper(content) LIKE '%' || upper(#{content}) || '%' AND meet_sugget = 'meeting'
 	</select>
 	
 	<select id="selectMeetingByDate" parameterType="Date" resultMap="meetingMap">
@@ -138,7 +139,7 @@
 			   reg_date,
 			   user_email
 		FROM MEETING_TB
-		WHERE meeting_date = #{date}
+		WHERE meeting_date = #{date} AND meet_sugget = 'meeting'
 	</select>
 	
 	<select id="selectMeetingByPlace" parameterType="String" resultMap="meetingMap">
@@ -157,7 +158,7 @@
 			   reg_date,
 			   user_email
 		FROM MEETING_TB
-		WHERE place = #{place}
+		WHERE place = #{place} AND meet_sugget = 'meeting'
 	</select>
 	
 	<select id="selectMeetingByCategory" parameterType="String" resultMap="meetingMap">
@@ -176,7 +177,7 @@
 			   M.reg_date,
 			   M.user_email
 		FROM MEETING_TB M, CATEGORY_TB C, CATEGORY_MEETING_TB A
-		WHERE M.meeting_id = A.meeting_id AND C.category = #{category} AND A.category_id = C.category_id
+		WHERE M.meeting_id = A.meeting_id AND C.category = #{category} AND A.category_id = C.category_id AND M.meet_sugget = 'meeting'
 	</select>
 	
 	<select id="selectMeetingByHashtag" parameterType="String" resultMap="meetingMap">
@@ -195,7 +196,7 @@
 			   M.reg_date,
 			   M.user_email
 		FROM MEETING_TB M, HASHTAG_TB H, HASHTAG_MEETING_TB A
-		WHERE M.meeting_id = A.meeting_id AND H.hashtag = #{hashtag} AND A.hashtag_id = H.hashtag_id
+		WHERE M.meeting_id = A.meeting_id AND H.hashtag = #{hashtag} AND A.hashtag_id = H.hashtag_id AND M.meet_sugget = 'meeting'
 	</select>
 	
 	<select id="selectMeetingByReqeust" parameterType="String" resultMap="meetingMap">
@@ -214,7 +215,7 @@
 			   M.reg_date,
 			   M.user_email
 		FROM MEETING_TB M, MEETING_USER_TB U
-		WHERE U.user_email = #{email} AND U.meeting_id = M.meeting_id
+		WHERE U.user_email = #{email} AND U.meeting_id = M.meeting_id AND M.meet_sugget = 'meeting'
 	</select>
 	
 	<select id="selectMeetingByDone" parameterType="String" resultMap="meetingMap">
@@ -233,7 +234,7 @@
 			   M.reg_date,
 			   M.user_emaill
 		FROM MEETING_TB M, MEETING_USER_TB Ut
-		WHERE U.user_email = #{email} AND U.meeting_id = M.meeting_id
+		WHERE U.user_email = #{email} AND U.meeting_id = M.meeting_id AND M.meet_sugget = 'meeting'
 
 	</select>
 		
