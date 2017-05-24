@@ -217,43 +217,56 @@
 		    		</div>
 			    </div>
 		    </div>
+		    
+		    
+		    <!-- 내용시작 -->
 	 			<div class="container">
-
 	 				<div class="row">
+	 				
+	 				
+	 				<!-- 제안모임 리스트 시작 -->
+	 				<c:forEach var="rMeeting" items="${recommendMeetings }">
+	 					
 	 					<div class="col-md-4 col-sm-6">
-
 	 						<!--EDU2 COLUM 3 Wrap Start-->
 	 						<div class="edu2_col_3_wrap">
 	 							<figure>
+	 								<!-- 
 	 								<img src="${ctx}/resources/extra-images/col-3-thum1.jpg" alt=""/>
+	 								 -->
+	 								<img src="http://img.insight.co.kr/static/2016/03/22/700/bg040znw04rb8wgw554n.jpg"/>
 	 								<!-- <figcaption><a href="#"><i class="fa fa-play"></i></a></figcaption> -->
 	 							</figure>
 
 	 							<!--EDU2 COLUM 3 Des Start-->
 	 							<div class="edu2_col_3_des">
-	 								<h6>축구 해요!</h6>
-	 								<p>축구 어디서할까요? ㅎㅎㅎㅎㅎㅎㅎㅎ 명준형님 존잘</p>
+	 								<h6>${rMeeting.title }</h6>
+	 								<p>${rMeeting.guidence }</p>
 
 	 								<!--EDU2 COLUM 3 Ftr Start-->
 		 							<div class="edu2_col_3_ftr">
 		 								<figure><img src="${ctx}/resources/extra-images/col_3_des1.jpg" alt=""/></figure>
-		 								<a href="#">작성자</a>
+		 								<a href="#">${rMeeting.regUser }</a>
 		 								<div style="float:right">
 											<a href="#">♡</a>
-											<span>32</span>
+											<span>${rMeeting.sympathy }</span>
 										</div>
 		 							</div>
 		 							<!--EDU2 COLUM 3 Ftr End-->
 	 							</div>
 	 							<!--EDU2 COLUM 3 Des End-->
-
-
 	 						</div>
 	 						<!--EDU2 COLUM 3 Wrap End-->
+	 					
+
+
 
 	 					</div>
-
-
+						</c:forEach>
+						<!-- 제안모임 리스트 끝 -->
+						
+						
+						
 	 					<div class="col-md-12">
 	 						<!--KF_PAGINATION_WRAP START-->
 							<div class="kf_edu_pagination_wrap">
