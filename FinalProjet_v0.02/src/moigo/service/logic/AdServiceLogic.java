@@ -18,7 +18,8 @@ public class AdServiceLogic implements AdService{
 
 	@Override
 	public int registAd(Ad ad) {
-		return 0;
+		store.insertAd(ad); 
+		return ad.getAdId();
 	}
 
 	@Override
@@ -28,52 +29,51 @@ public class AdServiceLogic implements AdService{
 
 	@Override
 	public int modifyAd(Ad ad) {
-		return 0;
+		return store.updateAd(ad);
 	}
 
 	@Override
 	public boolean removeAd(int adId) {
-		return false;
+		return store.deleteAd(adId);
 	}
 
 	@Override
 	public Ad searchAdById(int adId) {
-		return null;
+		return store.selectAdById(adId);
 	}
 
 	@Override
 	public List<Ad> searchAdByphoneNumber(String phoneNumber) {
-		return null;
+		return store.selectAdByPhoneNumber(phoneNumber);
 	}
 
 	@Override
 	public List<Ad> searchAdByName(String name) {
-		return null;
+		return store.selectAdByName(name);
 	}
 
 	@Override
 	public List<Ad> searchAdByEmail(String email) {
-		return null;
+		return store.selectAdByEmail(email);
 	}
 
 	@Override
 	public List<Ad> searchAllAd() {
-		return null;
+		return store.selectAllAd();
 	}
 
 	@Override
 	public List<Ad> searchAdByDate(Date start, Date end) {
-		return null;
+		return store.selectAdByDate(start, end);
 	}
 
 	@Override
 	public List<Ad> searchAdBySysdata() {
-		return null;
+		return store.selectAdBySysdate();
 	}
 
 	@Override
 	public Ad searchAdByMeetingId(int meetingId) {
-		return null;
+		return store.selectAdByMeetingId(meetingId);
 	}
-
 }

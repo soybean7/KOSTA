@@ -234,6 +234,10 @@
 			   M.user_emaill
 		FROM MEETING_TB M, MEETING_USER_TB Ut
 		WHERE U.user_email = #{email} AND U.meeting_id = M.meeting_id
+<<<<<<< HEAD
+=======
+		<!-- AND M.meeting_date < sysdate 오류문제 해결후 추가 -->
+>>>>>>> branch 'master' of https://github.com/soybean7/KOSTA
 	</select>
 		
 	<insert id="registRequestMeeting" parameterType="hashmap">

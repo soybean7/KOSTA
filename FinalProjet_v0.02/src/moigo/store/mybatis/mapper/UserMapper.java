@@ -1,10 +1,10 @@
-package moigo.store;
+package moigo.store.mybatis.mapper;
 
 import java.util.List;
 
 import moigo.domain.User;
 
-public interface UserStore {
+public interface UserMapper {
 	
 	public boolean insertUser(User user);
 	public int updateUser(User user);

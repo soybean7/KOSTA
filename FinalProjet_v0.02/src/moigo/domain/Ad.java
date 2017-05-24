@@ -1,7 +1,7 @@
 package moigo.domain;
 
 import java.sql.Date;
-//tests
+
 public class Ad {
 	private int adId;
 	private String name;
