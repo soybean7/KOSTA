@@ -8,7 +8,7 @@ import moigo.service.UserService;
 @Controller
 public class UserMobileController {
 	
-	@Autowired
+/*	@Autowired
 	private UserService userService;
-	
+	*/
 }

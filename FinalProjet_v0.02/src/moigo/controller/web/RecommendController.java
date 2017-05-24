@@ -19,7 +19,7 @@ public class RecommendController {
 	
 	@RequestMapping(value="registRecommend.do", method=RequestMethod.POST)
 	public String registRecommend(Meeting meeting, HttpSession session, Model model){
-		service.registMeeting(meeting);
+/*		service.registMeeting(meeting);*/
 		System.out.println("controller");
 		return "recommend/recommendList";
 	}
