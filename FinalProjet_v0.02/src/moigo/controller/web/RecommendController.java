@@ -14,6 +14,7 @@ import moigo.domain.Meeting;
 import moigo.service.RecommendService;
 
 @Controller
+@RequestMapping("recommend")
 public class RecommendController {
 	
 	@Autowired
@@ -41,7 +42,7 @@ public class RecommendController {
 	public String datailRecommend(int meetingId, Model model){
 		return null;
 	}
-	@RequestMapping(value="recommend/list.do")
+	@RequestMapping(value="list.do")
 	public String searchAll(Model model){
 		List<Meeting> recommendMeetings = service.searchAllMeeting();
 		model.addAttribute("recommendMeetings", recommendMeetings);
