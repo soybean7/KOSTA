@@ -1,45 +1,80 @@
 package test.store;
 
 import static org.junit.Assert.*;
-
-import java.util.List;
-
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
+import moigo.store.AdStore;
+import moigo.store.logic.AdStoreLogic;
+import org.junit.Before;
 import org.junit.Test;
 
-import moigo.domain.Ad;
-import moigo.service.AdService;
-import moigo.service.logic.AdServiceLogic;
 
 public class AdStoreLogicTest {
 	
-	AdService service;
-
+	private AdStore store;
+	
+	@Before
 	public void setup(){
-		service = new AdServiceLogic();
+		store = new AdStoreLogic();
 	}
 	
-	
-	
+
 	@Test
-	public void test() {
-		
-		List<Ad> ad = service.searchAllAd();
-		System.out.println(ad.size());
-		System.out.println(ad.get(0).getPhoneNumber());
-		
+	public void testInsertAd() {
+		fail("Not yet implemented");
 	}
-	
-//	@Test
-//	public void testRegist(){
-//		Ad ad = new Ad();
-//		
-//		ad.setAdId(2);
-//		ad.setEmail("2ndmain@mail.com");
-//		
-//		service.registAd(ad);
-//		
-//	}
+
+	@Test
+	public void testApproveAd() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testUpdateAd() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDeleteAd() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSelectAdById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSelectAdByEmail() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSelectAdByPhoneNumber() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSelectAdByName() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSelectAllAd() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSelectAdByDate() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSelectAdBySysdate() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSelectAdByMeetingId() {
+		fail("Not yet implemented");
+	}
 
 }

@@ -21,7 +21,7 @@
 		FROM ad_id
 	</sql>
 	
-	<insert id="create" parameterType="AdMap">
+	<insert id="create" parameterType="Ad">
 		<selectKey keyProperty="adId" resultType="int" order="BEFORE">
 	  		SELECT ad_seq.nextval FROM DUAL
 	  	</selectKey>
