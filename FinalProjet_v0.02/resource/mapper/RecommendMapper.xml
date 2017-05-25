@@ -36,7 +36,7 @@
 		content,
 		rec_sympathy,
 		reg_date,
-		reg_email
+		user_email
 		FROM MEETING_TB
 	</select>
 	
