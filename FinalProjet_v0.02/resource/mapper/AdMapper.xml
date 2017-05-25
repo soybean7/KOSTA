@@ -3,7 +3,7 @@
 
 <mapper namespace="moigo.store.mybatis.mapper.AdMapper">
 
-	<resultMap id="adMap" type="Ad" >
+	<resultMap id="adMap" type="Ad" > 
 		<id column="ad_id" property="adId" />
 		<result column="meeting_id" property="meetingId" />
 		<result column="name" property="name" />
