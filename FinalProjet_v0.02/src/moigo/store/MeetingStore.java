@@ -24,5 +24,5 @@ public interface MeetingStore {
 	List<Meeting> selectMeetingByDone(String email);
 	void registRequestMeeting(int meetingId, String userEmail);
 	void deleteRequestMeeting(int meetingId, String userEmail);
-
+	List<String> selectCategory();
 }

@@ -247,4 +247,8 @@
 		DELETE FROM MEETING_USER_TB
 		WHERE meeting_id = #{meetingId} AND user_email = #{userEmail}
 	</delete>
+	
+	<select id="selectCategory" resultType="String">
+		SELECT category FROM CATEGORY_TB
+	</select>
 </mapper>

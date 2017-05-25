@@ -36,4 +36,6 @@ public interface MeetingMapper {
 	void registRequestMeeting(HashMap<String, Object> map);
 
 	void deleteRequestMeeting(HashMap<String, Object> map);
+	
+	List<String> selectCategory();
 }

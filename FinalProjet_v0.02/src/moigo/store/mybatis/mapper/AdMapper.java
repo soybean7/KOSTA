@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.List;
 
 import moigo.domain.Ad;
-import moigo.store.mybatis.MoigoSessionFactory;
 
 public interface AdMapper {
 	

@@ -300,7 +300,7 @@
 	<!--Banner Wrap End-->
 
 	<!--Content Wrap Start-->
-	<form id="frm" name="frm" enctype="multipart/form-data">
+	<form id="frm" name="frm" enctype="multipart/form-data" action="${ctx}/meeting/registMeeting.do" method="POST">
 	
 	<div class="kf_content_wrap">
 		<section>
@@ -323,7 +323,7 @@
 										<!-- 모임 대표 이미지 끝 --> <br> <br>
 										<button id="changeBtn">이미지 변경</button> --%>
 										<img id="preview" src="" width="300" alt="이미지">
-										<input type="file" id="getfile" accept="image/*">
+										<input type="file" name="file" id="getfile" accept="image/*">
 									</td>
 									<td width="90%" class="td_center">
 										<!-- 모임 내용 -->
@@ -339,17 +339,18 @@
 																<div class="col-md-8">
 																	<div class="row">
 																		<div class="col-md-3">
-																			<select name="" class="form-control">
-																				<option value="">카테고리</option>
-																				<option value="">카테고리</option>
-																				<option value="">카테고리</option>
-																				<option value="">카테고리</option>
-																				<option value="">카테고리</option>
-																				<option selected value="">카테고리</option>
+																			<input type="hidden" id="categoryData" value = "${category}"/>
+																			<select name="category" id="category" class="form-control">
+																				 <option selected value="">카테고리</option>
+																				 <c:forEach items="${category}" var="list">
+																				 	<option value="${list}">${list}</option>
+																				 </c:forEach>
+																				 
+																				 <option>테스트</option>
 																			</select>
 																		</div>
 																		<div class="col-md-9">
-																			<input type="text" class="form-control" />
+																			<input type="text" name="title" class="form-control" />
 																		</div>
 																	</div>
 																</div>
@@ -359,14 +360,15 @@
 															<div class="form-group">
 																<span class="col-md-2 control-label"> 모임일시</span>
 																<div class="col-md-8">
-																	<input type="text" class="form-control" />
+																	<input type="text" name="date" class="form-control" />
 																</div>
 															</div>
 
 															<div class="form-group">
 																<span class="col-md-2 control-label"> 신청일시</span>
 																<div class="col-md-8">
-																	<input type="text" class="form-control" />
+																	<input type="text" name="startDate" class="form-control" />
+																	<input type="text" name="endDate" class="form-control" />
 																</div>
 															</div>
 
@@ -375,7 +377,7 @@
 																<div class="col-md-8">
 																	<div class="row">
 																		<div class="col-md-10">
-																			<input type="text" class="form-control" />
+																			<input type="text" name="place" class="form-control" />
 																		</div>
 																		<div class="col-md-2">
 																			<button>검색</button>
@@ -387,17 +389,21 @@
 															<div class="form-group">
 																<span class="col-md-2 control-label"> 유/무료선택</span>
 																<div class="col-md-8">
+																	<input type="hidden" name="fee" value="0">
 																	<div class="row">
 																		<div class="col-md-3 ">
-																			<label> <input type="radio" name="gender">
+																			<label> <input type="radio" name="check" value="유료">
 																				유료 신청
 																			</label>
 																		</div>
 																		<div class="col-md-3 ">
-																			<label> <input type="radio" name="gender">
+																			<label> <input type="radio" name="check" value="무료">
 																				무료 신청
 																			</label>
 																		</div>
+																	</div>
+																	<div id="moneyEdit" class="row">
+																	
 																	</div>
 																</div>
 															</div>
@@ -539,7 +545,7 @@
 													</div>
 
 													<div class="form-group">
-														<button class="btn btn-primary" type="submit">등록</button>
+														<button id="regist" class="btn btn-primary" type="submit">등록</button>
 													</div>
 
 												</div>
@@ -605,23 +611,53 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#datetimepicker1').datetimepicker();
+			
 		});
 		
 		var file = document.querySelector('#getfile');
-
+		
 		file.onchange = function () {
-		    var fileList = file.files ;
-
+			
+			var maxFileSize = 512000;
+			var fileList = file.files;
+			if(fileList[0].size > maxFileSize) {
+				alert('선택하신 그림 파일은 허용 최대크기인 ' + maxFileSize/1024 + ' KB 를 초과하였습니다.');
+				return;
+			}
 		    // 읽기
 		    var reader = new FileReader();
 		    reader.readAsDataURL(fileList [0]);
 
 		    //로드 한 후
-		    reader.onload = function  () {
+		    reader.onload = function() {
 		        document.querySelector('#preview').src = reader.result ;
 		    };
 		};
 	</script>
+	<script>
+		var radioBtn = document.querySelectorAll('input[type=radio][name="check"]');
+
+		function changeHandler(event) {
+		   if ( this.value === '유료' ) {
+			   $('#moneyEdit').append("<div class='col-md-2'> <span>비용: </span></div> <div class='col-md-5'><input type='text' id='bill' class='form-control'></div>");
+		   } else if ( this.value === '무료' ) {
+			   $('#moneyEdit').empty();
+		   }  
+		}
+
+		Array.prototype.forEach.call(radioBtn, function(radioBtn) {
+		   radioBtn.addEventListener('change', changeHandler);
+		});
+		
+	</script>
+	<script type="text/javascript">
+        $(document).ready(function(){
+            $("#regist").on("click", function(e){ //등록 버튼
+	            e.preventDefault();
+				$('#fee').val($('#bill').val()); 
+                $(this).submit();
+            });
+        });
+    </script>
 </body>
 </html>

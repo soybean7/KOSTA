@@ -7,20 +7,12 @@ public class Meeting {
 	private int meetingId;
 	private String title;
 	private String image;
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
 	private String category;
 	private Date date;
 	private Date startDate;
 	private Date endDate;
 	private String place;
-	private String hashtag;
+	private List<String> hashtags;
 	private int fee;
 	private int participants;
 	private String guidence;
@@ -47,6 +39,7 @@ public class Meeting {
 		return meetingId;
 	}
 
+	
 	public void setMeetingId(int meetingId) {
 		this.meetingId = meetingId;
 	}
@@ -99,12 +92,12 @@ public class Meeting {
 		this.place = place;
 	}
 
-	public String getHashtag() {
-		return hashtag;
+	public List<String> getHashtags() {
+		return hashtags;
 	}
 
-	public void setHashtag(String hashtag) {
-		this.hashtag = hashtag;
+	public void setHashtags(List<String> hashtags) {
+		this.hashtags = hashtags;
 	}
 
 	public int getFee() {
@@ -201,6 +194,14 @@ public class Meeting {
 
 	public void setSugEndDate(Date sugEndDate) {
 		this.sugEndDate = sugEndDate;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }

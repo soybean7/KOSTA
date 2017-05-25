@@ -196,5 +196,15 @@ public class MeetingStoreLogic implements MeetingStore{
 		mapper.deleteRequestMeeting(map);
 		session.close();
 	}
-	
+
+	@Override
+	public List<String> selectCategory() {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		List<String> category = mapper.selectCategory();
+		session.close();
+		
+		return category;
+	}	
 }

@@ -90,4 +90,9 @@ public class MeetingServiceLogic implements MeetingService{
 	public void joinRequestMeeting(int meetingId, String userEmail) {
 		store.registRequestMeeting(meetingId, userEmail);
 	}
+
+	@Override
+	public List<String> searchCategory() {
+		return store.selectCategory();
+	}
 }

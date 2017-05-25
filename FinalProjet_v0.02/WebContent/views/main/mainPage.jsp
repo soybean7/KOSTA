@@ -598,6 +598,8 @@
 									</li>
 								</ul>
 							</div>
+							
+							<a href="${ctx}/meeting/registMeeting.do" class="btn btn-primary">개설</a>
 							<!--KF_PAGINATION_WRAP END-->
  						</div>
 

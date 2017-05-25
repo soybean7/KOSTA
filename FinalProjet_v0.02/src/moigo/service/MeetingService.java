@@ -37,5 +37,6 @@ public interface MeetingService {
 	void cancelRequestMeeting(int meetingId, String userEmail);
 	
 	void joinRequestMeeting(int meetingId, String userEmail);
-
+	
+	List<String> searchCategory();
 }
