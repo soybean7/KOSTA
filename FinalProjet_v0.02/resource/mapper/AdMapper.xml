@@ -14,6 +14,8 @@
 		<result column="end_date" property="endDate" />
 		<result column="product" property="product" />
 		<result column="question" property="question" />
+		<result column="content" property="content" />
+		<result column="approval" property="approval" />
 	</resultMap>
 	
 	<sql id="selectAd">
@@ -29,10 +31,16 @@
 		VALUES			 (#{adId}, #{meetingId}, #{name}, #{email}, #{phoneNumber}, #{meetingTitle}, #{startDate}, #{endDate}, #{product}, #{question})
 	</insert>
 	
-	<update id="updateAd" parameterType="int">
+	<update id="updateAd" parameterType="Ad">
 		UPDATE ad_tb 
-		SET meetingTitle = #{meetingTitle},
-			contents = #{contents}
+		SET meeting_Title = #{meetingTitle},
+			content = #{content}
+		WHERE ad_id = #{adId}
+	</update>
+	
+	<update id="approveAd" parameterType="Ad">
+		UPDATE ad_tb 
+		SET APPROVAL = #{approval}
 		WHERE ad_id = #{adId}
 	</update>
 	
