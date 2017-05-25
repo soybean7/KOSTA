@@ -47,6 +47,7 @@ public class Meeting {
 		return meetingId;
 	}
 
+	
 	public void setMeetingId(int meetingId) {
 		this.meetingId = meetingId;
 	}
