@@ -14,6 +14,8 @@ public class Ad {
 	private Date sysDate;
 	private String product;
 	private String question;
+	private String content;
+	private String approval;
 	
 	public int getAdId() {
 		return adId;
@@ -81,4 +83,17 @@ public class Ad {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getApproval() {
+		return approval;
+	}
+	public void setApproval(String approval) {
+		this.approval = approval;
+	}
+	
 }
