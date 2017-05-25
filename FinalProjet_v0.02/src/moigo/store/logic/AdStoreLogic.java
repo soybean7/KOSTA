@@ -28,8 +28,12 @@ public class AdStoreLogic implements AdStore{
 
 	@Override
 	public int approveAd(Ad ad) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		AdMapper mapper = session.getMapper(AdMapper.class);
 		
-		return 0;
+		int approvalCount = mapper.approveAd(ad);
+		session.close();
+		return approvalCount;
 	}
 
 	@Override
