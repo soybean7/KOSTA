@@ -45,51 +45,73 @@ public class AdStoreTest {
 //
 //	@Test
 //	public void testApproveAd() {
-//		fail("Not yet implemented");
+//		Ad ad = store.selectAdById(15);
+//		ad.setApproval("Y");
+//
+//		store.approveAd(ad);
 //	}
 //
 //	@Test
 //	public void testUpdateAd() {
-//		fail("Not yet implemented");
+//
+//		Ad ad = store.selectAdById(15);
+//		
+//		ad.setMeetingTitle("15th title, isn't it?");
+//		ad.setContent("Can you understand?");
+//
+//		store.updateAd(ad);
+//
 //	}
 //
 //	@Test
 //	public void testDeleteAd() {
-//		fail("Not yet implemented");
+//		store.deleteAd(16);
 //	}
 //
 //	@Test
 //	public void testSelectAdById() {
-//		fail("Not yet implemented");
+//		Ad ad = store.selectAdById(15);
+//		System.out.println(ad.getMeetingTitle());
 //	}
 //
 //	@Test
 //	public void testSelectAdByEmail() {
-//		fail("Not yet implemented");
+//		Ad ad = store.selectAdByEmail("email@email.com").get(0);
+//		System.out.println(ad.getMeetingTitle());
 //	}
 //
 //	@Test
 //	public void testSelectAdByPhoneNumber() {
-//		fail("Not yet implemented");
+//		Ad ad = store.selectAdByPhoneNumber("010").get(0);
+//		System.out.println(ad.getMeetingTitle());
+//		
 //	}
 //
 //	@Test
 //	public void testSelectAdByName() {
-//		fail("Not yet implemented");
+//		Ad ad = store.selectAdByName("이름15").get(0);
+//		System.out.println(ad.getMeetingTitle());
+//		
 //	}
 
-	@Test
-	public void testSelectAllAd() {
-		
-		List<Ad> ad = store.selectAllAd();
-		System.out.println(ad.size());
-		System.out.println(ad.get(2).getPhoneNumber());
-		
-	}
+//	@Test
+//	public void testSelectAllAd() {
+//		
+//		List<Ad> ad = store.selectAllAd();
+//		System.out.println(ad.size());
+//		System.out.println(ad.get(2).getPhoneNumber());
+//		
+//	}
 
 //	@Test
 //	public void testSelectAdByDate() {
-//		fail("Not yet implemented");
+//		
+//		Date startDate = new Date(117,4,10);
+//		Date endDate = new Date(117,5,31);
+//		List<Ad> ad = store.selectAdByDate(startDate, endDate);
+//		System.out.println(ad.get(0).getMeetingId());
+//		System.out.println(ad.get(0).getMeetingTitle());
+//		System.out.println(ad.get(0).getName());
 //	}
 //
 //	@Test
