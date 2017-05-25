@@ -20,7 +20,7 @@ public class Meeting {
 	private Date startDate;
 	private Date endDate;
 	private String place;
-	private String hashtag;
+	private List<String> hashtags;
 	private int fee;
 	private int participants;
 	private String guidence;
@@ -99,12 +99,12 @@ public class Meeting {
 		this.place = place;
 	}
 
-	public String getHashtag() {
-		return hashtag;
+	public List<String> getHashtags() {
+		return hashtags;
 	}
 
-	public void setHashtag(String hashtag) {
-		this.hashtag = hashtag;
+	public void setHashtags(List<String> hashtags) {
+		this.hashtags = hashtags;
 	}
 
 	public int getFee() {
