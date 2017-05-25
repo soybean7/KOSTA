@@ -1,5 +1,7 @@
 package moigo.controller.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import moigo.domain.Meeting;
 import moigo.service.RecommendService;
 
 @Controller
+@RequestMapping("recommend")
 public class RecommendController {
 	
 	@Autowired
@@ -39,9 +42,12 @@ public class RecommendController {
 	public String datailRecommend(int meetingId, Model model){
 		return null;
 	}
-	
+	@RequestMapping(value="list.do")
 	public String searchAll(Model model){
-		return null;
+		List<Meeting> recommendMeetings = service.searchAllMeeting();
+		model.addAttribute("recommendMeetings", recommendMeetings);
+
+		return "recommend/recommendList";
 	}
 	
 	public String searchById(int meetingId, Model model){
