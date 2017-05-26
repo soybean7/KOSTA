@@ -32,6 +32,10 @@ public interface MeetingMapper {
 	List<Meeting> selectMeetingByReqeust(String email);
 
 	List<Meeting> selectMeetingByDone(String email);
+	
+	List<String> selectMeetingUserByMeetingId(int meetingId);
+	
+	List<Meeting> selectMeetingByEmail(String email);
 
 	void registRequestMeeting(HashMap<String, Object> map);
 

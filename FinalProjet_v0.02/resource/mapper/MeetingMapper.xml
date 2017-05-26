@@ -6,6 +6,7 @@
 	<resultMap type="Meeting" id="meetingMap">
 		<id column="meeting_id" property="meetingId" />
 		<result column="title" property="title" />
+		<result column="image" property="image" />
 		<result column="meeting_date" property="date" />
 		<result column="start_date" property="startDate" />
 		<result column="end_date" property="endDate" />
@@ -24,8 +25,8 @@
 		<selectKey keyProperty="meetingId" resultType="int" order="BEFORE">
 	  		SELECT meeting_seq.nextval FROM DUAL
 	  	</selectKey>
-		INSERT INTO MEETING_TB(meeting_id, title, meeting_date, start_date, end_date, place, fee, guidence, content, contact, reg_date, user_email, meet_sugget)
-		VALUES(#{meetingId}, #{title}, #{date}, #{startDate}, #{endDate}, #{place}, #{fee}, #{guidence}, #{content}, #{contact}, #{regDate}, #{regUser}, 'meeting')
+		INSERT INTO MEETING_TB(meeting_id, title, image, meeting_date, start_date, end_date, place, fee, guidence, content, contact, reg_date, user_email, meet_sugget)
+		VALUES(#{meetingId}, #{title}, #{image}, #{date}, #{startDate}, #{endDate}, #{place}, #{fee}, #{guidence}, #{content}, #{contact}, sysdate, #{regUser}, 'meeting')
 	</insert>
 	
 	<update id="updateMeeting" parameterType="Meeting">
@@ -69,6 +70,7 @@
 	<select id="selectMeetingById" parameterType="int" resultMap="meetingMap">
 		SELECT meeting_id,
 			   title,
+			   image,
 			   meeting_date,
 			   start_date,
 			   end_date,
@@ -236,6 +238,30 @@
 		FROM MEETING_TB M, MEETING_USER_TB Ut
 		WHERE U.user_email = #{email} AND U.meeting_id = M.meeting_id AND M.meet_sugget = 'meeting'
 
+	</select>
+	
+	<select id="selectMeetingByEmail">
+		SELECT meeting_id,
+			   title,
+			   meeting_date,
+			   start_date,
+			   end_date,
+			   place,
+			   fee,
+			   participants,
+			   guidence,
+			   content,
+			   contact,
+			   report_count,
+			   reg_date,
+			   user_email
+		FROM MEETING_TB
+		WHERE user_email = #{email} AND meet_sugget = 'meeting'
+	</select>
+	
+	<select id="selectMeetingUserByMeetingId" parameterType="int" resultType="String">
+		SELECT user_email
+		FROM MEETING_USER_TB WHERE meeting_id = #{meetingId}
 	</select>
 		
 	<insert id="registRequestMeeting" parameterType="hashmap">

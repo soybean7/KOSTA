@@ -3,8 +3,6 @@ package moigo.store;
 import java.sql.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import moigo.domain.Meeting;
 
 public interface MeetingStore {
@@ -22,6 +20,8 @@ public interface MeetingStore {
 	List<Meeting> selectMeetingByHashtag(String hashtag);
 	List<Meeting> selectMeetingByReqeust(String email);
 	List<Meeting> selectMeetingByDone(String email);
+	List<String> selectMeetingUserByMeetingId(int meetingId);
+	List<Meeting> selectMeetingByEmail(String email);
 	void registRequestMeeting(int meetingId, String userEmail);
 	void deleteRequestMeeting(int meetingId, String userEmail);
 	List<String> selectCategory();

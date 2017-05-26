@@ -17,7 +17,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import moigo.domain.Meeting;
+import moigo.domain.User;
 import moigo.service.MeetingService;
+import moigo.service.UserService;
 import moigo.utill.FileUtils;
 
 @Controller
@@ -27,20 +29,28 @@ public class MeetingController {
 	@Autowired
 	private MeetingService meetingService;
 	
+	@Autowired
+	private UserService userService;
+	
 	private FileUtils fileUtils = new FileUtils();
 	
-	@RequestMapping(value="registMeeting.do", method=RequestMethod.POST)
+	@RequestMapping(value="/registMeeting.do", method=RequestMethod.POST)
 	public String registMeeting(Meeting meeting, HttpServletRequest request, HttpSession session, Model model) throws Exception{
 		Meeting registMeeting = meeting;
 		
 		registMeeting.setImage(fileUtils.parseInsertFileInfo(request));
 		registMeeting.setRegUser((String)session.getAttribute("userEmail"));
+		registMeeting.setRegUser("뀨");
 		
 		int id = meetingService.registMeeting(registMeeting);
 		Meeting printMeeting = meetingService.searchMeetingById(id);
-				
-		model.addAttribute("meeting", printMeeting);
+		List<String> meetingUser = meetingService.searchMeetingUserByMeetingId(printMeeting.getMeetingId());
+		User user = userService.searchUser(printMeeting.getRegUser());
 		
+		
+		model.addAttribute("meeting", printMeeting);
+		model.addAttribute("meetingUser", meetingUser.size());
+		model.addAttribute("user", user);
 		
 		return "meeting/meetingDetail";
 	}
@@ -65,8 +75,17 @@ public class MeetingController {
 		return null;
 	}
 	
+	@RequestMapping(value="/detailMeeting.do", method=RequestMethod.GET)
 	public String detailMeeting(int meetingId, Model model){
-		return null;
+		Meeting printMeeting = meetingService.searchMeetingById(meetingId);
+		List<String> meetingUser = meetingService.searchMeetingUserByMeetingId(printMeeting.getMeetingId());
+		User user = userService.searchUser(printMeeting.getRegUser());
+		
+		model.addAttribute("meeting", printMeeting);
+		model.addAttribute("meetingUser", meetingUser.size());
+		model.addAttribute("user", user);
+		
+		return "meeting/meetingDetail";
 	}
 	
 	public String searchAll(Model model){

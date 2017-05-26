@@ -34,6 +34,10 @@ public interface MeetingService {
 	
 	List<Meeting> searchMeetingByDone(String email);
 	
+	List<String> searchMeetingUserByMeetingId(int meetingId);
+	
+	List<Meeting> searchMeetingByEmail(String email);
+	
 	void cancelRequestMeeting(int meetingId, String userEmail);
 	
 	void joinRequestMeeting(int meetingId, String userEmail);

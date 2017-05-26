@@ -80,6 +80,16 @@ public class MeetingServiceLogic implements MeetingService{
 	public List<Meeting> searchMeetingByDone(String email) {
 		return store.selectMeetingByDone(email);
 	}
+	
+	@Override
+	public List<String> searchMeetingUserByMeetingId(int meetingId) {
+		return store.selectMeetingUserByMeetingId(meetingId);
+	}
+	
+	@Override
+	public List<Meeting> searchMeetingByEmail(String email) {
+		return store.selectMeetingByEmail(email);
+	}
 
 	@Override
 	public void cancelRequestMeeting(int meetingId, String userEmail) {

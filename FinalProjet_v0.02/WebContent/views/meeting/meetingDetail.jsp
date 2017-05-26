@@ -270,13 +270,13 @@
                     	<!--KF INR BANNER DES Wrap Start-->
                         <div class="kf_inr_ban_des">
                         	<div class="inr_banner_heading">
-								<h3>Our Courses</h3>
+								<h3>모임 리스트</h3>
                         	</div>
                            
                             <div class="kf_inr_breadcrumb">
 								<ul>
-									<li><a href="#">Home</a></li>
-									<li><a href="#">Our Courses</a></li>
+									<li><a href="#">홈</a></li>
+									<li><a href="#">모임 리스트</a></li>
 								</ul>
 							</div>
                         </div>
@@ -306,19 +306,21 @@
                                     <tr>
                                     <td width="40%" class="td_center">
                                         <!-- 모임 대표 이미지 -->
-	    								<img src="${ctx}/resources/extra-images/col-3-thum7.jpg" height="320" width="320" style="display: inline-block;" alt=""/>
+                                        <%-- ${ctx}/resources/userData/meeting/images/${meeting.image} --%>
+                                        <img src="${ctx}/resources/userData/meeting/images/${meeting.image}" height="320" width="320" style="display: inline-block;" alt="이미지 오류"/>
                                         <!-- 모임 대표 이미지 끝 -->
                                     </td>
                                     <td width="60%" class="td_left">
                                         <!-- 모임 내용 -->
                                         <span style="display: inline-block;">
-                                        <h3> [book] book 모임 </h3><br>
-                                        <img src="extra-images/meetingDate.PNG" height="20"> 모임기간 : <b>5월2일(화) 20시 00분 ~ 21시 30분</b><br>
+                                        <h3> ${meeting.title} </h3><br>
+                                        <img src="https://image.freepik.com/free-icon/calendar-with-a-clock-time-tools_318-50627.jpg" height="20"> 모임기간 : <b>${meeting.date}</b><br>
 
-                                        <img src="https://image.flaticon.com/icons/svg/58/58960.svg" height="20"> 모임장소 : OOO커피 <br>
-                                        <img height="20" src="https://image.freepik.com/free-icon/group-of-people-in-a-formation_318-44341.jpg"> 신청인원 : 총 <b style="color:blue">6</b>명 | <b style="color:blue">3</b>명 신청가능<br><br>
+                                        <img src="https://image.flaticon.com/icons/svg/58/58960.svg" height="20"> 모임장소 : ${meeting.place} <br>
+                                        
+                                        <img height="20" src="https://image.freepik.com/free-icon/group-of-people-in-a-formation_318-44341.jpg"> 신청인원 : 총 <b style="color:blue">${meeting.participants}</b>명 | <b style="color:blue">${meetingUser}</b>명 신청가능<br><br>
 
-                                        모임내용(ex. 한 달에 한 권 책을 읽는 모임입니다.)<br>
+                                        ${meeting.content}<br>
                                         <div style="color:blue">#태그 #독서모임</div>
                                         </span>
                                         <!-- 모임 내용 끝 -->
@@ -328,15 +330,15 @@
                                     <td class="td_left">
                                         <span>
                                         <b>[개설자정보]</b><br>
-                                        이름 : 홍길동<br>
-                                        <img height="20" src="https://image.freepik.com/free-icon/email-filled-closed-envelope_318-75717.jpg"> abc@def.com<br>
-                                        <img height="20" src="https://image.freepik.com/free-icon/old-typical-phone_318-31536.jpg"> 010-123-4567
+                                        이름 : ${user.name }<br>
+                                        <img height="20" src="https://image.freepik.com/free-icon/email-filled-closed-envelope_318-75717.jpg">${user.email}<br>
+                                        <img height="20" src="https://image.freepik.com/free-icon/old-typical-phone_318-31536.jpg"> ${user.phoneNumber}
                                         </span>
                                     </td>
                                     <td class="td_center">
-                                    <b>신청기간 : 4월 25일 (화) 00시00분 ~ 5월 2일(화) 19시 30분</b><br><br>
+                                    <b>신청기간 : ${meeting.startDate} ~ ${meeting.endDate}</b><br><br>
                                     
-                                        <button id="btn_style">신청하기</button>
+                                        <a id="btn_style" class="btn btn-primary">신청하기</a>
                                    
                                     </td>
                                     </tr>

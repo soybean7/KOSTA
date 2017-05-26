@@ -172,6 +172,28 @@ public class MeetingStoreLogic implements MeetingStore{
 	}
 
 	@Override
+	public List<String> selectMeetingUserByMeetingId(int meetingId) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		List<String> meetingUser = mapper.selectMeetingUserByMeetingId(meetingId);
+		
+		return meetingUser;
+	}
+
+	@Override
+	public List<Meeting> selectMeetingByEmail(String email) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		List<Meeting> meeting = mapper.selectMeetingByEmail(email);
+		
+		return meeting;
+	}
+
+	@Override
 	public void registRequestMeeting(int meetingId, String userEmail) {
 		SqlSession session = MoigoSessionFactory.getInstance().getSession();
 
