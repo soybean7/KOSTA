@@ -6,7 +6,6 @@ public class Ad {
 	private int adId;
 	private String name;
 	private int meetingId;
-	private String meetingTitle;
 	private String email;
 	private String phoneNumber;
 	private Date startDate;
@@ -34,12 +33,6 @@ public class Ad {
 	}
 	public void setMeetingId(int meetingId) {
 		this.meetingId = meetingId;
-	}
-	public String getMeetingTitle() {
-		return meetingTitle;
-	}
-	public void setMeetingTitle(String meetingTitle) {
-		this.meetingTitle = meetingTitle;
 	}
 	public String getEmail() {
 		return email;

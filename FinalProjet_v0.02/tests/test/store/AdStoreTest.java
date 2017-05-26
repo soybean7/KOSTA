@@ -3,22 +3,29 @@ package test.store;
 import static org.junit.Assert.*;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import moigo.domain.Ad;
+import moigo.domain.Meeting;
 import moigo.store.AdStore;
+import moigo.store.MeetingStore;
 import moigo.store.logic.AdStoreLogic;
+import moigo.store.logic.MeetingStoreLogic;
 
 public class AdStoreTest {
 	
-	private AdStore store;
+	private AdStore adStore;
+	private MeetingStore meetingStore;
 	
 	@Before
 	public void setup(){
-		store = new AdStoreLogic();
+		adStore = new AdStoreLogic();
+		meetingStore = new MeetingStoreLogic();
+		
 	}
 
 //	@Test
@@ -94,14 +101,40 @@ public class AdStoreTest {
 //		
 //	}
 
-//	@Test
-//	public void testSelectAllAd() {
-//		
+	@Test
+	public void testSelectAllAd() {
+		
 //		List<Ad> ad = store.selectAllAd();
-//		System.out.println(ad.size());
-//		System.out.println(ad.get(2).getPhoneNumber());
 //		
-//	}
+//		for(int i=0; i<ad.size(); i++){
+//			System.out.println("AD ID : " + ad.get(i).getAdId());
+//			System.out.println("Meeting ID :" + ad.get(i).getMeetingId());
+//			System.out.println("승인상태 : " +ad.get(i).getApproval());
+//			System.out.println("이름 : " +ad.get(i).getName());
+//			System.out.println("===============================");
+//			System.out.println("");
+//		}
+		
+		List<Ad> adLists = adStore.selectAllAd();
+		System.out.println("찾은 AD의 개수는 : " + adLists.size() + "개 입니다.");
+		List<Meeting> meetingLists = new ArrayList<>();
+		
+		for(int i = 0; i < adLists.size(); i++){
+			
+			int meetingId = adLists.get(i).getMeetingId(); // 광고가 등록된 meeting Id들을 찾아내서 mtId에 하나씩 입력해 준다.
+			System.out.println(i+1 +" 번째 "  + "meeting ID : " + meetingId);
+			
+			Meeting meetingList = meetingStore.selectMeetingById(meetingId); // meetingList를 하나씩 찾아낸다.
+			System.out.println("===============================");
+			System.out.println(meetingList.getMeetingId());
+			System.out.println(meetingList.getTitle());
+			System.out.println(meetingList.getContent());
+			System.out.println("===============================");
+			
+			meetingLists.add(meetingList); // 찾아낸 meetingList를 meetingLists에 한개씩 입력해 준다.
+		}
+		System.out.println("찾은 meeting 의 개수는 : " + meetingLists.size() + "개 입니다.");
+	}
 
 //	@Test
 //	public void testSelectAdByDate() {

@@ -83,9 +83,9 @@
 				<div class="row">
 					<div class="col-md-8">
 
-						<a class="event_link edit" href="#">수정<i class="fa fa-edit"></i></a>
-						<a class="event_link remove" href="#">삭제<i
-							class="fa fa-remove"></i></a> <br>
+						<a class="event_link edit" href="adEdit.do">수정<i class="fa fa-edit"></i></a>
+						<a class="event_link remove" href="adDelete.do">삭제<i class="fa fa-remove"></i></a>
+						<br>
 						<br>
 
 						<!--EVENT CONVOCATION OUTER Wrap START-->

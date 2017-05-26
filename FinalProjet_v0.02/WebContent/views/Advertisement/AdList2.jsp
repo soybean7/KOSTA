@@ -98,42 +98,39 @@
     					<div class="col-md-8">
     						
     						<!--EVENT LIST Wrap Start-->
-    					<c:forEach var="meetingList" items="${meetingLists }" varStatus="mtSts"> 	
-  							
+    						
+  							<c:forEach var="adList" items="${adLists }" varStatus="sts"> 
     						<div class="kf_event_list_wrap">
     							<div class="row">
     								<div class="col-lg-6 col-md-5 col-sm-5">
     									<!--EVENT LIST THUMB Start-->
     									<div class="kf_event_list_thumb">
     										<figure>
-												<img src=${mtSts.image }alt=""/>
+												<img src="${ctx}/resources/extra-images/Head_Voice.jpg" ${sts.image1 }alt=""/>
                                                 <div class="defaultCountdown"></div>
 											</figure>
     									</div>
     									<!--EVENT LIST THUMB END-->
     								</div>
 
-								<c:forEach var="adList" items="${adLists }" varStatus="adSts"> 
     								<div class="col-lg-6 col-md-7 col-sm-7">
     									<!--EVENT LIST DES Start-->
     									<div class="kf_event_list_des">
-                                            <p class="hide">${adSts.adId}</p>
-                                            <p class="hide">${adSts.meetingId}</p>
-    										<h4><a href="#">${mtSts.titie}</a></h4>
-    										<p>${sts.contents}</p>
+                                            <p class="hide">${sts.adId}</p>
+                                            <p class="hide">${sts.meetingId}</p>
+    										<h4><a href="#">두성창법 전수${sts.titie}</a></h4>
+    										<p>민경훈의 두성창법을 배우고 싶은분은 연락주세요!!${sts.contents}</p>
     										<ul class="kf_event_list_links">
-    											<li><i class="fa fa-user"></i><a href="#">${adSts.name}</a></li>
-    											<li><i class="fa fa-calendar"></i><a href="#">${mtSts.date}</a></li>
-                                                <li><i class="fa fa-map-marker">${mtSts.mapmarker}</i>
-                                                    <a href="#">${mtSts.meetingPlace}</a></li>
+    											<li><i class="fa fa-user"></i><a href="#">${sts.name}죄민창</a></li>
+    											<li><i class="fa fa-calendar"></i><a href="#">${sts.meetingDate}</a></li>
+                                                <li><i class="fa fa-map-marker">죄민창시 죄민창구 죄민창1로${sts.mapmarker}</i>
+                                                    <a href="#">${sts.meetingPlace}</a></li>
     										</ul>
     									</div>
     									<!--EVENT LIST DES END-->
     								</div>
-   								</c:forEach>
     							</div>
     						</div>
-    						
     						</c:forEach>
     						<!--EVENT LIST Wrap END-->
     						
