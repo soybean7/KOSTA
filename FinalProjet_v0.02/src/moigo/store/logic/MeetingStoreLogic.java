@@ -228,5 +228,55 @@ public class MeetingStoreLogic implements MeetingStore{
 		session.close();
 		
 		return category;
+	}
+
+	@Override
+	public List<String> selectHashtag(int meetingId) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		List<String> hashtag = mapper.selectHashtag(meetingId);
+		session.close();
+		
+		return hashtag;
+	}
+
+	@Override
+	public String checkHashtag(String hashtag) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		hashtag = mapper.checkHashtag(hashtag);
+		session.close();
+		
+		return hashtag;
+	}
+
+	@Override
+	public int insertHashtag(String hashtag) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("hashtag", hashtag);
+		map.put("hashtagId", null);
+		
+		mapper.insertHashtag(map);
+		session.close();
+		
+		return (int)map.get("hashtagId");
+	}
+
+	@Override
+	public boolean insertMeetingHashtag(HashMap<String, Object> map) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		int insertCount = mapper.insertMeetingHashtag(map);
+		session.close();
+		
+		return insertCount > 0;
 	}	
+	
 }

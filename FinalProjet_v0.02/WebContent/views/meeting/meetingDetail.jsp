@@ -314,7 +314,7 @@
                                         <!-- 모임 내용 -->
                                         <span style="display: inline-block;">
                                         <h3> ${meeting.title} </h3><br>
-                                        <img src="https://image.freepik.com/free-icon/calendar-with-a-clock-time-tools_318-50627.jpg" height="20"> 모임기간 : <b>${meeting.date}</b><br>
+                                        <img src="https://image.freepik.com/free-icon/calendar-with-a-clock-time-tools_318-50627.jpg" height="20"> 모임일시 : <b>${meeting.date}</b><br>
 
                                         <img src="https://image.flaticon.com/icons/svg/58/58960.svg" height="20"> 모임장소 : ${meeting.place} <br>
                                         
@@ -330,16 +330,16 @@
                                     <td class="td_left">
                                         <span>
                                         <b>[개설자정보]</b><br>
-                                        이름 : ${user.name }<br>
+                                        	이름 : ${user.name }<br>
                                         <img height="20" src="https://image.freepik.com/free-icon/email-filled-closed-envelope_318-75717.jpg">${user.email}<br>
                                         <img height="20" src="https://image.freepik.com/free-icon/old-typical-phone_318-31536.jpg"> ${user.phoneNumber}
                                         </span>
                                     </td>
                                     <td class="td_center">
                                     <b>신청기간 : ${meeting.startDate} ~ ${meeting.endDate}</b><br><br>
-                                    
+                                    <c:if test="${meeting.regUser != loginedUser.email}">>
                                         <a id="btn_style" class="btn btn-primary">신청하기</a>
-                                   
+                                   	</c:if>
                                     </td>
                                     </tr>
                                     <tr>

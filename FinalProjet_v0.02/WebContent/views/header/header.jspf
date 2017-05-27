@@ -79,9 +79,8 @@
 									</li>
 		                            <li><a href="#">모임관리</a>
 		                            	<ul>
-		                                    <li><a href="#">모임관리 홈</a></li>
-		                                    <li><a href="#">모임 수정</a></li>
-		                                    <li><a href="#">모임 폐쇄</a></li>
+		                                    <li><a href="${ctx}/meeting/meetingHome.do">모임관리 홈</a></li>
+		                                    <li><a href="${ctx}/meeting/meetingDelete.do">모임 폐쇄</a></li>
 		                                </ul>
 		                            </li>
 		                            <li><a href="#">Gallery</a>
