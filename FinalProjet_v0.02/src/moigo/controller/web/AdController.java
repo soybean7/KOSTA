@@ -58,7 +58,25 @@ public class AdController {
 		return "Advertisement/AdDetail";
 	}
 	
-	public String approvedAd(String adId, Model model){
+	@RequestMapping(value="/detailAd.do", method=RequestMethod.GET)
+	public String detailAd(int adId, Model model){
+		
+		//사용자가 ad list page에서 상세정보 보기를 클릭했을 때 전해준 ad ID
+		int recievedAdId = adId;
+		
+		Ad ad = adService.searchAdById(recievedAdId);
+		model.addAttribute("ad", ad);
+		
+		int meetingId = adService.searchAdById(recievedAdId).getMeetingId();
+		Meeting meeting = meetingService.searchMeetingById(meetingId);
+		model.addAttribute("meeting", meeting);
+		
+		return "Advertisement/AdDetail";
+	}
+	
+	
+	@RequestMapping(value="/approvedAd.do", method=RequestMethod.GET)
+	public String approvedAd(int adId, Model model){
 		return null;
 	}
 	
@@ -67,10 +85,12 @@ public class AdController {
 		return null;
 	}
 	
+	@RequestMapping(value="/adEdit.do", method=RequestMethod.GET)
 	public String modifyAd(Ad ad, Model  model){
 		return null;
 	}
 	
+	@RequestMapping(value="/adDelete.do", method=RequestMethod.GET)
 	public Boolean deleteAd(int adId){
 		return null;
 	}
