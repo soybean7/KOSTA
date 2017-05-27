@@ -96,45 +96,42 @@
     			<div class="container">
     				<div class="row">
     					<div class="col-md-8">
-    						
     						<!--EVENT LIST Wrap Start-->
-    					<c:forEach var="meetingList" items="${meetingLists }" varStatus="mtSts"> 	
-  							
+    						<c:forEach var="meetingList" items="${meetingLists }" varStatus="sts" >
+    						
     						<div class="kf_event_list_wrap">
     							<div class="row">
     								<div class="col-lg-6 col-md-5 col-sm-5">
     									<!--EVENT LIST THUMB Start-->
     									<div class="kf_event_list_thumb">
     										<figure>
-												<img src=${mtSts.image }alt=""/>
+												<img src="${ctx}/resources/extra-images/${meetingList.image}" alt="No title" title="No Image" />
                                                 <div class="defaultCountdown"></div>
 											</figure>
     									</div>
     									<!--EVENT LIST THUMB END-->
     								</div>
-
-								<c:forEach var="adList" items="${adLists }" varStatus="adSts"> 
     								<div class="col-lg-6 col-md-7 col-sm-7">
     									<!--EVENT LIST DES Start-->
+    									<c:forEach var="adList" items="${adLists}" begin="${sts.index}" end="${sts.index}">
     									<div class="kf_event_list_des">
-                                            <p class="hide">${adSts.adId}</p>
-                                            <p class="hide">${adSts.meetingId}</p>
-    										<h4><a href="#">${mtSts.titie}</a></h4>
-    										<p>${sts.contents}</p>
-    										<ul class="kf_event_list_links">
-    											<li><i class="fa fa-user"></i><a href="#">${adSts.name}</a></li>
-    											<li><i class="fa fa-calendar"></i><a href="#">${mtSts.date}</a></li>
-                                                <li><i class="fa fa-map-marker">${mtSts.mapmarker}</i>
-                                                    <a href="#">${mtSts.meetingPlace}</a></li>
-    										</ul>
+	                                            <p>AD Id : ${adList.adId}</p>
+	                                            <p>Meeting ID : ${adList.meetingId}</p>
+	    										<h4><a href="#">모임 제목 : ${meetingList.title}</a></h4>
+	    										<p>${meetingList.content}</p>
+	    										<ul class="kf_event_list_links">
+	    											<li><i class="fa fa-user"></i><a href="#">광고 등록자 : ${adList.name}</a></li>
+	    											<li><i class="fa fa-calendar"></i><a href="#">모임 날짜 : ${meetingList.date}</a></li>
+	                                                <li><a href="#">모임 장소 : ${meetingList.place}</a></li>
+	    										</ul>
     									</div>
+    									</c:forEach>
     									<!--EVENT LIST DES END-->
     								</div>
-   								</c:forEach>
     							</div>
     						</div>
-    						
     						</c:forEach>
+    						
     						<!--EVENT LIST Wrap END-->
     						
     						<!--KF_SIDEBAR_SEARCH_WRAP START-->
