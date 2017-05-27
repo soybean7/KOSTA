@@ -108,6 +108,7 @@
     											<li><i class="fa fa-user"></i><a href="#">${meeting.regUser}</a></li>
     											<li><i class="fa fa-calendar"></i><a href="#">참여신청 : ${meeting.startDate} ~ ${meeting.endDate}</a></li>
     											<li><i class="fa fa-calendar"></i><a href="#">모임일시 : ${meeting.date}</a></li>
+    											<a class="event_link edit" href="${ctx}/Ad/registAd.do?meetingId=${meetingId }">광고등록 신청 <i class="fa fa-share"></i></a>
     										</ul>
     									</div>
     									<!--EVENT LIST DES END-->
