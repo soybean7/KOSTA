@@ -125,10 +125,12 @@
 	                                                <li><a href="#">모임 장소 : ${meetingList.place}</a></li>
 	    										</ul>
     									</div>
+    									<a class="event_link" href="${ctx}/Ad/detailAd.do?adId=${adList.adId}"><i class="fa fa-eye"></i>  자세히 보기</a>
     									</c:forEach>
     									<!--EVENT LIST DES END-->
     								</div>
     							</div>
+    							
     						</div>
     						</c:forEach>
     						
