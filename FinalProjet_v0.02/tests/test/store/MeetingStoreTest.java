@@ -3,6 +3,7 @@ package test.store;
 import static org.junit.Assert.*;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Before;
@@ -47,12 +48,21 @@ public class MeetingStoreTest {
 //		store.deleteMeeting(4);
 //	}
 	
+//	@Test
+//	public void selectAllTest() {
+//		Date date = new Date(117,4,24);
+//		List<Meeting> list = store.selectMeetingByPlace("haha");
+//		for(Meeting meeting : list) {
+//			System.out.println(meeting.getTitle());
+//		}
+//	}
+	
 	@Test
-	public void selectAllTest() {
-		Date date = new Date(117,4,24);
-		List<Meeting> list = store.selectMeetingByPlace("haha");
-		for(Meeting meeting : list) {
-			System.out.println(meeting.getTitle());
-		}
+	public void test() {
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("hashtag_id", 31);
+		map.put("meeting_id", 46);
+		System.out.println(store.insertMeetingHashtag(map));
 	}
 }

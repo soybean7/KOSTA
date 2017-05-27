@@ -84,14 +84,15 @@
     				<div class="row">
     					<div class="col-md-8">
     						<!--EVENT LIST Wrap Start-->
-    						<h3>내가 개설한 모임</h3>
-    						<div class="kf_event_list_wrap">
+    						<h3>내가 개설한 모임</h3> <br>\
+    						<c:forEach var="meeting" items="${meetingList}">
+    						<div class="kf_event_list_wrap" onclick="location.href='${ctx}/meeting/detailMeeting.do?meetingId=${meeting.meetingId}';">
     							<div class="row">
     								<div class="col-lg-6 col-md-5 col-sm-5">
     									<!--EVENT LIST THUMB Start-->
     									<div class="kf_event_list_thumb">
     										<figure>
-												<img src="${ctx}/resources/extra-images/archive-1.jpg" alt=""/>
+												<img src="${ctx}/resources/userData/meeting/images/${meeting.image}" alt="이미지 로딩 실패"/>
                                                 <div class="defaultCountdown"></div>
 											</figure>
     									</div>
@@ -101,215 +102,20 @@
     								<div class="col-lg-6 col-md-7 col-sm-7">
     									<!--EVENT LIST DES Start-->
     									<div class="kf_event_list_des">
-    										<h4><a href="#">모임명 <span>족구모임</span></a></h4>
+    										<h4><a>${meeting.title} <span>${meeting.category}</span></a></h4>
     										<p></p>
     										<ul class="kf_event_list_links">
-    											<li><i class="fa fa-user"></i><a href="#">강명준</a></li>
-    											<li><i class="fa fa-calendar"></i><a href="#">참여신청 : 5월 15일 1:30 ~ 5월 29일 2:00</a></li>
-    											<li><i class="fa fa-calendar"></i><a href="#">모임기간 : 5월 29일 4:00 ~ 5:00</a></li>
+    											<li><i class="fa fa-user"></i><a href="#">${meeting.regUser}</a></li>
+    											<li><i class="fa fa-calendar"></i><a href="#">참여신청 : ${meeting.startDate} ~ ${meeting.endDate}</a></li>
+    											<li><i class="fa fa-calendar"></i><a href="#">모임일시 : ${meeting.date}</a></li>
     										</ul>
     									</div>
     									<!--EVENT LIST DES END-->
     								</div>
     							</div>
     						</div>
-    						
-    						<div class="kf_event_list_wrap">
-    							<div class="row">
-    								<div class="col-lg-6 col-md-5 col-sm-5">
-    									<!--EVENT LIST THUMB Start-->
-    									<div class="kf_event_list_thumb">
-    										<figure>
-												<img src="${ctx}/resources/extra-images/archive-1.jpg" alt=""/>
-                                                <div class="defaultCountdown"></div>
-											</figure>
-    									</div>
-    									<!--EVENT LIST THUMB END-->
-    								</div>
-
-    								<div class="col-lg-6 col-md-7 col-sm-7">
-    									<!--EVENT LIST DES Start-->
-    									<div class="kf_event_list_des">
-    										<h4><a href="#">모임명 <span>족구모임</span></a></h4>
-    										<p></p>
-    										<ul class="kf_event_list_links">
-    											<li><i class="fa fa-user"></i><a href="#">강명준</a></li>
-    											<li><i class="fa fa-calendar"></i><a href="#">참여신청 : 5월 15일 1:30 ~ 5월 29일 2:00</a></li>
-    											<li><i class="fa fa-calendar"></i><a href="#">모임기간 : 5월 29일 4:00 ~ 5:00</a></li>
-    										</ul>
-    									</div>
-    									<!--EVENT LIST DES END-->
-    								</div>
-    							</div>
-    						</div>
-    						
-    						<!--EVENT LIST Wrap END-->
-
+    						</c:forEach>
     					</div>
-
-    					<!--KF_EDU_SIDEBAR_WRAP START-->
-    					<div class="col-md-4">
-    						<div class="kf-sidebar">
-
-    							<!--KF_SIDEBAR_SEARCH_WRAP START-->
-    							<div class="widget widget-search">
-                                	<h2>Search Course</h2>
-    								<form>
-    									<input type="search" placeholder="Keyword...">
-    								</form>
-    							</div>
-    							<!--KF_SIDEBAR_SEARCH_WRAP END-->
-
-    							<!--KF_SIDEBAR_ARCHIVE_WRAP START-->
-    							<div class="widget widget-archive ">
-    								<h2>Archives</h2>
-    								<ul class="sidebar_archive_des">
-    									<li>
-    										<a href="#"><i class="fa fa-angle-right"></i>January</a>
-    									</li>
-    									<li>
-    										<a href="#"><i class="fa fa-angle-right"></i>February</a>
-    									</li>
-    									<li>
-    										<a href="#"><i class="fa fa-angle-right"></i>March</a>
-    									</li>
-    									<li>
-    										<a href="#"><i class="fa fa-angle-right"></i>April</a>
-    									</li>
-    									<li>
-    										<a href="#"><i class="fa fa-angle-right"></i>May</a>
-    									</li>
-    								</ul>
-    							</div>
-    							<!--KF_SIDEBAR_ARCHIVE_WRAP END-->
-
-
-    							<!--KF SIDEBAR RECENT POST WRAP START-->
-    							<div class="widget widget-recent-posts">
-    								<h2>Recent Posts</h2>
-    								<ul class="sidebar_rpost_des">
-                                    	<!--LIST ITEM START-->
-                                   		<li>
-                                            <figure>
-                                            	<img src="${ctx}/resources/extra-images/archive-1.jpg" alt="">
-                                                <figcaption><a href="#"><i class="fa fa-search-plus"></i></a></figcaption>
-                                            </figure>
-                                            <div class="kode-text">
-                                                <h6><a href="#">Lorem ipsum dolor sit amet sint occaecat cupidatat</a></h6>
-                                                <span><i class="fa fa-clock-o"></i>10 Jan, 2016</span>
-                                            </div>
-    									</li>
-                                        <!--LIST ITEM START-->
-										<!--LIST ITEM START-->
-                                   		<li>
-                                            <figure>
-                                            	<img src="${ctx}/resources/extra-images/archive-2.jpg" alt="">
-                                                <figcaption><a href="#"><i class="fa fa-search-plus"></i></a></figcaption>
-                                            </figure>
-                                            <div class="kode-text">
-                                                <h6><a href="#">Lorem ipsum dolor sit amet sint occaecat cupidatat</a></h6>
-                                                <span><i class="fa fa-clock-o"></i>10 Jan, 2016</span>
-                                            </div>
-    									</li>
-                                        <!--LIST ITEM START-->
-                                        <!--LIST ITEM START-->
-                                   		<li>
-                                            <figure>
-                                            	<img src="${ctx}/resources/extra-images/archive-3.jpg" alt="">
-                                                <figcaption><a href="#"><i class="fa fa-search-plus"></i></a></figcaption>
-                                            </figure>
-                                            <div class="kode-text">
-                                                <h6><a href="#">Lorem ipsum dolor sit amet sint occaecat cupidatat</a></h6>
-                                                <span><i class="fa fa-clock-o"></i>10 Jan, 2016</span>
-                                            </div>
-    									</li>
-                                        <!--LIST ITEM START-->
-    								</ul>
-    							</div>
-    							<!--KF SIDEBAR RECENT POST WRAP END-->
-
-    							<!--KF EDU SIDEBAR COURSES CATEGORieS WRAP START-->
-	    						<div class="widget widget-categories">
-	    							<h2>categories</h2>
-									<ul>
-										<li><a href=""><i class="fa fa-caret-right"></i>Business &amp; Economics</a></li>
-										<li><a href=""><i class="fa fa-caret-right"></i>Politics &amp; History</a></li>
-										<li><a href=""><i class="fa fa-caret-right"></i>Medical Sciences &amp; Health</a></li>
-										<li><a href=""><i class="fa fa-caret-right"></i>Fine Arts</a></li>
-										<li><a href=""><i class="fa fa-caret-right"></i>Tourism &amp; Culture</a></li>
-										<li><a href=""><i class="fa fa-caret-right"></i>Sports</a></li>
-									</ul>
-	    						</div>
-	    						<!--KF EDU SIDEBAR COURSES CATEGORieS WRAP END-->
-
-	    						<!--KF SIDE BAR COURSES LIST WRAP START WRAP START-->
-	    						<div class="widget widget-courses-list">
-	    							<h2>Latest Courses</h2>
-	    							<ul>
-	    								<li>
-                                        	<figure>
-                                            	<img src="${ctx}/resources/extra-images/courseslist1.jpg" alt=""/>
-	    										<a href="#">View Detail</a>
-	    									</figure>
-	    								</li>
-
-	    								<li>
-                                        	<figure>
-                                            	<img src="${ctx}/resources/extra-images/courseslist2.jpg" alt=""/>
-	    										<a href="#">View Detail</a>
-	    									</figure>
-	    								</li>
-
-	    								<li>
-                                        	<figure>
-                                            	<img src="${ctx}/resources/extra-images/courseslist3.jpg" alt=""/>
-	    										<a href="#">View Detail</a>
-	    									</figure>
-	    								</li>
-
-	    								<li>
-                                        	<figure>
-                                            	<img src="${ctx}/resources/extra-images/courseslist4.jpg" alt=""/>
-	    										<a href="#">View Detail</a>
-	    									</figure>
-	    								</li>
-
-	    								<li>
-                                        	<figure>
-                                            	<img src="${ctx}/resources/extra-images/courseslist5.jpg" alt=""/>
-	    										<a href="#">View Detail</a>
-	    									</figure>
-	    								</li>
-
-	    								<li>
-                                        	<figure>
-                                            	<img src="${ctx}/resources/extra-images/courseslist6.jpg" alt=""/>
-	    										<a href="#">View Detail</a>
-	    									</figure>
-	    								</li>
-	    							</ul>
-	    						</div>
-	    						<!--KF SIDE BAR COURSES LIST WRAP START WRAP END-->
-
-	    						<!--KF SIDE BAR TAG CLOUD WRAP START-->
-	    						<div class="widget widget-tag-cloud">
-	    							<h2>Tags Cloud</h2>
-	    							<ul>
-	    								<li><a href="#">Science</a></li>
-	    								<li><a href="#">Development</a></li>
-	    								<li><a href="#">Fine Arts</a></li>
-	    								<li><a href="#">Research</a></li>
-	    								<li><a href="#">Admissions</a></li>
-	    								<li><a href="#">PHD</a></li>
-	    								<li><a href="#">History &amp; Politics</a></li>
-	    								<li><a href="#">Sports</a></li>
-	    							</ul>
-
-	    						</div>
-	    						<!--KF SIDE BAR TAG CLOUD WRAP END-->
-    						</div>
-    					</div>
-						<!--KF EDU SIDEBAR WRAP END-->
     				</div>
     			</div>
     		</section>		

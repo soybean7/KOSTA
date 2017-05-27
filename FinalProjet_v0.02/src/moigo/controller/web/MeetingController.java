@@ -1,6 +1,7 @@
 package moigo.controller.web;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import moigo.domain.Meeting;
+import moigo.domain.Paging;
 import moigo.domain.User;
 import moigo.service.MeetingService;
 import moigo.service.UserService;
@@ -63,16 +65,35 @@ public class MeetingController {
 		return "meeting/meetingRegist";
 	}
 	
+	@RequestMapping(value="/showModifyMeeting.do", method=RequestMethod.GET)
 	public String showModifyMeeting(int meetingId, Model model){
-		return null;
+		Meeting meeting = meetingService.searchMeetingById(meetingId);
+		model.addAttribute("meeting", meeting);
+		
+		return "meeting/meetingModify";
 	}
 	
+	@RequestMapping(value="/modifyMeeting.do", method=RequestMethod.POST)
 	public String modifyMeeting(Meeting meeting, Model model){
-		return null;
+		meetingService.modifyMeeting(meeting);
+		Meeting printMeeting = meetingService.searchMeetingById(meeting.getMeetingId());
+		List<String> meetingUser = meetingService.searchMeetingUserByMeetingId(printMeeting.getMeetingId());
+		User user = userService.searchUser(printMeeting.getRegUser());
+		
+		model.addAttribute("meeting", printMeeting);
+		model.addAttribute("meetingUser", meetingUser.size());
+		model.addAttribute("user", user);
+		
+		return "meeting/meetingDetail";
 	}
 	
 	public String deleteMeeting(int meetingId, Model model){
-		return null;
+		meetingService.removeMeeting(meetingId);
+		List<Meeting> meetingList = meetingService.searchAllMeeting();
+		
+		model.addAttribute("meetingList", meetingList);
+		
+		return "main/mainPage";
 	}
 	
 	@RequestMapping(value="/detailMeeting.do", method=RequestMethod.GET)
@@ -88,8 +109,44 @@ public class MeetingController {
 		return "meeting/meetingDetail";
 	}
 	
-	public String searchAll(Model model){
-		return null;
+	@RequestMapping(value="/meetingSearchAll.do", method=RequestMethod.GET)
+	public String searchAll(Model model, HttpServletRequest request){
+		List<Meeting> meetingList = meetingService.searchAllMeeting();
+		List<Meeting> pagingList = new ArrayList<>();
+		int pageSize = 3;
+		Paging paging = new Paging();
+
+		try {
+			if (request.getParameter("pageNo").equals("")) {
+				paging.setPageNo(1);
+			} else {
+				paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
+			}
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
+		
+		paging.setPageSize(pageSize);
+		paging.setTotalCount(meetingList.size());
+		
+		for (int i = (paging.getPageNo() - 1) * pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo())
+				? meetingList.size() : paging.getPageSize() * (paging.getPageNo())); i++) {
+			pagingList.add(meetingList.get(i));
+		}
+
+		model.addAttribute("meetingList", pagingList);
+		model.addAttribute("paging", paging);
+		
+		return "main/mainPage";
+	}
+	
+	@RequestMapping(value="/meetingHome.do", method=RequestMethod.GET)
+	public String meetingHome(String email, Model model) {
+		List<Meeting> meetingList = meetingService.searchMeetingByEmail(email);
+		
+		model.addAttribute("meetingList", meetingList);
+		
+		return "meeting/meetingHome";
 	}
 	
 	public String searchById(int meetingId, Model model){

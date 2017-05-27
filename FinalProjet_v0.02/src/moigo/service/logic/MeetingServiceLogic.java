@@ -1,6 +1,7 @@
 package moigo.service.logic;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,4 +106,28 @@ public class MeetingServiceLogic implements MeetingService{
 	public List<String> searchCategory() {
 		return store.selectCategory();
 	}
+
+	@Override
+	public List<String> searchHashtag(int meetingId) {
+		return store.selectHashtag(meetingId);
+	}
+
+	@Override
+	public String checkHashtag(String hashtag) {
+		return store.checkHashtag(hashtag);
+	}
+
+	@Override
+	public int registHashtag(String hashtag) {
+		return store.insertHashtag(hashtag);
+	}
+
+	@Override
+	public boolean registMeetingHashtag(int meetingId, int hashtagId) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("hashtag_id", hashtagId);
+		map.put("meeting_id", meetingId);
+		return store.insertMeetingHashtag(map);
+	}
+	
 }

@@ -85,18 +85,19 @@
 					<div class="col-md-10">
 						<!--EVENT LIST Wrap Start-->
 						<div align="left"><span style="color: orange;" ><font size="5em">모임폐쇄</font></span></div>
-						<select>
-							<option value="1">족구모임</option>
-							<option value="2">테니스모임</option>
-							<option value="3">독서모임</option>
+						<select id="select">
+							<c:forEach var="meeting" items="${meetingList}" varStatus="sts">
+								<option value="${status.index}">${meeting.title}</option>
+							</c:forEach>
 						</select>
+						<%-- <input type="hidden" id="meetingValue" value="${meetingList}"/> --%>
 						<div class="kf_event_list_wrap">
 							<div class="row">
 								<div class="col-lg-4 col-md-3 col-sm-3">
 									<!--EVENT LIST THUMB Start-->
 									<div class="kf_event_list_thumb">
 										<figure>
-											<img src="${ctx}/resources/extra-images/archive-1.jpg" alt="" />
+											<img id="img" src="" alt="이미지 로딩 실패" />
 											<div class="defaultCountdown"></div>
 										</figure>
 									</div>
@@ -105,9 +106,9 @@
 
 								<div class="col-lg-6 col-md-7 col-sm-7">
 									<!--EVENT LIST DES Start-->
-									<div class="kf_event_list_des">
+									<div class="kf_event_list_des" id="content">
 										<h4>
-											<a href="#">족구모임 <span style=""></span></a>
+											<a href="#">제목<span style=""></span></a>
 										</h4>
 										<p></p>
 										<ul class="kf_event_list_links">
@@ -168,7 +169,26 @@
 	<script src="${ctx}/resources/js/jquery.sidr.min.js"></script>
 	<!--Custom JavaScript-->
 	<script src="${ctx}/resources/js/custom.js"></script>
-
+		
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var result = new Array();
+		<c:forEach items="${meetingList}" var="meeting">
+			var json=new Objet();
+			json.image = "${meeting.image}";
+			json.title = "${meeting.title}";
+			json.place = "${meeting.place}";
+			json.date = "${meeting.date}";
+			json.startDate = "${meeting.startDate}";
+			json.endDate = "${meeting.endDate}";
+			result.push(json);		
+		</c:forEach>
+	});
+	$("#select").onchange(function(){
+		
+	});
+	
+	</script>
     
 </body>
 </html>

@@ -340,7 +340,7 @@
 																	<div class="row">
 																		<div class="col-md-3">
 																			<select name="category" id="category" class="form-control">
-																				 <option selected value="카테고리">카테고리</option>
+																				 <option selected value="${meeting.category}">${meeting.category}</option>
 																				 <c:forEach items="${category}" var="list">
 																				 	<option value="${list}">${list}</option>
 																				 </c:forEach>
@@ -357,15 +357,15 @@
 															<div class="form-group">
 																<span class="col-md-2 control-label"> 모임일시</span>
 																<div class="col-md-8">
-																	<input type="date" id="date" name="date" class="form-control" />
+																	<input type="date" value="${meeting.date}" id="date" name="date" class="form-control" />
 																</div>
 															</div>
 
 															<div class="form-group">
 																<span class="col-md-2 control-label"> 신청일시</span>
 																<div class="col-md-8">
-																	<input type="date" id="startDate" name="startDate" class="form-control" />
-																	<input type="date" id="endDate" name="endDate" class="form-control" />
+																	<input type="date" value="${meeting.startDate}" id="startDate" name="startDate" class="form-control" />
+																	<input type="date" value="${meeting.endDate}" id="endDate" name="endDate" class="form-control" />
 																</div>
 															</div>
 
@@ -374,7 +374,7 @@
 																<div class="col-md-8">
 																	<div class="row">
 																		<div class="col-md-10">
-																			<input type="text" id="place" name="place" class="form-control" />
+																			<input type="text" value="${meeting.place}"id="place" name="place" class="form-control" />
 																		</div>
 																		<div class="col-md-2">
 																			<button onclick="placeSearch()">검색</button>
@@ -636,6 +636,8 @@
 			var firstEmail = $('#firstEmail').val();
 			var lastEmail = $('#lastEmail').val();
 			
+			alert(firstNum + secondNum + thirdNum);
+			alert(firstEmail + lastEmail );
 			if(title === '') {
 				$('#title').focus();
 				return false;

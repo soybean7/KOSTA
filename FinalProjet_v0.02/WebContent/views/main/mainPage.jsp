@@ -172,13 +172,13 @@
                     	<!--KF INR BANNER DES Wrap Start-->
                         <div class="kf_inr_ban_des">
                         	<div class="inr_banner_heading">
-								<h3>Our Courses</h3>
+								<h3>모임 리스트</h3>
                         	</div>
                            
                             <div class="kf_inr_breadcrumb">
 								<ul>
-									<li><a href="#">Home</a></li>
-									<li><a href="#">Our Courses</a></li>
+									<li><a href="${ctx}/meeting/meetingSearchAll.do">홈</a></li>
+									<li><a href="${ctx}/meeting/meetingSearchAll.do">모임 리스트</a></li>
 								</ul>
 							</div>
                         </div>
@@ -219,354 +219,30 @@
 	 			<div class="container">
 
 	 				<div class="row">
-	 					<div class="col-md-4 col-sm-6">
-
+	 					<!-- 제안모임 리스트 시작 -->
+	 				<c:forEach var="meeting" items="${meetingList}">
+	 					
+	 					<div class="col-md-4 col-sm-6" onclick="location.href='${ctx}/meeting/detailMeeting.do?meetingId=${meeting.meetingId}';">
 	 						<!--EDU2 COLUM 3 Wrap Start-->
 	 						<div class="edu2_col_3_wrap">
 	 							<figure>
+	 								<!-- 
 	 								<img src="${ctx}/resources/extra-images/col-3-thum1.jpg" alt=""/>
-	 								<figcaption><a href="#"><i class="fa fa-play"></i></a></figcaption>
+	 								 -->
+	 								<img src="${ctx}/resources/userData/meeting/images/${meeting.image}" alt="명준옵하~"/>
+	 								<!-- <figcaption><a href="#"><i class="fa fa-play"></i></a></figcaption> -->
 	 							</figure>
 
 	 							<!--EDU2 COLUM 3 Des Start-->
 	 							<div class="edu2_col_3_des">
-	 								<h6>Agriculture Online Guide</h6>
-	 								<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
-	 								<div class="video_link_wrap">
-	 									<a href="#">Video Tutorials</a>
-	 									<span><sup>$</sup>27</span>
-	 								</div>
+	 								<h6>${meeting.title }</h6>
+	 								<p>${meeting.guidence }</p>
 
 	 								<!--EDU2 COLUM 3 Ftr Start-->
 		 							<div class="edu2_col_3_ftr">
 		 								<figure><img src="${ctx}/resources/extra-images/col_3_des1.jpg" alt=""/></figure>
-		 								<a href="#">Thomas Van</a>
-		 								<div class="rating">
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-										</div>
-		 							</div>
-		 							<!--EDU2 COLUM 3 Ftr End-->
-	 							</div>
-	 							<!--EDU2 COLUM 3 Des End-->
-
-
-	 						</div>
-	 						<!--EDU2 COLUM 3 Wrap End-->
-
-	 					</div>
-
-	 					<div class="col-md-4 col-sm-6">
-
-	 						<!--EDU2 COLUM 3 Wrap Start-->
-	 						<div class="edu2_col_3_wrap">
-	 							<figure>
-	 								<img src="${ctx}/resources/extra-images/col-3-thum2.jpg" alt=""/>
-	 								<figcaption><a href="#"><i class="fa fa-play"></i></a></figcaption>
-	 							</figure>
-
-	 							<!--EDU2 COLUM 3 Des Start-->
-	 							<div class="edu2_col_3_des">
-	 								<h6>Tourism Courses</h6>
-	 								<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
-	 								<div class="video_link_wrap">
-	 									<a href="#">Guide</a>
-	 									<span><sup>$</sup>69</span>
-	 								</div>
-
-	 								<!--EDU2 COLUM 3 Ftr Start-->
-		 							<div class="edu2_col_3_ftr">
-		 								<figure><img src="${ctx}/resources/extra-images/col_3_des1.jpg" alt=""/></figure>
-		 								<a href="#">Thomas Van</a>
-		 								<div class="rating">
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-										</div>
-		 							</div>
-		 							<!--EDU2 COLUM 3 Ftr End-->
-	 							</div>
-	 							<!--EDU2 COLUM 3 Des End-->
-
-
-	 						</div>
-	 						<!--EDU2 COLUM 3 Wrap End-->
-
-	 					</div>
-
-	 					<div class="col-md-4 col-sm-6">
-
-	 						<!--EDU2 COLUM 3 Wrap Start-->
-	 						<div class="edu2_col_3_wrap">
-	 							<figure>
-	 								<img src="${ctx}/resources/extra-images/col-3-thum3.jpg" alt=""/>
-	 								<figcaption><a href="#"><i class="fa fa-play"></i></a></figcaption>
-	 							</figure>
-
-	 							<!--EDU2 COLUM 3 Des Start-->
-	 							<div class="edu2_col_3_des">
-	 								<h6>Cultural Awarness Courses</h6>
-	 								<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
-	 								<div class="video_link_wrap">
-	 									<a href="#">Culture</a>
-	 									<span><sup>$</sup>27</span>
-	 								</div>
-
-	 								<!--EDU2 COLUM 3 Ftr Start-->
-		 							<div class="edu2_col_3_ftr">
-		 								<figure><img src="${ctx}/resources/extra-images/col_3_des1.jpg" alt=""/></figure>
-		 								<a href="#">Thomas Van</a>
-		 								<div class="rating">
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-										</div>
-		 							</div>
-		 							<!--EDU2 COLUM 3 Ftr End-->
-	 							</div>
-	 							<!--EDU2 COLUM 3 Des End-->
-
-
-	 						</div>
-	 						<!--EDU2 COLUM 3 Wrap End-->
-
-	 					</div>
-
-	 					<div class="col-md-4 col-sm-6">
-
-	 						<!--EDU2 COLUM 3 Wrap Start-->
-	 						<div class="edu2_col_3_wrap">
-	 							<figure>
-	 								<img src="${ctx}/resources/extra-images/col-3-thum4.jpg" alt=""/>
-	 								<figcaption><a href="#"><i class="fa fa-play"></i></a></figcaption>
-	 							</figure>
-
-	 							<!--EDU2 COLUM 3 Des Start-->
-	 							<div class="edu2_col_3_des">
-	 								<h6>Social Economics Courses</h6>
-	 								<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
-	 								<div class="video_link_wrap">
-	 									<a href="#">Economics</a>
-	 									<span><sup>$</sup>99</span>
-	 								</div>
-
-	 								<!--EDU2 COLUM 3 Ftr Start-->
-		 							<div class="edu2_col_3_ftr">
-		 								<figure><img src="${ctx}/resources/extra-images/col_3_des1.jpg" alt=""/></figure>
-		 								<a href="#">Thomas Van</a>
-		 								<div class="rating">
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-										</div>
-		 							</div>
-		 							<!--EDU2 COLUM 3 Ftr End-->
-	 							</div>
-	 							<!--EDU2 COLUM 3 Des End-->
-
-
-	 						</div>
-	 						<!--EDU2 COLUM 3 Wrap End-->
-
-	 					</div>
-
-	 					<div class="col-md-4 col-sm-6">
-
-	 						<!--EDU2 COLUM 3 Wrap Start-->
-	 						<div class="edu2_col_3_wrap">
-	 							<figure>
-	 								<img src="${ctx}/resources/extra-images/col-3-thum5.jpg" alt=""/>
-	 								<figcaption><a href="#"><i class="fa fa-play"></i></a></figcaption>
-	 							</figure>
-
-	 							<!--EDU2 COLUM 3 Des Start-->
-	 							<div class="edu2_col_3_des">
-	 								<h6>History of Arts</h6>
-	 								<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
-	 								<div class="video_link_wrap">
-	 									<a href="#">Hostory</a>
-	 									<span><sup>$</sup>27</span>
-	 								</div>
-
-	 								<!--EDU2 COLUM 3 Ftr Start-->
-		 							<div class="edu2_col_3_ftr">
-		 								<figure><img src="${ctx}/resources/extra-images/col_3_des1.jpg" alt=""/></figure>
-		 								<a href="#">Thomas Van</a>
-		 								<div class="rating">
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-										</div>
-		 							</div>
-		 							<!--EDU2 COLUM 3 Ftr End-->
-	 							</div>
-	 							<!--EDU2 COLUM 3 Des End-->
-
-
-	 						</div>
-	 						<!--EDU2 COLUM 3 Wrap End-->
-
-	 					</div>
-
-	 					<div class="col-md-4 col-sm-6">
-
-	 						<!--EDU2 COLUM 3 Wrap Start-->
-	 						<div class="edu2_col_3_wrap">
-	 							<figure>
-	 								<img src="${ctx}/resources/extra-images/col-3-thum6.jpg" alt=""/>
-	 								<figcaption><a href="#"><i class="fa fa-play"></i></a></figcaption>
-	 							</figure>
-
-	 							<!--EDU2 COLUM 3 Des Start-->
-	 							<div class="edu2_col_3_des">
-	 								<h6>Photography Classes</h6>
-	 								<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
-	 								<div class="video_link_wrap">
-	 									<a href="#">Complete Course</a>
-	 									<span><sup>$</sup>69</span>
-	 								</div>
-
-	 								<!--EDU2 COLUM 3 Ftr Start-->
-		 							<div class="edu2_col_3_ftr">
-		 								<figure><img src="${ctx}/resources/extra-images/col_3_des1.jpg" alt=""/></figure>
-		 								<a href="#">Thomas Van</a>
-		 								<div class="rating">
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-										</div>
-		 							</div>
-		 							<!--EDU2 COLUM 3 Ftr End-->
-	 							</div>
-	 							<!--EDU2 COLUM 3 Des End-->
-
-
-	 						</div>
-	 						<!--EDU2 COLUM 3 Wrap End-->
-
-	 					</div>
-
-	 					<div class="col-md-4 col-sm-6">
-
-	 						<!--EDU2 COLUM 3 Wrap Start-->
-	 						<div class="edu2_col_3_wrap">
-	 							<figure>
-	 								<img src="${ctx}/resources/extra-images/col-3-thum7.jpg" alt=""/>
-	 								<figcaption><a href="#"><i class="fa fa-play"></i></a></figcaption>
-	 							</figure>
-
-	 							<!--EDU2 COLUM 3 Des Start-->
-	 							<div class="edu2_col_3_des">
-	 								<h6>Banking Courses</h6>
-	 								<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
-	 								<div class="video_link_wrap">
-	 									<a href="#">Banking</a>
-	 									<span><sup>$</sup>99</span>
-	 								</div>
-
-	 								<!--EDU2 COLUM 3 Ftr Start-->
-		 							<div class="edu2_col_3_ftr">
-		 								<figure><img src="${ctx}/resources/extra-images/col_3_des1.jpg" alt=""/></figure>
-		 								<a href="#">Thomas Van</a>
-		 								<div class="rating">
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-										</div>
-		 							</div>
-		 							<!--EDU2 COLUM 3 Ftr End-->
-	 							</div>
-	 							<!--EDU2 COLUM 3 Des End-->
-
-
-	 						</div>
-	 						<!--EDU2 COLUM 3 Wrap End-->
-
-	 					</div>
-
-	 					<div class="col-md-4 col-sm-6">
-
-	 						<!--EDU2 COLUM 3 Wrap Start-->
-	 						<div class="edu2_col_3_wrap">
-	 							<figure>
-	 								<img src="${ctx}/resources/extra-images/col-3-thum8.jpg" alt=""/>
-	 								<figcaption><a href="#"><i class="fa fa-play"></i></a></figcaption>
-	 							</figure>
-
-	 							<!--EDU2 COLUM 3 Des Start-->
-	 							<div class="edu2_col_3_des">
-	 								<h6>Social Media Management</h6>
-	 								<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
-	 								<div class="video_link_wrap">
-	 									<a href="#">Social</a>
-	 									<span><sup>$</sup>27</span>
-	 								</div>
-
-	 								<!--EDU2 COLUM 3 Ftr Start-->
-		 							<div class="edu2_col_3_ftr">
-		 								<figure><img src="${ctx}/resources/extra-images/col_3_des1.jpg" alt=""/></figure>
-		 								<a href="#">Thomas Van</a>
-		 								<div class="rating">
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-										</div>
-		 							</div>
-		 							<!--EDU2 COLUM 3 Ftr End-->
-	 							</div>
-	 							<!--EDU2 COLUM 3 Des End-->
-
-
-	 						</div>
-	 						<!--EDU2 COLUM 3 Wrap End-->
-
-	 					</div>
-
-	 					<div class="col-md-4 col-sm-6">
-
-	 						<!--EDU2 COLUM 3 Wrap Start-->
-	 						<div class="edu2_col_3_wrap">
-	 							<figure>
-	 								<img src="${ctx}/resources/extra-images/col-3-thum9.jpg" alt=""/>
-	 								<figcaption><a href="#"><i class="fa fa-play"></i></a></figcaption>
-	 							</figure>
-
-	 							<!--EDU2 COLUM 3 Des Start-->
-	 							<div class="edu2_col_3_des">
-	 								<h6>Learn Search Engine Optimization</h6>
-	 								<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
-	 								<div class="video_link_wrap">
-	 									<a href="#">SEO</a>
-	 									<span><sup>$</sup>69</span>
-	 								</div>
-
-	 								<!--EDU2 COLUM 3 Ftr Start-->
-		 							<div class="edu2_col_3_ftr">
-		 								<figure><img src="${ctx}/resources/extra-images/col_3_des1.jpg" alt=""/></figure>
-		 								<a href="#">Thomas Van</a>
-		 								<div class="rating">
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
-											<span>☆</span>
+		 								<a href="${ctx}/meeting/searchMeetingByEmail.do">${meeting.regUser}</a>
+		 								<div style="float:right">
 										</div>
 		 							</div>
 		 							<!--EDU2 COLUM 3 Ftr End-->
@@ -574,32 +250,42 @@
 	 							<!--EDU2 COLUM 3 Des End-->
 	 						</div>
 	 						<!--EDU2 COLUM 3 Wrap End-->
+	 					
+
+
 
 	 					</div>
+						</c:forEach>
+						<!-- 제안모임 리스트 끝 -->
+
 
 	 					<div class="col-md-12">
 	 						<!--KF_PAGINATION_WRAP START-->
 							<div class="kf_edu_pagination_wrap">
 								<ul class="pagination">
+									
 									<li>
-										<a href="#" aria-label="Previous">
-										<span aria-hidden="true"><i class="fa fa-angle-left"></i>PREV</span>
+										<a href="${ctx }/meeting/meetingSearchAll.do?pageNo=${paging.firstPageNo}">Start</a>
+									</li>
+									<li>
+										<a href="${ctx }/meeting/meetingSearchAll.do?pageNo=${paging.prevPageNo}" aria-label="Previous">
+										<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
 										</a>
 									</li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
+									<c:forEach var="i" begin="${paging.startPageNo }" end="${paging.endPageNo }" step="1">
+										<li><a href="${ctx }/meeting/meetingSearchAll.do?pageNo=${i}">${i}</a></li>
+									</c:forEach>
 									<li>
-										<a href="#" aria-label="Next">
-										<span aria-hidden="true">Next<i class="fa fa-angle-right"></i></span>
+										<a href="${ctx }/meeting/meetingSearchAll.do?pageNo=${paging.nextPageNo}" aria-label="Next">
+										<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
 										</a>
+									</li>
+									<li>
+										<a href="${ctx }/meeting/meetingSearchAll.do?pageNo=${paging.finalPageNo}">End</a>
 									</li>
 								</ul>
 							</div>
 							
-							<a href="${ctx}/meeting/registMeeting.do" class="btn btn-primary">개설</a>
 							<!--KF_PAGINATION_WRAP END-->
  						</div>
 
