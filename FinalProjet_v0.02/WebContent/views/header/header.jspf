@@ -83,12 +83,11 @@
 		                                    <li><a href="${ctx}/meeting/meetingDelete.do">모임 폐쇄</a></li>
 		                                </ul>
 		                            </li>
-		                            <li><a href="#">Gallery</a>
+		                            <li><a href="#">관리자모드</a>
 		                            	<ul>
-		                                	<li><a href="#">Masonary 2 Col </a></li>
-		                                	<li><a href="#">Masonary 3 Col </a></li>
-		                                	<li><a href="#">Masonary 4 Col </a></li>
-		                                    <li><a href="#">Simple gallery</a></li>
+		                                	<li><a href="${ctx}/Ad/AdListAll.do">광고 관리</a></li>
+		                                	<li><a href="#">신고 관리</a></li>
+		                                	<li><a href="#">사용자 관리</a></li>
 		                                </ul>
 		                            </li>
 		                            <li><a id="simple-menu" href="#sidr"><i class="fa fa-bars"></i></a></li>
