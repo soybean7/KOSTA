@@ -2,8 +2,10 @@ package moigo.controller.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,27 +21,50 @@ public class RecommendController {
 	
 	@Autowired
 	private RecommendService service;
+
+	
+//	@RequestMapping(value="showRegistRecommend.do", method=RequestMethod.GET)
+//	public String showRegistRecommend(Model model){
+//		List<String> category = service.showRegistMeeting();
+//		
+//		model.addAttribute("category",category);
+//		return "recommend/recommendRegist";
+//	}
 	
 	@RequestMapping(value="registRecommend.do", method=RequestMethod.POST)
-	public String registRecommend(Meeting meeting, HttpSession session, Model model){
-/*		service.registMeeting(meeting);*/
-		System.out.println("controller");
+	public String registRecommend(Meeting meeting, HttpSession session, HttpServletRequest request, Model model){
+
+		int modify = service.registMeeting(meeting);
+		System.out.println(modify);
 		return "recommend/recommendList";
 	}
 	
-	public String showModifyRecommend(int meetingId, Model model){
-		return null;
-	}
+//	@RequestMapping(value="showModifyRecommend.do", method=RequestMethod.GET)
+//	public String showModifyRecommend(int meetingId, Model model){
+//		
+//		Meeting meeting = service.searchMeetingById(meetingId);
+//		List<String> hashtags = service.searchHashtagForMeeting(meetingId);
+//		meeting.setHashtags(hashtags);
+//		model.addAttribute("meeting",meeting);
+//		return "recommend/recommendModify";
+//	}
 	
+	@RequestMapping(value="modifyRecommend.do" , method=RequestMethod.POST)
 	public String modifyRecommend(Meeting meeting, Model model){
-		return null;
+		
+		service.modifyMeeting(meeting);
+		return "recommend/recommendList";//디테일로 가야된다
 	}
 	
+	@RequestMapping(value="deleteRecommend.do" , method=RequestMethod.GET)
 	public String deleteRecommend(int meetingId){
-		return null;
+		service.removeMeeting(meetingId);
+		return "recommend/recommendList";
 	}
 	
+	@RequestMapping(value="datailRecommend.do", method=RequestMethod.GET)
 	public String datailRecommend(int meetingId, Model model){
+	
 		return null;
 	}
 	@RequestMapping(value="list.do")

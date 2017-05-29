@@ -15,18 +15,123 @@
 		<result column="rec_sympathy" property="sympathy" />
 		<result column="reg_date" property="regDate" />
 		<result column="user_email" property="regUser" />
+		<collection property="hashtags" column="meeting_id" ofType="String" select="selectHashtagForMeeting"/>
 	</resultMap>
+	
+	<sql id="selectMeeting">
+		SELECT 	meeting_id,
+				title,
+				start_date,
+				end_date,
+				place,
+				guidence,
+				content,
+				rec_sympathy,
+				reg_date,
+				user_email
+		FROM MEETING_TB
+	</sql>
 
 	<insert id="insertMeeting" parameterType="Meeting">
 		<selectKey keyProperty="meetingId" resultType="int" order="BEFORE">
 			SELECT meeting_seq.nextval FROM DUAL
 		</selectKey>
-		INSERT INTO MEETING_TB(meeting_id, title, start_date, end_date, place, guidence, content, meet_sugget)
-		VALUES(#{meetingId}, #{title}, #{startDate}, #{endDate}, #{place}, #{guidence}, #{content}, 'recommend')
+		INSERT INTO MEETING_TB(meeting_id, title, start_date, end_date, place,
+		guidence, content, meet_sugget)
+		VALUES(#{meetingId}, #{title},
+		#{startDate}, #{endDate}, #{place}, #{guidence}, #{content},
+		'recommend')
 	</insert>
 
+	<update id="updateMeeting" parameterType="Meeting">
+		UPDATE MEETING_TB
+		SET
+		title=#{title},
+		start_date=#{startDate},
+		end_date=#{endDate},
+		place=#{place},
+		guidence=#{guidence},
+		content=#{content}
+		WHERE meeting_id=#{meetingId}
+	</update>
+
+	<delete id="deleteMeeting" parameterType="int">
+		DELETE FROM MEETING_TB
+		WHERE meeting_id=#{meetingId}
+	</delete>
+
+	<!--category -->
+	<select id="showCategory" resultType="string">
+		SELECT category
+		FROM
+		category_tb
+	</select>
+
+	<select id="selectCategory" parameterType="string" resultType="int">
+		SELECT category_id
+		FROM category_tb
+		WHERE category=#{category}
+	</select>
 
 	<select id="selectAllMeeting" resultMap="recommendMap">
+		<include refid="selectMeeting"/>
+		WHERE meet_sugget='recommend'
+	</select>
+
+	<insert id="insertCategoryMeeting" parameterType="hashmap">
+		INSERT INTO
+		category_meeting_tb(meeting_id, category_id)
+		VALUES(#{meetingId},
+		#{categoryId})
+	</insert>
+	<!--category -->
+
+	<!-- hashtag -->
+	<insert id="insertHashtag" parameterType="string">
+		INSERT INTO
+		HASHTAG_TB(hashtag_id,hashtag)
+		VALUES(hashtag_seq.nextval, #{hashtag})
+	</insert>
+
+	<insert id="insertHashtagMeeting" parameterType="hashmap">
+		INSERT INTO
+		HASHTAG_MEETING_TB(meeting_id, hastag_id)
+		VALUES(#{meetingId}, #{hashtagId})
+	</insert>
+	
+	<update id="updateHashtagMeeting" parameterType="hashmap">
+		MERGE INTO hashtag_meeting_tb hm using hashtag_tb h on ( hm.meeting_id = #{meetingId} AND h.hashtag = #{hashtag})
+		WHEN MATCHED THEN UPDATE SET hm.hastag_id = h.hashtag_id
+		WHEN NOT MATCHED THEN INSERT VALUES(#{hashtagId},#{meetingId})
+		
+	</update>
+
+	<delete id="deleteHashtagMeeting" parameterType="int">
+		DELETE FROM HASHTAG_MEETING_TB
+		WHERE meeting_id=#{meetingId}
+	</delete>
+
+	<select id="selectHashtag" parameterType="string" resultType="int">
+		SELECT hashtag_id
+		FROM hashtag_tb
+		WHERE hashtag=#{hashtag}
+	</select>
+
+	<select id="selectMeetingById" resultMap="recommendMap">
+		<include refid="selectMeeting"/> 
+		WHERE meeting_id=#{meetingId}
+	</select>
+
+	<select id="selectHashtagForMeeting" resultType="String">
+  		SELECT hashtag 
+  		FROM HASHTAG_TB 
+  		WHERE hashtag_id in (select hashtag_id
+							from hashtag_meeting_tb
+							where meeting_id = #{meeting_id})
+	</select>
+
+	
+	<select id="selectMeetingByTitle" resultMap="recommendMap">
 		SELECT meeting_id,
 		title,
 		start_date,
@@ -34,13 +139,14 @@
 		place,
 		guidence,
 		content,
-		rec_sympathy,
 		reg_date,
 		user_email
 		FROM MEETING_TB
+		WHERE title=#{title} AND
+		meet_sugget = 'recommend'
 	</select>
 	
-	<select id="selectMeetingById" resultMap="recommendMap">
+	<select id="selectMeetingByRegion" resultMap="recommendMap">
 		SELECT meeting_id,
 		title,
 		start_date,
@@ -48,10 +154,57 @@
 		place,
 		guidence,
 		content,
-		rec_sympathy,
 		reg_date,
-		reg_email
-		FROM MEETING_TB 
-		WHERE meeting_id=#{meetingId} AND meet
+		user_email
+		FROM MEETING_TB
+		WHERE place=#{place} AND
+		meet_sugget = 'recommend'	
 	</select>
+	
+	<select id="selectMeetingByCategory" resultMap="recommendMap">
+		SELECT meeting_id,
+		title,
+		start_date,
+		end_date,
+		place,
+		guidence,
+		content,
+		reg_date,
+		user_email
+		FROM MEETING_TB
+		WHERE meeting_id=#{meetingId} AND
+		meet_sugget = 'recommend'	
+	</select>
+	
+	<select id="selectMeetingByHashtag" resultMap="recommendMap">
+		SELECT meeting_id,
+		title,
+		start_date,
+		end_date,
+		place,
+		guidence,
+		content,
+		reg_date,
+		user_email
+		FROM MEETING_TB
+		WHERE meeting_id=#{meetingId} AND
+		meet_sugget = 'recommend'	
+	</select>
+
+	<insert id="loveMeeting" parameterType="map">
+		insert into RECOMMEND_USER_TB(meeting_id, user_email)
+		values (#{meetingId}, #{userEmail})
+	</insert>
+
+	<delete id="hateMeeting">
+		delete from RECOMMEND_USER_TB
+		where meeting_id=#{meetingId} AND user_email=#{userEmail}
+	</delete>
+
+	<select id="selectLoveUserById" resultType="String">
+		SELECT user_email
+		FROM RECOMMEND_USER_TB
+		WHERE meeting_id=#{meeting_id}
+	</select>
+
 </mapper>

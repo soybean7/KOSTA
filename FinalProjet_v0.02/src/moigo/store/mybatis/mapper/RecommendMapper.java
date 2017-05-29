@@ -1,5 +1,6 @@
 package moigo.store.mybatis.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import moigo.domain.Meeting;
@@ -8,7 +9,7 @@ public interface RecommendMapper {
 
 	int insertMeeting(Meeting meeting);
 	
-	void updateMeeting(Meeting meeting);
+	int updateMeeting(Meeting meeting);
 	
 	int deleteMeeting(int meetingId);
 	
@@ -24,10 +25,24 @@ public interface RecommendMapper {
 	
 	List<Meeting> selectMeetingByHashtag(String recHashtag);
 	
-	void loveMeeting(int meetingId, String userEmail);
+	int loveMeeting(HashMap<String, Object> map);
+	
+	int hateMeeting(HashMap<String, Object> map);
 	
 	List<Meeting> selectMeetingByLoveSort();
 	
 	List<String> selectLoveUserById(int meetingId);
+	
+	List<String> showCategory();
+	int selectCategory(String category);
+	int insertCategoryMeeting(HashMap<String,Object> map);
+	
+	int insertHashtag(String hashtag);
+	int insertHashtagMeeting(HashMap<String, Object> map);
+	int updateHashtagMeeting(HashMap<String, Object> map);
+	int deleteHashtagMeeting(int meetingId);
+	Integer selectHashtag(String hashtag);
+	List<String> selectHashtagForMeeting(int meetingId);
+
 	
 }

@@ -28,6 +28,5 @@
 		<mapper resource="mapper/RecommendMapper.xml" />
 		<mapper resource="mapper/UserMapper.xml" />
 		<mapper resource="mapper/AdMapper.xml" />
-		<mapper resource="mapper/ReportMapper.xml"/>
 	</mappers>
 </configuration>

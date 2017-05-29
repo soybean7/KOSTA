@@ -41,7 +41,9 @@
 <link href="${ctx}/resources/css/selectric.css" rel="stylesheet">
 <!-- SIDE MENU -->
 <link rel="stylesheet" href="${ctx}/resources/css/jquery.sidr.dark.css">
-
+<!-- datepicker -->
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <style>
 #btn_div {
 	font-family: "MD이솝체";
@@ -309,134 +311,146 @@
 						<div class="kf_blog_detail_wrap">
 
 							<!-- BLOG DETAIL THUMBNAIL START-->
-							<table>
-								<tr>
-									<td width="10%" class="td_center">
-										<!-- 모임 대표 이미지 --> <img
-										src="${ctx}/resources/extra-images/col-3-thum7.jpg"
-										height="200" width="200" style="display: inline-block;" alt="" />
-										<!-- 모임 대표 이미지 끝 --> <br> <br>
-										<button>이미지 변경</button>
-									</td>
-									<td width="90%" class="td_center">
-										<!-- 모임 내용 -->
-										<div class="container">
-											<div class="row">
-												<div class="col-md-10">
-
-													<div class="panel-body">
-														<form class="form-horizontal"
-															action="${ctx}/registRecommend.do" method="POST">
-															<fieldset>
-																<div class="form-group">
-																	<span class="col-md-2 control-label"> 카테고리/모임명</span>
-
-																	<div class="col-md-8">
-																		<div class="row">
-																			<div class="col-md-3">
-																				<select  class="form-control">
-																					<option value="">카테고리</option>
-																					<option value="">카테고리</option>
-																					<option value="">카테고리</option>
-																					<option value="">카테고리</option>
-																					<option value="">카테고리</option>
-																					<option selected value="">카테고리</option>
-																				</select>
-																			</div>
-																			<div class="col-md-9">
-																				<input type="text" name="title" class="form-control" />
-																			</div>
-																		</div>
-																	</div>
-																</div>
-
-
-																<div class="form-group">
-																	<span class="col-md-2 control-label">제안일시</span>
-																	<div class="col-md-8">
-																		<input type="number" 
-																			class="form-control" /> <input type="number"
-																			 class="form-control" />
-																	</div>
-																</div>
-
-																<div class="form-group">
-																	<span class="col-md-2 control-label"> 모임장소</span>
-																	<div class="col-md-8">
-																		<div class="row">
-																			<div class="col-md-10">
-																				<input type="text" name="place" class="form-control" />
-																			</div>
-																			<div class="col-md-2">
-																				<button>검색</button>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-
-
-																<div class="form-group">
-																	<span class="col-md-2 control-label"> 간단한 모임소개
-																		입력</span>
-																	<div class="col-md-8">
-																		<textarea class="form-control" name="guidence"
-																			rows="5"></textarea>
-																	</div>
-																</div>
-
-																<div class="form-group">
-																	<span class="col-md-2 control-label"> 상세내용 입력</span>
-																	<div class="col-md-8">
-																		<textarea class="form-control" name="content" rows="5"></textarea>
-																	</div>
-																</div>
-
-																<div class="form-group">
-																	<span class="col-md-2 control-label"> 해시태그</span>
-																	<div class="col-md-8">
-																		<div class="row">
-																			<div class="col-md-10">
-																				<input type="text" class="form-control" />
-																			</div>
-																			<div class="col-md-2">
-																				<button>추가</button>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-
-																<div class="form-group">
-																	<button type="submit" class="btn btn-primary">primary</button>
-																	<button type="reset" class="btn btn-success">success</button>
-																</div>
-															</fieldset>
-														</form>
-
-
-													</div>
-
-
-
-												</div>
-
+							<form action="${ctx }/recommend/registRecommend.do" method="POST">
+								<table>
+									<tr>
+										<td width="10%" class="td_center">
+										<label for="getfile">Image</label>
+											<br /> 
+											<input type="file" id="getfile" accept="image/*"/>
+											<div id="image_preview">
+												<img id="preview" src="" width="300" alt="이미지"/> 
+												<br /> 
+												<a href="#">Remove</a>
 											</div>
-										</div>
+										</td>
+										<td width="90%" class="td_center">
+											<!-- 모임 내용 -->
+											<div class="container">
+												<div class="row">
+													<div class="col-md-10">
 
-									</td>
-								</tr>
+														<div class="panel-body">
+															<div class="form-horizontal">
+																<fieldset>
+																	<div class="form-group">
+																		<span class="col-md-2 control-label"> 카테고리/모임명</span>
+
+																		<div class="col-md-8">
+																			<div class="row">
+																				<div class="col-md-3">
+																					<select id="category" name="category" size="3">
+
+																						<c:forEach items="${category }" var="category">
+																							<option value="${category}">${category}</option>
+																						</c:forEach>
+																						<option selected value="">카테고리</option>
+
+																					</select>
+																				</div>
+																				<div class="col-md-9">
+																					<input type="text" name="title"
+																						class="form-control" />
+																				</div>
+																			</div>
+																		</div>
+																	</div>
 
 
-							</table>
-							<!-- BLOG DETAIL THUMBNAIL END-->
+																	<div class="form-group">
+																		<span class="col-md-2 control-label">제안일시</span>
+																		<div class="col-md-8">
+																			<div class="row">
+																				<div class="col-md-3">
+																					<input type="date" id="datepicker1"
+																						name="startDate" class="form-control">
+																				</div>
+																				<div class="col-md-1">
+																					<span>~</span>
+																				</div>
+																				<div class="col-md-3">
+																					<input type="date" id="datepicker2" name="endDate"
+																						class="form-control">
+																				</div>
+																			</div>
+																		</div>
+																	</div>
 
-							<!--KF_BLOG DETAIL_DES START-->
+																	<div class="form-group">
+																		<span class="col-md-2 control-label"> 모임장소</span>
+																		<div class="col-md-8">
+																			<div class="row">
+																				<div class="col-md-10">
+																					<input type="text" name="place"
+																						class="form-control" />
+																				</div>
+																				<div class="col-md-2">
+																					<button>검색</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+
+																	<div class="form-group">
+																		<span class="col-md-2 control-label"> 간단한 모임소개
+																			입력</span>
+																		<div class="col-md-8">
+																			<textarea class="form-control" name="guidence"
+																				rows="5"></textarea>
+																		</div>
+																	</div>
+
+																	<div class="form-group">
+																		<span class="col-md-2 control-label"> 상세내용 입력</span>
+																		<div class="col-md-8">
+																			<textarea class="form-control" name="content"
+																				rows="5"></textarea>
+																		</div>
+																	</div>
+
+																	<div class="form-group">
+																		<span class="col-md-2 control-label"> 해시태그</span>
+																		<div class="col-md-8">
+																			<div class="row">
+																				<div class="col-md-10">
+																					<input id="tag" name="tag" type="text"
+																						class="form-control" placeholder="HashTag" />
+																				</div>
+																				<div class="col-md-2">
+																					<button id="hashTagBt" name="hashTagBt"
+																						class="btn btn-default" type="button"
+																						onclick="addTag()">추가!</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+
+																	<!-- HashTag 출력 -->
+																	<div class="form-group">
+																		<div id="HashTagList" style="margin: 0 auto;"></div>
+																	</div>
+																	<br> <br> <br>
+																	<!-- /HashTag출력 -->
+																</fieldset>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</td>
+
+									</tr>
+								</table>
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">primary</button>
+									<button type="reset" class="btn btn-success">success</button>
+								</div>
+							</form>
 							<div class="kf_blog_detail_des"></div>
-							<!--KF_BLOG DETAIL_DES END-->
-
 						</div>
-						<!--KF_BLOG DETAIL_WRAP END-->
 					</div>
-
 				</div>
 			</div>
 
@@ -477,8 +491,125 @@
 	<!--Map-->
 	<script
 		src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false?key=AIzaSyDR4TBGOfhyhldkwQ17KVIbS0pf36J8X6w"></script>
+	<!-- datepicker -->
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
+	<script type="text/javascript">
+	
+		var file = document.querySelector('#getfile');
+		
+		$('#getfile').on('change', function() {
 
+			ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+			
+			
+			var maxFileSize = 512000;
+			var fileList = file.files;
+			if(fileList[0].size > maxFileSize) {
+				alert('선택하신 그림 파일은 허용 최대크기인 ' + maxFileSize/1024 + '?KB 를 초과하였습니다.');
+				return;
+			}
+			//배열에 추출한 확장자가 존재하는지 체크
+			if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
+				resetFormElement($(this)); //폼 초기화
+				window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+			} else {
+				file = $('#getfile').prop("files")[0];
+				blobURL = window.URL.createObjectURL(file);
+				$('#image_preview img').attr('src', blobURL);
+				$('#image_preview').slideDown(); //업로드한 이미지 미리보기 
+				$(this).slideUp(); //파일 양식 감춤
+			}
+		});
+
+		$('#image_preview a').bind('click', function() {
+			resetFormElement($('#getfile')); //전달한 양식 초기화
+			$('#getfile').slideDown(); //파일 양식 보여줌
+			$(this).parent().slideUp(); //미리 보기 영역 감춤
+			return false; //기본 이벤트 막음
+		});
+		
+
+		//datePicker
+		$(function() {
+			$("#datepicker1, #datepicker2").datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
+		});
+
+		//hashtag
+		var count = 0;
+		var out = new Array();
+		var tagstr = "";
+		function addTag() {
+			out[count] = "";
+			var div = document.createElement('div');
+
+			var tags = new Array();
+			tags[count] = document.getElementById('tag').value;
+			document.getElementById('tag').value = "";
+
+			if (tags[count] == "") {
+				alert("HashTag를 입력하세요!");
+			} else {
+				out[count] += "<div id = 'hashTag' class='alert alert-info alert-dismissable' style='height: 50px; float: left;'>";
+				out[count] += tags[count];
+				out[count] += "<div class='deleteBox' style='display:inline;'>";
+				out[count] += "<button type='button' class='close' data-dismiss='alert' aria-hidden='true' onclick='removeTag(this)'> × </button>";
+				out[count] += "</div>";
+				out[count] += "</div>";
+				out[count] += "<input name='hashtags' type='hidden' value='"+tags[count]+"'>";
+			}
+			div.innerHTML = out[count];
+			div.id = count;
+
+			// delete_box에 삭제할 fieldid 정보 건네기
+			var deleteBox = div.getElementsByClassName('deleteBox')[0];
+			// target이라는 속성에 삭제할 div id 저장
+			deleteBox.setAttribute('target', div.id);
+
+			document.getElementById('HashTagList').appendChild(div);
+			count++;
+			// ARRAY 에 값 추가
+
+			if (count > 4) {
+				document.getElementById('hashTagBt').setAttribute('disabled',
+						true);
+			}
+		}
+
+		function removeTag(obj) {
+
+			var target = obj.parentNode.getAttribute('target');
+
+			var field = document.getElementById(target);
+
+			document.getElementById('HashTagList').removeChild(field);
+
+			count--;
+
+			if (count < 5) {
+				document.getElementById('hashTagBt')
+						.removeAttribute('disabled');
+			}
+
+		}
+
+		//해시태그 호출
+		var hashTagList = new Array();
+		<c:forEach items="${ask.askHashTags}" var="tag">
+
+		hashTagList.push("${tag}");
+		</c:forEach>
+
+		for (var i = 0; i < hashTagList.length; i++) {
+			console.log(hashTagList[i]);
+			document.getElementById('tag').value = hashTagList[i];
+			addTag();
+		}
+	</script>
 
 </body>
 </html>

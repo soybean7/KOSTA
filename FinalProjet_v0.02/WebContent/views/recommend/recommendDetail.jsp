@@ -44,76 +44,132 @@
 <style>
     
         #btn_div {
-            font-family: "MD이솝체";
-        display:inline-block;
-
-        width:95%;
-        padding:.5em 0;
-
-        font-size:18px;
-        font-weight:bold;
-        color:#4F4F4F;
-
-        cursor:pointer;
-
-        text-align:center;
-
-        background-color:#DEDEDE;
-        background-image:-webkit-gradient(linear,left top,left bottom,from(#F4F4F4),to(#DEDEDE));
-
-        border:1px #C3C3C3 solid;
-        border-bottom-color:#a2a2a2; 
-        border-top-color:#e3e3e3; 
-        border-radius:6px;
-        -moz-border-radius:6px;
-        -webkit-border-radius:6px;
-        text-overflow:ellipsis;
-        overflow:hidden;
-        white-space:nowrap;
+	        font-family: "MD이솝체";
+	        display:inline-block;
+	
+	        width:95%;
+	        padding:.5em 0;
+	
+	        font-size:18px;
+	        font-weight:bold;
+	        color:#4F4F4F;
+	
+	        cursor:pointer;
+	
+	        text-align:center;
+	
+	        background-color:#DEDEDE;
+	        background-image:-webkit-gradient(linear,left top,left bottom,from(#F4F4F4),to(#DEDEDE));
+	
+	        border:1px #C3C3C3 solid;
+	        border-bottom-color:#a2a2a2; 
+	        border-top-color:#e3e3e3; 
+	        border-radius:6px;
+	        -moz-border-radius:6px;
+	        -webkit-border-radius:6px;
+	        text-overflow:ellipsis;
+	        overflow:hidden;
+	        white-space:nowrap;
         }
         
         
         #btn_style {
-        width:95%;
-        padding:.5em 0;
-        font-family: "MD이솝체";
-
-       border: 1px solid #0a3c59;
-       background: #3e779d;
-       background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
-       background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
-       background: -moz-linear-gradient(top, #65a9d7, #3e779d);
-       background: -ms-linear-gradient(top, #65a9d7, #3e779d);
-       background: -o-linear-gradient(top, #65a9d7, #3e779d);
-       background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
-       padding: 17px 34px;
-       -webkit-border-radius: 17px;
-       -moz-border-radius: 17px;
-       border-radius: 17px;
-       -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
-       -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
-       box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
-       text-shadow: #7ea4bd 0 1px 0;
-       color: #06426c;
-       font-size: 18px;
-       font-family: MD이솝체, helvetica, serif;
-       text-decoration: none;
-       vertical-align: middle;
+	       width:90%;
+	       padding:.5em 0;
+	       font-family: "MD이솝체";
+	
+	       border: 1px solid #0a3c59;
+	       background: #3e779d;
+	       background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+	       background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+	       background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+	       background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+	       background: -o-linear-gradient(top, #65a9d7, #3e779d);
+	       background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+	       padding: 17px 34px;
+	       -webkit-border-radius: 17px;
+	       -moz-border-radius: 17px;
+	       border-radius: 17px;
+	       -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+	       -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+	       box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+	       text-shadow: #7ea4bd 0 1px 0;
+	       color: #06426c;
+	       font-size: 18px;
+	       font-family: MD이솝체, helvetica, serif;
+	       text-decoration: none;
+	       vertical-align: middle;
        }
         #btn_style:hover {
-            font-family: "MD이솝체";
-       border: 1px solid #0a3c59;
-       text-shadow: #1e4158 0 1px 0;
-       background: #3e779d;
-       background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
-       background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
-       background: -moz-linear-gradient(top, #65a9d7, #3e779d);
-       background: -ms-linear-gradient(top, #65a9d7, #3e779d);
-       background: -o-linear-gradient(top, #65a9d7, #3e779d);
-       background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
-       color: #fff;
+           font-family: "MD이솝체";
+	       border: 1px solid #0a3c59;
+	       text-shadow: #1e4158 0 1px 0;
+	       background: #3e779d;
+	       background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+	       background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+	       background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+	       background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+	       background: -o-linear-gradient(top, #65a9d7, #3e779d);
+	       background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+	       color: #fff;
        }
-        
+       
+       .btn_love {
+     	   width:90%;
+	       padding: 0;
+	       font-family: "MD이솝체";
+	       font-size: 22px;
+	       
+		   border: 1px solid #401818;
+		   background: #9c3e3e;
+		   background: -webkit-gradient(linear, left top, left bottom, from(#d66565), to(#9c3e3e));
+		   background: -webkit-linear-gradient(top, #d66565, #9c3e3e);
+		   background: -moz-linear-gradient(top, #d66565, #9c3e3e);
+		   background: -ms-linear-gradient(top, #d66565, #9c3e3e);
+		   background: -o-linear-gradient(top, #d66565, #9c3e3e);
+		   background-image: -ms-linear-gradient(top, #d66565 0%, #9c3e3e 100%);
+		   padding: 10px 34px;
+	       -webkit-border-radius: 10px;
+	       -moz-border-radius: 10px;
+	       border-radius: 17px;
+		   -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+		   -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+		   box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+		   text-shadow: #bd7f7f 0 1px 0;
+		   color: #6b0606;
+		   
+	       font-family: MD이솝체, helvetica, serif;
+	       text-decoration: none;
+	       vertical-align: middle;
+		   }
+		.btn_love:hover {
+		   font-family: "MD이솝체";
+	       
+		   border: 1px solid #401818;
+		   text-shadow: #571e1e 0 1px 0;
+		   background: #9c3e3e;
+		   background: -webkit-gradient(linear, left top, left bottom, from(#d66565), to(#9c3e3e));
+		   background: -webkit-linear-gradient(top, #d66565, #9c3e3e);
+		   background: -moz-linear-gradient(top, #d66565, #9c3e3e);
+		   background: -ms-linear-gradient(top, #d66565, #9c3e3e);
+		   background: -o-linear-gradient(top, #d66565, #9c3e3e);
+		   background-image: -ms-linear-gradient(top, #d66565 0%, #9c3e3e 100%);
+		   color: #fff;
+		   }
+		.btn_love:active {
+		   text-shadow: #571e1e 0 1px 0;
+		   border: 1px solid #401818;
+		   background: #d66565;
+		   background: -webkit-gradient(linear, left top, left bottom, from(#9c3e3e), to(#9c3e3e));
+		   background: -webkit-linear-gradient(top, #9c3e3e, #d66565);
+		   background: -moz-linear-gradient(top, #9c3e3e, #d66565);
+		   background: -ms-linear-gradient(top, #9c3e3e, #d66565);
+		   background: -o-linear-gradient(top, #9c3e3e, #d66565);
+		   background-image: -ms-linear-gradient(top, #9c3e3e 0%, #d66565 100%);
+		   color: #fff;
+		   }
+       
+       
         .td_basic {
             padding:15px;
             font-family: "MD이솝체";
@@ -138,7 +194,45 @@
             border-left: 0px none;
         }
         
+        
     </style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    /*
+            $(function(){
+                $(".btn_love").click(function(){
+                	
+                	$.ajax({
+                		type: 'POST',
+                		url: 'love.do',
+                		data:
+                			{
+                				meetingId: '1001',
+                				userEmail: 'testuser'
+                			},
+                			
+                			success: function(result){
+    							if($.trim(result) == 'ok'){
+    								$("#idCheckResult").html("사용 가능한 ID 입니다.");
+    							}else{
+    								$("#idCheckResult").html("사용 중인 ID 입니다.");
+    							}
+    						}
+                	});
+                	
+                	
+                	console.log($(this).css("color"));
+                	if($(this).css("color")=="rgb(255, 255, 255)"){
+                		$(this).css("color","black");
+                	}else {
+                		$(this).css("color","white");
+                	}
+                });
+            });
+      */  
+    </script>
+
 
 </head>
 
@@ -306,48 +400,72 @@
                                     <tr>
                                     <td width="40%" class="td_center">
                                         <!-- 모임 대표 이미지 -->
+                                        <!-- 
 	    								<img src="${ctx}/resources/extra-images/col-3-thum7.jpg" height="320" width="320" style="display: inline-block;" alt=""/>
+	    								 -->
+	    								<img width="320" height="320" style="display: inline-block;"
+	    									src="http://img.insight.co.kr/static/2016/03/22/700/bg040znw04rb8wgw554n.jpg"/>
                                         <!-- 모임 대표 이미지 끝 -->
                                     </td>
-                                    <td width="60%" class="td_left">
+                                    <td  class="td_left">
                                         <!-- 모임 내용 -->
                                         <span style="display: inline-block;">
+                                        <!-- 
                                         <a style="float:right; color:red" href="#">찜♡</a>
+                                         -->
                                         <br>
-                                        <h3> [book] book 모임 어때요? </h3>
+                                        <h3 style="font-family: MD이솝체;"> ${meeting.title } </h3>
+                                        </span>
+                                        <br>
+                                        <hr>
+
+                                        <img src="https://image.flaticon.com/icons/svg/58/58960.svg" height="20"> 
+                                        	모임 제안 장소 : ${meeting.place } <br>
+                                        <img src="https://image.freepik.com/free-icon/calendar_318-77221.jpg" height="20">
+                                        	모임 제안 기간 : <b>4월 25일 (화) ~ 5월 2일(화) </b>
                                         
-                                        <br>
-
-                                        <img src="https://image.flaticon.com/icons/svg/58/58960.svg" height="20"> 모임장소 : OOO커피 <br>
-                                        <br>
-
-                                        모임내용(ex. 한 달에 한 권 책을 읽는 모임입니다.)<br>
-                                        <div style="color:blue">#태그 #독서모임</div>
+                                      
+                                        <hr width="100%">
+                                        
+                                        <span>
+                                        ${meeting.guidence }<br>
+                                        <div style="color:blue">
+                                        	<c:forEach var="hashtag" items="${meeting.hashtags }">
+                                        		#${hashtag } 
+                                        	</c:forEach>
+                                        </div>
                                         </span>
                                         <!-- 모임 내용 끝 -->
                                     </td>
                                     </tr>
+                                    
+                                    
                                     <tr>
-                                    <td class="td_left">
-                                        <span>
-                                        <b>[제안자정보]</b><br>
-                                        이름 : 홍길동<br>
-                                        <img height="20" src="https://image.freepik.com/free-icon/email-filled-closed-envelope_318-75717.jpg"> abc@def.com<br>
-                                        <img height="20" src="https://image.freepik.com/free-icon/old-typical-phone_318-31536.jpg"> 010-123-4567
-                                        </span>
+                                    <td class="td_center">
+                                        <button id="btn_style">개설하기</button>
                                     </td>
                                     <td class="td_center">
-                                    <b>제안기간 : 4월 25일 (화) 00시00분 ~ 5월 2일(화) 19시 30분</b><br><br>
-                                    
-                                        <button id="btn_style">개설하기</button>
-                                   
+                                    	<c:choose>
+                                    		<c:when test="${exist eq 'exist' }">
+                                       			<button class="btn_love" style="color:white;" 
+                                       				onclick="location.href='love.do?meetingId=${meeting.meetingId}'"> ${meeting.sympathy } 찜♥</button>
+                                       		</c:when>
+                                       		<c:otherwise>
+                                       			<button id="btn_love_btn" class="btn_love" 
+                                       				onclick="location.href='love.do?meetingId=${meeting.meetingId}'"> ${meeting.sympathy } 찜♡</button>
+                                       		</c:otherwise>
+                                   		</c:choose>
                                     </td>
                                     </tr>
+                                    
+                                    
                                     <tr>
                                     <td colspan="2" class="td_center">
                                         image description
                                     </td>
                                     </tr>
+                                    
+                                    
                                     <tr>
                                     <td colspan="2" class="td_center">
                                         <div class="kf_location_wrap">

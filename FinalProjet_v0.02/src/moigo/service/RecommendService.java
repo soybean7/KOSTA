@@ -8,7 +8,8 @@ import moigo.domain.User;
 public interface RecommendService {
 	
 	int registMeeting(Meeting meeting);
-	boolean modifyMeeting(Meeting meeting);
+	List<String> showRegistMeeting();
+	int modifyMeeting(Meeting meeting);
 	boolean removeMeeting(int meetingId);
 	List<Meeting> searchAllMeeting();
 	Meeting searchMeetingById(int meetingId);
@@ -17,8 +18,9 @@ public interface RecommendService {
 	List<Meeting> searchMeetingByRegion(String recPlace);
 	List<Meeting> searchMeetingByCategory(String recCategory);
 	List<Meeting> searchMeetingByHashtag(String recHashtag);
-	void loveMeeting(int meetingId, String userEmail);
+	boolean loveMeeting(int meetingId, String userEmail);
+	boolean hateMeeting(int meetingId, String userEmail);
 	List<Meeting> searchMeetingByLoveSort(User user);
-	List<User> searchLoveUserById(int meetingId);
-	
+	List<String> searchLoveUserById(int meetingId);
+	List<String> searchHashtagForMeeting(int meetingId);
 }
