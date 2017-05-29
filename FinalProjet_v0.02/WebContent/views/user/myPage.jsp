@@ -116,11 +116,11 @@
 					<!-- 마이페이지 목차 -->
 					<div class="nav_2" id="navigation">
 						<ul>
-							<li><a href="#">마이페이지 홈</a></li>
-							<li><a href="#">회원정보수정</a></li>
-							<li><a href="#">비밀번호변경</a></li>
-							<li><a href="#">신청내역</a></li>
-							<li><a href="#">회원탈퇴</a></li>
+							<li><a href="${ctx}/user/showMyPage.do">마이페이지 홈</a></li>
+							<li><a href="${ctx}/user/showModify.do">회원정보수정</a></li>
+							<li><a href="${ctx}/views/user/userModifyPassword.jsp">비밀번호변경</a></li>
+							<li><a href="${ctx}/views/user/userDrop.jsp">회원탈퇴</a></li>
+							<li><a href="${ctx}/views/user/myMeetingRequestList.jsp">신청내역</a></li>
 						</ul>
 					</div>
 
