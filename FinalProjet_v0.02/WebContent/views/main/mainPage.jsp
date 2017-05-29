@@ -202,7 +202,7 @@
 	    			<div class="inr_pg_search_wrap">
 		    			<form id="frm" onsubmit="return search_submit();" method="post">
 		    				<div class="search_bar_des">
-		    					<input type="search" name="keyword" placeholder="모임 검색"/>
+		    					<input type="search" id="search" name="keyword" placeholder="모임 검색"/>
 		    					<select id="basic" name="searchType">
                                     <option value="title">모임명</option>
                                     <option value="place">모임장소</option>
@@ -264,23 +264,33 @@
 								<ul class="pagination">
 									
 									<li>
+										<c:if test="${paging.startPageNo != 0}">
 										<a href="${ctx }/meeting/${requestMapping}pageNo=${paging.firstPageNo}">Start</a>
+										</c:if>
 									</li>
 									<li>
+										<c:if test="${paging.startPageNo != 0}">
 										<a href="${ctx }/meeting/${requestMapping}pageNo=${paging.prevPageNo}" aria-label="Previous">
 										<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
 										</a>
+										</c:if>
 									</li>
 									<c:forEach var="i" begin="${paging.startPageNo }" end="${paging.endPageNo }" step="1">
-										<li><a href="${ctx }/meeting/${requestMapping}pageNo=${i}">${i}</a></li>
+										<c:if test="${paging.startPageNo != 0}">
+											<li><a href="${ctx }/meeting/${requestMapping}pageNo=${i}">${i}</a></li>
+										</c:if>
 									</c:forEach>
 									<li>
+										<c:if test="${paging.startPageNo != 0}">
 										<a href="${ctx }/meeting/${requestMapping}pageNo=${paging.nextPageNo}" aria-label="Next">
 										<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
 										</a>
+										</c:if>
 									</li>
 									<li>
+										<c:if test="${paging.startPageNo != 0}">
 										<a href="${ctx }/meeting/${requestMapping}pageNo=${paging.finalPageNo}">End</a>
+										</c:if>
 									</li>
 								</ul>
 							</div>
@@ -361,6 +371,8 @@
 				document.getElementById("frm").action = "searchMeetingByCategory.do";
 			} */
 			if($("#basic").val() === '') {
+				return false;
+			} else if($("#search").val().replace(/ /g, '') === ''){
 				return false;
 			} else {
 				return true;
