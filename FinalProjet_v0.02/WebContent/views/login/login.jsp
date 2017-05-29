@@ -18,11 +18,11 @@ body {
 	<h3>로그인</h3>
 	
 	<br>
-	<form action="login" method="post" >
+	<form action="${ctx}/user/login.do" method="post" >
 		<table class="table">
 			<tr>
 				<th>ID</th>
-				<td><input id="loginId"  name="loginId" class="form-control" type="text" value="" placeholder="ID를 입력해주세요."></td>
+				<td><input id="loginId"  name="email" class="form-control" type="text" value="" placeholder="ID를 입력해주세요."></td>
 			</tr>
 			<tr>
 				<th>Password</th>

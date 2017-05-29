@@ -43,219 +43,59 @@
 
 
 <style>
-        .td_center {
-            padding:15px;
-            font-family: "MD이솝체";
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-            border-right: 0px none;
-            border-left: 0px none;
-        }
-        
-        .input_text {
-        	padding : 5px;
-        	background-color: #3CBC8D;
-        	border-radius: 4px;
-    		color: white;
-        }
-    </style>
+.td_center {
+	padding: 15px;
+	font-family: "MD이솝체";
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	border-right: 0px none;
+	border-left: 0px none;
+}
+
+.input_text {
+	padding: 5px;
+	background-color: #3CBC8D;
+	border-radius: 4px;
+	color: white;
+}
+</style>
 
 
 </head>
 
 <body>
 	<!--KF KODE WRAPPER WRAP START-->
-	<div class="kode_wrapper">
-		<!-- register Modal -->
-		<div class="modal fade" id="reg-box" tabindex="-1" role="dialog">
-			<div class="modal-dialog">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<div class="modal-content">
-					<!--SIGNIN AS USER START-->
-					<div class="user-box">
-						<h2>Sign up as a User</h2>
-						<!--FORM FIELD START-->
-						<div class="form">
-							<div class="input-container">
-								<input type="text" placeholder="Name"> <i
-									class="fa fa-user"></i>
-							</div>
-							<div class="input-container">
-								<input type="text" placeholder="E-mail"> <i
-									class="fa fa-envelope-o"></i>
-							</div>
-							<div class="input-container">
-								<input type="password" placeholder="Password"> <i
-									class="fa fa-unlock"></i>
-							</div>
-							<div class="input-container">
-								<label> <span class="radio"> <input
-										type="checkbox" name="foo" value="1" checked> <span
-										class="radio-value" aria-hidden="true"></span>
-								</span> <span>Remember me</span>
-								</label>
-							</div>
-							<div class="input-container">
-								<button class="btn-style">Sign Up</button>
-							</div>
+	<!-- SIGNIN MODEL END -->
+	<%@include file="/views/header/side.jspf"%>
+	<!--KF_SIDEBAR_SEARCH_WRAP END-->
+	<!--KF_SIDEBAR_ARCHIVE_WRAP START-->
+	<!--KF_SIDEBAR_ARCHIVE_WRAP END-->
+	<!--HEADER START-->
+	<%@include file="/views/header/header.jspf"%>
+	<!--HEADER END-->
+
+
+	<!--Banner Wrap Start-->
+	<div class="kf_inr_banner padding_more">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!--KF INR BANNER DES Wrap Start-->
+					<div class="kf_inr_ban_des">
+						<div class="inr_banner_heading">
+							<h3>비밀번호변경</h3>
 						</div>
-						<!--FORM FIELD END-->
-						<!--OPTION START-->
-						<div class="option">
-							<h5>Or Using</h5>
+
+						<div class="kf_inr_breadcrumb">
+							<ul>
+								<li><a href="#">마이페이지</a></li>
+								<li><a href="#">비밀번호변경</a></li>
+							</ul>
 						</div>
-						<!--OPTION END-->
-						<!--OPTION START-->
-						<div class="social-login">
-							<a href="#" class="google"><i class="fa fa-google-plus"></i>Google
-								Account</a> <a href="#" class="facebook"><i
-								class="fa fa-facebook"></i>Facebook Account</a>
-						</div>
-						<!--OPTION END-->
 					</div>
-					<!--SIGNIN AS USER END-->
-					<div class="user-box-footer">
-						Already have an account? <a href="#">Sign In</a>
-					</div>
-					<div class="clearfix"></div>
+					<!--KF INR BANNER DES Wrap End-->
 				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-		<!-- register Modal end-->
 
-		<!-- SIGNIN MODEL START -->
-		<div class="modal fade" id="signin-box" tabindex="-1" role="dialog">
-			<div class="modal-dialog">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<div class="modal-content">
-					<div class="user-box">
-						<h2>Sign In</h2>
-						<!--FORM FIELD START-->
-						<div class="form">
-							<div class="input-container">
-								<input type="text" placeholder="E-mail"> <i
-									class="fa fa-envelope-o"></i>
-							</div>
-							<div class="input-container">
-								<input type="password" placeholder="Password"> <i
-									class="fa fa-unlock"></i>
-							</div>
-							<div class="input-container">
-								<label> <span class="radio"> <input
-										type="checkbox" name="foo" value="1" checked> <span
-										class="radio-value" aria-hidden="true"></span>
-								</span> <span>Remember me</span>
-								</label>
-							</div>
-							<div class="input-container">
-								<button class="btn-style">Sign In</button>
-							</div>
-						</div>
-						<!--FORM FIELD END-->
-						<!--OPTION START-->
-						<div class="option">
-							<h5>Or Using</h5>
-						</div>
-						<!--OPTION END-->
-						<!--OPTION START-->
-						<div class="social-login">
-							<a href="#" class="google"><i class="fa fa-google-plus"></i>Google
-								Account</a> <a href="#" class="facebook"><i
-								class="fa fa-facebook"></i>Facebook Account</a>
-						</div>
-						<!--OPTION END-->
-
-					</div>
-					<div class="user-box-footer">
-						<p>
-							Don't have an account?<br>
-							<a href="#">Sign up as a User</a>
-						</p>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-		<!-- SIGNIN MODEL END -->
-
-		<div id="sidr">
-			<div class="logo_wrap">
-				<a href="#"><img src="${ctx}/resources/extra-images/logo.png"
-					alt=""></a>
-			</div>
-			<div class="clearfix clear"></div>
-			<!-- Your content -->
-			<div class="kf-sidebar">
-				<!--KF_SIDEBAR_SEARCH_WRAP START-->
-				<div class="widget widget-search">
-					<h2>모임 검색</h2>
-					<form>
-						<input type="search" placeholder="Keyword...">
-					</form>
-				</div>
-				<!--KF_SIDEBAR_SEARCH_WRAP END-->
-
-				<!--KF_SIDEBAR_ARCHIVE_WRAP START-->
-				<div class="widget widget-archive ">
-					<h2>Archives</h2>
-					<ul class="sidebar_archive_des">
-						<li><a href=""><i class="fa fa-angle-right"></i>January
-								2016</a></li>
-						<li><a href=""><i class="fa fa-angle-right"></i>February
-								2016</a></li>
-						<li><a href=""><i class="fa fa-angle-right"></i>March
-								2016</a></li>
-						<li><a href=""><i class="fa fa-angle-right"></i>April
-								2016</a></li>
-						<li><a href=""><i class="fa fa-angle-right"></i>May 2016</a>
-						</li>
-						<li><a href=""><i class="fa fa-angle-right"></i>June 2016</a>
-						</li>
-						<li><a href=""><i class="fa fa-angle-right"></i>August
-								2016</a></li>
-					</ul>
-				</div>
-				<!--KF_SIDEBAR_ARCHIVE_WRAP END-->
-
-				<p class="copy-right-sidr">Design and Developed by KodeForest @
-					All Rights Reserved by KodeForest</p>
-			</div>
-		</div>
-		<!--HEADER START-->
-		<%@include file="/views/header/header.jspf"%>
-		<!--HEADER END-->
-
-
-		<!--Banner Wrap Start-->
-		<div class="kf_inr_banner padding_more">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<!--KF INR BANNER DES Wrap Start-->
-						<div class="kf_inr_ban_des">
-							<div class="inr_banner_heading">
-								<h3>비밀번호변경</h3>
-							</div>
-
-							<div class="kf_inr_breadcrumb">
-								<ul>
-									<li><a href="#">마이페이지</a></li>
-									<li><a href="#">비밀번호변경</a></li>
-								</ul>
-							</div>
-						</div>
-						<!--KF INR BANNER DES Wrap End-->
-					</div>
-
-				</div>
 			</div>
 		</div>
 	</div>
@@ -283,17 +123,14 @@
 					<!-- 회원정보수정 시작 -->
 					<table>
 						<tr>
-							<td class="td_center">
-								<span style="color:red;">
-								탈퇴하시겠습니까?<br>
-								탈퇴시 모든 정보가 삭제됩니다.
-								</span>
-							</td>
+							<td class="td_center"><span style="color: red;">
+									탈퇴하시겠습니까?<br> 탈퇴시 모든 정보가 삭제됩니다.
+							</span></td>
 						</tr>
 						<tr>
 							<td class="td_center">
-							<button type="reset">취소</button>
-							<button type="submit">회원탈퇴</button>
+								<button type="reset">취소</button>
+								<a href="${ctx}/user/userDrop.do" role="button">회원탈퇴</a>
 							</td>
 						</tr>
 					</table>
@@ -308,27 +145,7 @@
 	</section>
 	<!--Content Wrap End-->
 	<!--NEWS LETTERS START-->
-	<div class="edu2_ft_topbar_wrap">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<div class="edu2_ft_topbar_des">
-						<h5>MOIGO.COM</h5>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="edu2_ft_topbar_des">
-						<form>
-							<input type="email" placeholder="Enter Valid Email Address">
-							<button>
-								<i class="fa fa-paper-plane"></i>Submit
-							</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<%@include file="/views/header/footer.jspf"%>
 	<!--NEWS LETTERS END-->
 	<!--KF KODE WRAPPER WRAP END-->
 
