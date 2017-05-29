@@ -1,14 +1,20 @@
 package moigo.domain;
 
-import java.sql.Date;
-
 public class User {
 
 	private String name;
 	private String email;
 	private String phoneNumber;
 	private String password;
-	private Date stopDate;
+	private String image;
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public String getName() {
 		return name;
@@ -42,12 +48,5 @@ public class User {
 		this.password = password;
 	}
 
-	public Date getStopDate() {
-		return stopDate;
-	}
-
-	public void setStopDate(Date stopDate) {
-		this.stopDate = stopDate;
-	}
 
 }

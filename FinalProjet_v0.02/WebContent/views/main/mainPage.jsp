@@ -200,11 +200,10 @@
                 <div class="search_bar_outer_wrap">
 	    		<div class="container">
 	    			<div class="inr_pg_search_wrap">
-		    			<form>
+		    			<form id="frm" onsubmit="return search_submit();" method="post">
 		    				<div class="search_bar_des">
-		    					<input type="search" placeholder="Search Courses"/>
-		    					<select id="basic">
-                                    <option value="name">모임 개설자</option>
+		    					<input type="search" name="keyword" placeholder="모임 검색"/>
+		    					<select id="basic" name="searchType">
                                     <option value="title">모임명</option>
                                     <option value="place">모임장소</option>
                                     <option value="category">모임 카테고리</option>
@@ -265,23 +264,23 @@
 								<ul class="pagination">
 									
 									<li>
-										<a href="${ctx }/meeting/meetingSearchAll.do?pageNo=${paging.firstPageNo}">Start</a>
+										<a href="${ctx }/meeting/${requestMapping}pageNo=${paging.firstPageNo}">Start</a>
 									</li>
 									<li>
-										<a href="${ctx }/meeting/meetingSearchAll.do?pageNo=${paging.prevPageNo}" aria-label="Previous">
+										<a href="${ctx }/meeting/${requestMapping}pageNo=${paging.prevPageNo}" aria-label="Previous">
 										<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
 										</a>
 									</li>
 									<c:forEach var="i" begin="${paging.startPageNo }" end="${paging.endPageNo }" step="1">
-										<li><a href="${ctx }/meeting/meetingSearchAll.do?pageNo=${i}">${i}</a></li>
+										<li><a href="${ctx }/meeting/${requestMapping}pageNo=${i}">${i}</a></li>
 									</c:forEach>
 									<li>
-										<a href="${ctx }/meeting/meetingSearchAll.do?pageNo=${paging.nextPageNo}" aria-label="Next">
+										<a href="${ctx }/meeting/${requestMapping}pageNo=${paging.nextPageNo}" aria-label="Next">
 										<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
 										</a>
 									</li>
 									<li>
-										<a href="${ctx }/meeting/meetingSearchAll.do?pageNo=${paging.finalPageNo}">End</a>
+										<a href="${ctx }/meeting/${requestMapping}pageNo=${paging.finalPageNo}">End</a>
 									</li>
 								</ul>
 							</div>
@@ -327,6 +326,49 @@
 	<script src="${ctx}/resources/js/jquery.sidr.min.js"></script>
 	<!--Custom JavaScript-->
 	<script src="${ctx}/resources/js/custom.js"></script>
+	
+	<script type="text/javascript">
+		function search_submit() {
+			
+			var searchType = $("select[name=searchType]").val();
+			
+			switch(searchType) {
+			case 'title':
+				document.getElementById("frm").action = "${ctx}/meeting/searchMeetingByTitle.do";
+				break;
+			case 'place':
+				document.getElementById("frm").action = "${ctx}/meeting/searchMeetingByPlace.do";
+				break;
+			case 'category':
+				document.getElementById("frm").action = "${ctx}/meeting/searchMeetingByCategory.do";
+				break;
+			case 'hashtag':
+				document.getElementById("frm").action = "${ctx}/meeting/searchMeetingByHashtag.do";
+				break;
+			case 'date':
+				document.getElementById("frm").action = "${ctx}/meeting/searchMeetingByDate.do";
+				break;
+			default:
+				document.getElementById("frm").action = "${ctx}/meeting/searchMeetingByTitle.do";
+				break;
+			}
+			
+			/* if(searchType === 'title') {
+				document.getElementById("frm").action = "searchMeetingByTitle.do";
+			} else if(searchType === 'place') {
+				document.getElementById("frm").action = "searchMeetingByPlace.do";
+			} else if(searchType === 'category') {
+				document.getElementById("frm").action = "searchMeetingByCategory.do";
+			} */
+			if($("#basic").val() === '') {
+				return false;
+			} else {
+				return true;
+			}
+		}
+	
+	
+	</script>
 
     
 </body>

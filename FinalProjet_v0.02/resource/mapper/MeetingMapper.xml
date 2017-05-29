@@ -165,7 +165,7 @@
 			   reg_date,
 			   user_email
 		FROM MEETING_TB
-		WHERE place = #{place} AND meet_sugget = 'meeting'
+		WHERE upper(place) LIKE '%' || upper(#{place}) || '%' AND meet_sugget = 'meeting'
 	</select>
 	
 	<select id="selectMeetingByCategory" parameterType="String" resultMap="meetingMap">
@@ -288,14 +288,31 @@
 		SELECT category FROM CATEGORY_TB
 	</select>
 	
+	<select id="selectMyCategory" resultType="String" parameterType="int">
+		SELECT C.category
+		FROM CATEGORY_TB C, CATEGORY_MEETING_TB CM
+		WHERE C.category_id = CM.category_id AND CM.meeting_id = #{meetingId}
+	</select>
+	
+	<insert id="insertMeetingCategory" parameterType="hashMap">
+		INSERT INTO CATEGORY_MEETING_TB(category_id, meeting_id)
+		VALUES(#{categoryId}, #{meetingId})
+	</insert>
+	
+	<select id="selectCategoryIdByCategory" parameterType="String" resultType="int">
+		SELECT category_id
+		FROM CATEGORY_TB
+		WHERE category = #{category}
+	</select>
+	
 	<select id="selectHashtag" parameterType="int" resultType="String">
 		SELECT H.hashtag 
 		FROM HASHTAG_TB H, HASHTAG_MEETING_TB HM
 		WHERE HM.meeting_id = #{meetingId} AND H.hashtag_id = HM.hastag_id
 	</select>
 	
-	<select id="checkHashtag" parameterType="String" resultType="String">
-		SELECT hashtag
+	<select id="checkHashtag" parameterType="String" resultType="int">
+		SELECT hashtag_id
 		FROM HASHTAG_TB
 		WHERE hashtag = #{hashtag}
 	</select>

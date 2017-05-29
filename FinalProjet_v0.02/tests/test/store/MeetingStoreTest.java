@@ -59,10 +59,9 @@ public class MeetingStoreTest {
 	
 	@Test
 	public void test() {
-		HashMap<String, Object> map = new HashMap<>();
-		
-		map.put("hashtag_id", 31);
-		map.put("meeting_id", 46);
-		System.out.println(store.insertMeetingHashtag(map));
+		List<Meeting> meeting = store.selectMeetingByTitle("test");
+		for(Meeting temp : meeting) {
+			System.out.println(temp.getTitle());
+		}
 	}
 }

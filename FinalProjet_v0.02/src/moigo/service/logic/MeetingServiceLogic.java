@@ -106,6 +106,11 @@ public class MeetingServiceLogic implements MeetingService{
 	public List<String> searchCategory() {
 		return store.selectCategory();
 	}
+	
+	@Override
+	public String searchMyCategory(int meetingId) {
+		return store.selectMyCategory(meetingId);
+	}
 
 	@Override
 	public List<String> searchHashtag(int meetingId) {
@@ -113,7 +118,7 @@ public class MeetingServiceLogic implements MeetingService{
 	}
 
 	@Override
-	public String checkHashtag(String hashtag) {
+	public int checkHashtag(String hashtag) {
 		return store.checkHashtag(hashtag);
 	}
 
@@ -128,6 +133,15 @@ public class MeetingServiceLogic implements MeetingService{
 		map.put("hashtag_id", hashtagId);
 		map.put("meeting_id", meetingId);
 		return store.insertMeetingHashtag(map);
+	}
+
+	@Override
+	public boolean registMeetingCategory(int meetingId, String category) {
+		HashMap<String, Object> map = new HashMap<>();
+		int categoryId = store.selectCategoryIdByCategory(category);
+		map.put("categoryId", categoryId);
+		map.put("meetingId", meetingId);
+		return store.insertMeetingCategory(map);
 	}
 	
 }

@@ -58,6 +58,7 @@ public class UserServiceLogic implements UserService{
 		if (validate(user)) {
 			readedUser = store.selectUser(user.getEmail());
 		}
+		System.out.println(readedUser.getEmail());
 		return readedUser;
 	}
 	
