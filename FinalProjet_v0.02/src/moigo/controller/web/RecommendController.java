@@ -52,7 +52,7 @@ public class RecommendController {
 	
 	@RequestMapping(value="detail.do")
 	public String searchById(int meetingId, Model model, HttpSession session){
-
+ 
 //		------------------------------------------------------------------------------------------------
 //		유저정보 임의 작성(삭제해야함)
 		session.setAttribute("userEmail", "somiTest");
