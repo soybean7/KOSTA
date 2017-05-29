@@ -2,11 +2,15 @@ package moigo.store.logic;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import moigo.domain.Meeting;
+import moigo.domain.Report;
 import moigo.domain.User;
 import moigo.store.ReportStore;
+import moigo.store.mybatis.MoigoSessionFactory;
+import moigo.store.mybatis.mapper.ReportMapper;
 
 @Repository
 public class ReportStoreLogic implements ReportStore{
@@ -18,7 +22,14 @@ public class ReportStoreLogic implements ReportStore{
 
 	@Override
 	public List<Meeting> selectAllReportedMeeting() {
-		return null;
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		ReportMapper mapper = session.getMapper(ReportMapper.class);
+		
+//		List<Report> = mapper.selectAllReportedMeeting();
+		
+		session.close();
+		
+		return null; 
 	}
 
 	@Override

@@ -8,6 +8,7 @@
 		<typeAlias type="moigo.domain.Meeting" alias="Meeting" />
 		<typeAlias type="moigo.domain.User" alias="User" />
 		<typeAlias type="moigo.domain.Ad" alias="Ad" />
+		<typeAlias type="moigo.domain.Report" alias="Report" />
 	</typeAliases>
 
 	<environments default="dev">
@@ -27,5 +28,6 @@
 		<mapper resource="mapper/RecommendMapper.xml" />
 		<mapper resource="mapper/UserMapper.xml" />
 		<mapper resource="mapper/AdMapper.xml" />
+		<mapper resource="mapper/ReportMapper.xml"/>
 	</mappers>
 </configuration>

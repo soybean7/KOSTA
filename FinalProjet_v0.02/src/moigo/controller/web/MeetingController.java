@@ -168,175 +168,9 @@ public class MeetingController {
 	public String searchByTitle(String keyword, Model model, HttpServletRequest request) {
 		List<Meeting> meetingList = meetingService.searchMeetingByTitle(keyword);
 		List<Meeting> pagingList = new ArrayList<>();
-		int pageSize = 3;
 		Paging paging = new Paging();
-
-		try {
-			if (request.getParameter("pageNo").equals("")) {
-				paging.setPageNo(1);
-			} else {
-				paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
-			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
-
-		paging.setPageSize(pageSize);
-		paging.setTotalCount(meetingList.size());
-
-		for (int i = (paging.getPageNo() - 1)
-				* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo()) ? meetingList.size()
-						: paging.getPageSize() * (paging.getPageNo())); i++) {
-			pagingList.add(meetingList.get(i));
-		}
-
-		model.addAttribute("requestMapping", "meetingSearchByTitle.do?keyword=" + keyword + "&");
-		model.addAttribute("meetingList", pagingList);
-		model.addAttribute("paging", paging);
-
-		return "main/mainPage";
-	}
-
-	@RequestMapping(value = "/searchMeetingByTitle.do", method = RequestMethod.GET)
-	public String searchByTitleGet(String keyword, Model model, HttpServletRequest request) {
-		List<Meeting> meetingList = meetingService.searchMeetingByTitle(keyword);
-		List<Meeting> pagingList = new ArrayList<>();
-		int pageSize = 3;
-		Paging paging = new Paging();
-
-		try {
-			if (request.getParameter("pageNo").equals("")) {
-				paging.setPageNo(1);
-			} else {
-				paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
-			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
-
-		paging.setPageSize(pageSize);
-		paging.setTotalCount(meetingList.size());
-
-		for (int i = (paging.getPageNo() - 1)
-				* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo()) ? meetingList.size()
-						: paging.getPageSize() * (paging.getPageNo())); i++) {
-			pagingList.add(meetingList.get(i));
-		}
-
-		model.addAttribute("requestMapping", "meetingSearchByTitle.do?keyword=" + keyword + "&");
-		model.addAttribute("meetingList", pagingList);
-		model.addAttribute("paging", paging);
-
-		return "main/mainPage";
-	}
-
-	@RequestMapping(value = "/searchMeetingByPlace.do", method = RequestMethod.POST)
-	public String searchByPlace(String keyword, Model model, HttpServletRequest request) {
-		List<Meeting> meetingList = meetingService.searchMeetingByPlace(keyword);
-		List<Meeting> pagingList = new ArrayList<>();
-		int pageSize = 3;
-		Paging paging = new Paging();
-
-		try {
-			if (request.getParameter("pageNo").equals("")) {
-				paging.setPageNo(1);
-			} else {
-				paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
-			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
-
-		paging.setPageSize(pageSize);
-		paging.setTotalCount(meetingList.size());
-
-		for (int i = (paging.getPageNo() - 1)
-				* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo()) ? meetingList.size()
-						: paging.getPageSize() * (paging.getPageNo())); i++) {
-			pagingList.add(meetingList.get(i));
-		}
-
-		model.addAttribute("requestMapping", "meetingSearchByPlace.do?keyword=" + keyword + "&");
-		model.addAttribute("meetingList", pagingList);
-		model.addAttribute("paging", paging);
-
-		return "main/mainPage";
-	}
-
-	@RequestMapping(value = "/searchMeetingByPlace.do", method = RequestMethod.GET)
-	public String searchByPlaceGet(String keyword, Model model, HttpServletRequest request) {
-		List<Meeting> meetingList = meetingService.searchMeetingByPlace(keyword);
-		List<Meeting> pagingList = new ArrayList<>();
-		int pageSize = 3;
-		Paging paging = new Paging();
-
-		try {
-			if (request.getParameter("pageNo").equals("")) {
-				paging.setPageNo(1);
-			} else {
-				paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
-			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
-
-		paging.setPageSize(pageSize);
-		paging.setTotalCount(meetingList.size());
-
-		for (int i = (paging.getPageNo() - 1)
-				* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo()) ? meetingList.size()
-						: paging.getPageSize() * (paging.getPageNo())); i++) {
-			pagingList.add(meetingList.get(i));
-		}
-
-		model.addAttribute("requestMapping", "meetingSearchByPlace.do?keyword=" + keyword + "&");
-		model.addAttribute("meetingList", pagingList);
-		model.addAttribute("paging", paging);
-
-		return "main/mainPage";
-	}
-
-	@RequestMapping(value = "/searchMeetingByCategory.do", method = RequestMethod.POST)
-	public String searchByCategory(String keyword, Model model, HttpServletRequest request) {
-		List<Meeting> meetingList = meetingService.searchMeetingByCategory(keyword);
-		List<Meeting> pagingList = new ArrayList<>();
-		int pageSize = 3;
-		Paging paging = new Paging();
-
-		try {
-			if (request.getParameter("pageNo").equals("")) {
-				paging.setPageNo(1);
-			} else {
-				paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
-			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
-
-		paging.setPageSize(pageSize);
-		paging.setTotalCount(meetingList.size());
-
-		for (int i = (paging.getPageNo() - 1)
-				* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo()) ? meetingList.size()
-						: paging.getPageSize() * (paging.getPageNo())); i++) {
-			pagingList.add(meetingList.get(i));
-		}
-
-		model.addAttribute("requestMapping", "meetingSearchByCategory.do?keyword=" + keyword + "&");
-		model.addAttribute("meetingList", pagingList);
-		model.addAttribute("paging", paging);
-
-		return "main/mainPage";
-	}
-
-	@RequestMapping(value = "/searchMeetingByCategory.do", method = RequestMethod.GET)
-	public String searchByCategoryGet(String keyword, Model model, HttpServletRequest request) {
-		List<Meeting> meetingList = meetingService.searchMeetingByCategory(keyword);
-		List<Meeting> pagingList = new ArrayList<>();
-
-		if (meetingList != null) {
+		if (meetingList.size() != 0) {
 			int pageSize = 3;
-			Paging paging = new Paging();
 
 			try {
 				if (request.getParameter("pageNo").equals("")) {
@@ -356,11 +190,274 @@ public class MeetingController {
 							? meetingList.size() : paging.getPageSize() * (paging.getPageNo())); i++) {
 				pagingList.add(meetingList.get(i));
 			}
-			model.addAttribute("paging", paging);
+			
+		} else {
+			paging.setTotalCount(0);
 		}
+
+		model.addAttribute("requestMapping", "meetingSearchByTitle.do?keyword=" + keyword + "&");
+		model.addAttribute("meetingList", pagingList);
+		model.addAttribute("paging", paging);
+		return "main/mainPage";
+	}
+
+	@RequestMapping(value = "/searchMeetingByTitle.do", method = RequestMethod.GET)
+	public String searchByTitleGet(String keyword, Model model, HttpServletRequest request) {
+		List<Meeting> meetingList = meetingService.searchMeetingByTitle(keyword);
+		List<Meeting> pagingList = new ArrayList<>();
+		Paging paging = new Paging();
+		if (meetingList.size() != 0) {
+			int pageSize = 3;
+			
+			try {
+				if (request.getParameter("pageNo").equals("")) {
+					paging.setPageNo(1);
+				} else {
+					paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
+				}
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+
+			paging.setPageSize(pageSize);
+			paging.setTotalCount(meetingList.size());
+
+			for (int i = (paging.getPageNo() - 1)
+					* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo())
+							? meetingList.size() : paging.getPageSize() * (paging.getPageNo())); i++) {
+				pagingList.add(meetingList.get(i));
+			}
+			
+		} else {
+			paging.setTotalCount(0);
+		}
+		model.addAttribute("requestMapping", "meetingSearchByTitle.do?keyword=" + keyword + "&");
+		model.addAttribute("meetingList", pagingList);
+		model.addAttribute("paging", paging);
+		
+		return "main/mainPage";
+	}
+
+	@RequestMapping(value = "/searchMeetingByPlace.do", method = RequestMethod.POST)
+	public String searchByPlace(String keyword, Model model, HttpServletRequest request) {
+		List<Meeting> meetingList = meetingService.searchMeetingByPlace(keyword);
+		List<Meeting> pagingList = new ArrayList<>();
+		Paging paging = new Paging();
+		if (meetingList.size() != 0) {
+			int pageSize = 3;
+			
+			try {
+				if (request.getParameter("pageNo").equals("")) {
+					paging.setPageNo(1);
+				} else {
+					paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
+				}
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+
+			paging.setPageSize(pageSize);
+			paging.setTotalCount(meetingList.size());
+
+			for (int i = (paging.getPageNo() - 1)
+					* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo())
+							? meetingList.size() : paging.getPageSize() * (paging.getPageNo())); i++) {
+				pagingList.add(meetingList.get(i));
+			}
+			
+		} else {
+			paging.setTotalCount(0);
+		}
+
+		model.addAttribute("requestMapping", "meetingSearchByPlace.do?keyword=" + keyword + "&");
+		model.addAttribute("meetingList", pagingList);
+		model.addAttribute("paging", paging);
+		return "main/mainPage";
+	}
+
+	@RequestMapping(value = "/searchMeetingByPlace.do", method = RequestMethod.GET)
+	public String searchByPlaceGet(String keyword, Model model, HttpServletRequest request) {
+		List<Meeting> meetingList = meetingService.searchMeetingByPlace(keyword);
+		List<Meeting> pagingList = new ArrayList<>();
+		Paging paging = new Paging();
+		if (meetingList.size() != 0) {
+			int pageSize = 3;
+			
+			try {
+				if (request.getParameter("pageNo").equals("")) {
+					paging.setPageNo(1);
+				} else {
+					paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
+				}
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+
+			paging.setPageSize(pageSize);
+			paging.setTotalCount(meetingList.size());
+
+			for (int i = (paging.getPageNo() - 1)
+					* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo())
+							? meetingList.size() : paging.getPageSize() * (paging.getPageNo())); i++) {
+				pagingList.add(meetingList.get(i));
+			}
+			
+		} else {
+			paging.setTotalCount(0);
+		}
+
+		model.addAttribute("requestMapping", "meetingSearchByPlace.do?keyword=" + keyword + "&");
+		model.addAttribute("meetingList", pagingList);
+		model.addAttribute("paging", paging);
+		return "main/mainPage";
+	}
+	
+	@RequestMapping(value = "/searchMeetingByContent.do", method = RequestMethod.POST)
+	public String searchByContent(String keyword, Model model, HttpServletRequest request) {
+		List<Meeting> meetingList = meetingService.searchMeetingByContent(keyword);
+		List<Meeting> pagingList = new ArrayList<>();
+		Paging paging = new Paging();
+		if (meetingList.size() != 0) {
+			int pageSize = 3;
+			
+			try {
+				if (request.getParameter("pageNo").equals("")) {
+					paging.setPageNo(1);
+				} else {
+					paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
+				}
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+
+			paging.setPageSize(pageSize);
+			paging.setTotalCount(meetingList.size());
+
+			for (int i = (paging.getPageNo() - 1)
+					* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo())
+							? meetingList.size() : paging.getPageSize() * (paging.getPageNo())); i++) {
+				pagingList.add(meetingList.get(i));
+			}
+			
+		} else {
+			paging.setTotalCount(0);
+		}
+
+		model.addAttribute("requestMapping", "meetingSearchByContent.do?keyword=" + keyword + "&");
+		model.addAttribute("meetingList", pagingList);
+		model.addAttribute("paging", paging);
+		return "main/mainPage";
+	}
+	
+	@RequestMapping(value = "/searchMeetingByContent.do", method = RequestMethod.GET)
+	public String searchByContentGet(String keyword, Model model, HttpServletRequest request) {
+		List<Meeting> meetingList = meetingService.searchMeetingByContent(keyword);
+		List<Meeting> pagingList = new ArrayList<>();
+		Paging paging = new Paging();
+		if (meetingList.size() != 0) {
+			int pageSize = 3;
+			
+			try {
+				if (request.getParameter("pageNo").equals("")) {
+					paging.setPageNo(1);
+				} else {
+					paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
+				}
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+
+			paging.setPageSize(pageSize);
+			paging.setTotalCount(meetingList.size());
+
+			for (int i = (paging.getPageNo() - 1)
+					* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo())
+							? meetingList.size() : paging.getPageSize() * (paging.getPageNo())); i++) {
+				pagingList.add(meetingList.get(i));
+			}
+			
+		} else {
+			paging.setTotalCount(0);
+		}
+
+		model.addAttribute("requestMapping", "meetingSearchByContent.do?keyword=" + keyword + "&");
+		model.addAttribute("meetingList", pagingList);
+		model.addAttribute("paging", paging);
+		return "main/mainPage";
+	}
+	
+
+	@RequestMapping(value = "/searchMeetingByCategory.do", method = RequestMethod.POST)
+	public String searchByCategory(String keyword, Model model, HttpServletRequest request) {
+		List<Meeting> meetingList = meetingService.searchMeetingByCategory(keyword);
+		List<Meeting> pagingList = new ArrayList<>();
+		Paging paging = new Paging();
+		if (meetingList.size() != 0) {
+			int pageSize = 3;
+			
+			try {
+				if (request.getParameter("pageNo").equals("")) {
+					paging.setPageNo(1);
+				} else {
+					paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
+				}
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+
+			paging.setPageSize(pageSize);
+			paging.setTotalCount(meetingList.size());
+
+			for (int i = (paging.getPageNo() - 1)
+					* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo())
+							? meetingList.size() : paging.getPageSize() * (paging.getPageNo())); i++) {
+				pagingList.add(meetingList.get(i));
+			}
+			
+		} else {
+			paging.setTotalCount(0);
+		}
+
 		model.addAttribute("requestMapping", "meetingSearchByCategory.do?keyword=" + keyword + "&");
 		model.addAttribute("meetingList", pagingList);
-		
+		model.addAttribute("paging", paging);
+		return "main/mainPage";
+	}
+
+	@RequestMapping(value = "/searchMeetingByCategory.do", method = RequestMethod.GET)
+	public String searchByCategoryGet(String keyword, Model model, HttpServletRequest request) {
+		List<Meeting> meetingList = meetingService.searchMeetingByCategory(keyword);
+		List<Meeting> pagingList = new ArrayList<>();
+		Paging paging = new Paging();
+		if (meetingList.size() != 0) {
+			int pageSize = 3;
+			
+			try {
+				if (request.getParameter("pageNo").equals("")) {
+					paging.setPageNo(1);
+				} else {
+					paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
+				}
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+
+			paging.setPageSize(pageSize);
+			paging.setTotalCount(meetingList.size());
+
+			for (int i = (paging.getPageNo() - 1)
+					* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo())
+							? meetingList.size() : paging.getPageSize() * (paging.getPageNo())); i++) {
+				pagingList.add(meetingList.get(i));
+			}
+			
+		} else {
+			paging.setTotalCount(0);
+		}
+
+		model.addAttribute("requestMapping", "meetingSearchByCategory.do?keyword=" + keyword + "&");
+		model.addAttribute("meetingList", pagingList);
+		model.addAttribute("paging", paging);
 		return "main/mainPage";
 	}
 
@@ -368,32 +465,36 @@ public class MeetingController {
 	public String searchByHashtag(String keyword, Model model, HttpServletRequest request) {
 		List<Meeting> meetingList = meetingService.searchMeetingByHashtag(keyword);
 		List<Meeting> pagingList = new ArrayList<>();
-		int pageSize = 3;
 		Paging paging = new Paging();
-
-		try {
-			if (request.getParameter("pageNo").equals("")) {
-				paging.setPageNo(1);
-			} else {
-				paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
+		if (meetingList.size() != 0) {
+			int pageSize = 3;
+			
+			try {
+				if (request.getParameter("pageNo").equals("")) {
+					paging.setPageNo(1);
+				} else {
+					paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
+				}
+			} catch (NullPointerException e) {
+				e.printStackTrace();
 			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
 
-		paging.setPageSize(pageSize);
-		paging.setTotalCount(meetingList.size());
+			paging.setPageSize(pageSize);
+			paging.setTotalCount(meetingList.size());
 
-		for (int i = (paging.getPageNo() - 1)
-				* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo()) ? meetingList.size()
-						: paging.getPageSize() * (paging.getPageNo())); i++) {
-			pagingList.add(meetingList.get(i));
+			for (int i = (paging.getPageNo() - 1)
+					* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo())
+							? meetingList.size() : paging.getPageSize() * (paging.getPageNo())); i++) {
+				pagingList.add(meetingList.get(i));
+			}
+			
+		} else {
+			paging.setTotalCount(0);
 		}
 
 		model.addAttribute("requestMapping", "meetingSearchByHashtag.do?keyword=" + keyword + "&");
 		model.addAttribute("meetingList", pagingList);
 		model.addAttribute("paging", paging);
-
 		return "main/mainPage";
 	}
 
@@ -401,35 +502,40 @@ public class MeetingController {
 	public String searchByHashtagGet(String keyword, Model model, HttpServletRequest request) {
 		List<Meeting> meetingList = meetingService.searchMeetingByHashtag(keyword);
 		List<Meeting> pagingList = new ArrayList<>();
-		int pageSize = 3;
 		Paging paging = new Paging();
-
-		try {
-			if (request.getParameter("pageNo").equals("")) {
-				paging.setPageNo(1);
-			} else {
-				paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
+		if (meetingList.size() != 0) {
+			int pageSize = 3;
+			
+			try {
+				if (request.getParameter("pageNo").equals("")) {
+					paging.setPageNo(1);
+				} else {
+					paging.setPageNo(Integer.parseInt(request.getParameter("pageNo")));
+				}
+			} catch (NullPointerException e) {
+				e.printStackTrace();
 			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
 
-		paging.setPageSize(pageSize);
-		paging.setTotalCount(meetingList.size());
+			paging.setPageSize(pageSize);
+			paging.setTotalCount(meetingList.size());
 
-		for (int i = (paging.getPageNo() - 1)
-				* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo()) ? meetingList.size()
-						: paging.getPageSize() * (paging.getPageNo())); i++) {
-			pagingList.add(meetingList.get(i));
+			for (int i = (paging.getPageNo() - 1)
+					* pageSize; i < (meetingList.size() < paging.getPageSize() * (paging.getPageNo())
+							? meetingList.size() : paging.getPageSize() * (paging.getPageNo())); i++) {
+				pagingList.add(meetingList.get(i));
+			}
+			
+		} else {
+			paging.setTotalCount(0);
 		}
 
 		model.addAttribute("requestMapping", "meetingSearchByHashtag.do?keyword=" + keyword + "&");
 		model.addAttribute("meetingList", pagingList);
 		model.addAttribute("paging", paging);
-
 		return "main/mainPage";
 	}
 
+	@RequestMapping(value="/meeting/reportMeeting.do")
 	public String reportMeeting(int meetingId, String reportReason, Model model) {
 		return null;
 	}

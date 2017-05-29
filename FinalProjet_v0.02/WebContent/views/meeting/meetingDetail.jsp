@@ -302,6 +302,7 @@
     						<div class="kf_blog_detail_wrap">
 
     							<!-- BLOG DETAIL THUMBNAIL START-->
+    							<a href="${ctx}/meeting/reportMeeting.do?meetingId=${meeting.meetingId}" style="float:right;"><i class="fa fa-fire"></i>신고하기</a>
                                 <table>
                                     <tr>
                                     <td width="40%" class="td_center">
