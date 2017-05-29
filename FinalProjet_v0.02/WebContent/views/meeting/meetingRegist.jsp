@@ -433,7 +433,7 @@
 																<div class="col-md-8">
 																	<div class="row">
 																		<div class="col-md-10">
-																			<input type="text" name="hashtag" class="form-control" />
+																			<input type="text" name="hashtags" class="form-control" />
 																		</div>
 																		<div class="col-md-2">
 																			<button onclick="addHashtag()">추가</button>

@@ -322,7 +322,7 @@
 										height="200" width="200" style="display: inline-block;" alt="" />
 										<!-- 모임 대표 이미지 끝 --> <br> <br>
 										<button id="changeBtn">이미지 변경</button> --%>
-										<img id="preview" src="" width="300" alt="이미지">
+										<img id="preview" src="${ctx}/resources/userData/meeting/images/${meeting.image}" width="300" alt="이미지">
 										<input type="file" name="file" id="getfile" accept="image/*">
 									</td>
 									<td width="90%" class="td_center">
@@ -340,14 +340,14 @@
 																	<div class="row">
 																		<div class="col-md-3">
 																			<select name="category" id="category" class="form-control">
-																				 <option selected value="${meeting.category}">${meeting.category}</option>
+																				 <option selected value="${myCategory}">${myCategory}</option>
 																				 <c:forEach items="${category}" var="list">
 																				 	<option value="${list}">${list}</option>
 																				 </c:forEach>
 																			</select>
 																		</div>
 																		<div class="col-md-9">
-																			<input type="text" id="title" name="title" class="form-control" />
+																			<input type="text" value="${meeting.title}" id="title" name="title" class="form-control" />
 																		</div>
 																	</div>
 																</div>
@@ -409,7 +409,7 @@
 															<div class="form-group">
 																<span class="col-md-2 -control-label"> 총인원</span>
 																<div class="col-md-2">
-																	<input class="form-control" type="text" id="participants" name="participants" placeholder="ex)50"/>
+																	<input class="form-control" value="${meeting.participants}" type="text" id="participants" name="participants" placeholder="ex)50"/>
 																</div>
 																<span class="col-md-1 control-label">명</span>
 															</div>
@@ -417,14 +417,14 @@
 															<div class="form-group">
 																<span class="col-md-2 control-label"> 간단한 모임소개 입력</span>
 																<div class="col-md-8">
-																	<textarea id="guidence" name="guidence" class="form-control" rows="5"></textarea>
+																	<textarea id="guidence" name="guidence" class="form-control" rows="5">${meeting.guidence}</textarea>
 																</div>
 															</div>
 
 															<div class="form-group">
 																<span class="col-md-2 control-label"> 상세내용 입력</span>
 																<div class="col-md-8">
-																	<textarea id="content" name="content" class="form-control" rows="5"></textarea>
+																	<textarea id="content" name="content" class="form-control" rows="5">${meeting.content}</textarea>
 																</div>
 															</div>
 
@@ -433,7 +433,7 @@
 																<div class="col-md-8">
 																	<div class="row">
 																		<div class="col-md-10">
-																			<input type="text" name="hashtag" class="form-control" />
+																			<input type="text" name="hashtags" class="form-control" />
 																		</div>
 																		<div class="col-md-2">
 																			<button onclick="addHashtag()">추가</button>
@@ -490,14 +490,13 @@
 																				<option value="naver.com">네이버</option>
 																				<option value="daum.net">다음</option>
 																				<option value="nate.com">네이트</option>
-																				<option selected value="">선택</option>
 																			</select>
 																		</div>
 
 
 
 																	</div>
-																	<input type="hidden" name="contact" id="contact"/>
+																	<input type="hidden" name="contact" id="contact" value="${meeting.contact}"/>
 																</div>
 															</div>
 
@@ -574,6 +573,16 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+			var contact = $("#contact").val().split('/');
+			var phoneNumber = contact[0].split('-');
+			var email = contact[1].split('@');
+			/* document.getElementById('firstNum').value = '011'; */
+/* 			$("#firstNum option:eq(0)").prop("selected", true);   왜 안되는 것인가!!! 망할!! what the fuck!!!*/ 
+			$('#secondNum').val(phoneNumber[1]);
+			$('#thirdNum').val(phoneNumber[2]);
+			$('#firstEmail').val(email[0]);
+/* 			$('#lastEmail option[value="daum.net"]').attr('selected', 'selected'); */
+			
 			$(function() {
 				$("#date, #startDate, #endDate").datepicker({
 					dateFormat : 'yy-mm-dd'

@@ -11,6 +11,7 @@ import moigo.domain.Meeting;
 import moigo.store.MeetingStore;
 import moigo.store.mybatis.MoigoSessionFactory;
 import moigo.store.mybatis.mapper.MeetingMapper;
+import oracle.net.aso.e;
 
 @Repository
 public class MeetingStoreLogic implements MeetingStore{
@@ -229,6 +230,30 @@ public class MeetingStoreLogic implements MeetingStore{
 		
 		return category;
 	}
+	
+	@Override
+	public String selectMyCategory(int meetingId) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		String myCategory = mapper.selectMyCategory(meetingId);
+		
+		session.close();
+		
+		return myCategory;
+	}
+
+	@Override
+	public int selectCategoryIdByCategory(String category) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		int categoryId = mapper.selectCategoryIdByCategory(category);
+		
+		session.close();
+		
+		return categoryId;
+	}
 
 	@Override
 	public List<String> selectHashtag(int meetingId) {
@@ -242,14 +267,19 @@ public class MeetingStoreLogic implements MeetingStore{
 	}
 
 	@Override
-	public String checkHashtag(String hashtag) {
+	public int checkHashtag(String hashtag) {
 		SqlSession session = MoigoSessionFactory.getInstance().getSession();
 		
 		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
-		hashtag = mapper.checkHashtag(hashtag);
+		int id;
+		try {
+			id = mapper.checkHashtag(hashtag);
+		} catch(Exception e) {
+			id = -1;
+		}
 		session.close();
 		
-		return hashtag;
+		return id;
 	}
 
 	@Override
@@ -277,6 +307,18 @@ public class MeetingStoreLogic implements MeetingStore{
 		session.close();
 		
 		return insertCount > 0;
+	}
+
+	@Override
+	public boolean insertMeetingCategory(HashMap<String, Object> map) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		int insertCount = mapper.insertMeetingCategory(map);
+		session.close();
+		
+		return insertCount > 0;
+	
 	}	
 	
 }

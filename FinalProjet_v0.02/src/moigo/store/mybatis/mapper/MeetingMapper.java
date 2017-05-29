@@ -42,12 +42,18 @@ public interface MeetingMapper {
 	void deleteRequestMeeting(HashMap<String, Object> map);
 
 	List<String> selectCategory();
+	
+	String selectMyCategory(int meetingId);
+	
+	int selectCategoryIdByCategory(String category);
 
 	List<String> selectHashtag(int meetingId);
 
-	String checkHashtag(String hashtag);
+	int checkHashtag(String hashtag);
 
 	int insertHashtag(HashMap<String, Object> map);
 
 	int insertMeetingHashtag(HashMap<String, Object> map);
+	
+	int insertMeetingCategory(HashMap<String, Object> map);
 }

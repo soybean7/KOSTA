@@ -44,12 +44,16 @@ public interface MeetingService {
 	void joinRequestMeeting(int meetingId, String userEmail);
 
 	List<String> searchCategory();
+	
+	String searchMyCategory(int meetingId);
 
 	List<String> searchHashtag(int meetingId);
 
-	String checkHashtag(String hashtag);
+	int checkHashtag(String hashtag);
 
 	int registHashtag(String hashtag);
 
 	boolean registMeetingHashtag(int meetingId, int hashtagId);
+	
+	boolean registMeetingCategory(int meetingId, String category);
 }
