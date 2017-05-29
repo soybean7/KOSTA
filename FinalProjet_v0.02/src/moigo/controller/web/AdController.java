@@ -108,7 +108,7 @@ public class AdController {
 		return null;
 	}
 	
-	@RequestMapping(value="/approvedAd.do", method=RequestMethod.GET)
+	@RequestMapping(value="/searchByAdId.do", method=RequestMethod.GET)
 	public String searchByAdId(int adId, Model  model){
 		
 		//사용자가 ad list page에서 상세정보 보기를 클릭했을 때 전해준 ad ID

@@ -309,7 +309,7 @@
 									<p>현재 요청한 페이지는 존재하지 않거나 삭제되었습니다.</p>
 									<div class="row error-btn">
 										<button onclick="history.back();"
-											class="btn btn-large btn-default">홈으로 이동</button>
+											class="btn btn-large btn-default">이전화면으로 이동</button>
 									</div>	
 								</div>
 							</div>

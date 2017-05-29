@@ -65,7 +65,11 @@ public class MeetingController {
 	}
 
 	@RequestMapping(value = "/registMeeting.do", method = RequestMethod.GET)
-	public String showRegistMeeting(Model model) {
+	public String showRegistMeeting(Model model, HttpSession session) {
+		User user = (User)session.getAttribute("loginedUser");
+		if(user == null) {
+			return "login/login";
+		}
 		List<String> category = meetingService.searchCategory();
 		model.addAttribute("category", category);
 
@@ -100,6 +104,7 @@ public class MeetingController {
 		return "meeting/meetingDetail";
 	}
 
+	@RequestMapping(value = "/deleteMeeting.do", method = RequestMethod.GET)
 	public String deleteMeeting(int meetingId, Model model) {
 		meetingService.removeMeeting(meetingId);
 		List<Meeting> meetingList = meetingService.searchAllMeeting();
@@ -107,6 +112,20 @@ public class MeetingController {
 		model.addAttribute("meetingList", meetingList);
 
 		return "main/mainPage";
+	}
+	
+	@RequestMapping(value = "/deleteMeetingControl.do", method = RequestMethod.GET)
+	public String showDeleteMeetingControl(int meetingId, Model model, HttpSession session) {
+		User user = (User)session.getAttribute("loginedUser");
+		if(user == null) {
+			return "login/login";
+		}
+		meetingService.removeMeeting(meetingId);
+		List<Meeting> meetingList = meetingService.searchAllMeeting();
+
+		model.addAttribute("meetingList", meetingList);
+
+		return "meeting/meetingDelete";
 	}
 
 	@RequestMapping(value = "/detailMeeting.do", method = RequestMethod.GET)
@@ -156,8 +175,13 @@ public class MeetingController {
 	}
 
 	@RequestMapping(value = "/meetingHome.do", method = RequestMethod.GET)
-	public String meetingHome(String email, Model model, HttpServletRequest request) {
-		List<Meeting> meetingList = meetingService.searchMeetingByEmail(email);
+	public String meetingHome(Model model, HttpServletRequest request, HttpSession session) {
+		User user = (User)session.getAttribute("loginedUser");
+		if(user == null) {
+			return "login/login";
+		}
+		
+		List<Meeting> meetingList = meetingService.searchMeetingByEmail(user.getEmail());
 
 		model.addAttribute("meetingList", meetingList);
 
