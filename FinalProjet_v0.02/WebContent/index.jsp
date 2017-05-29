@@ -6,6 +6,6 @@
 <head>
 </head>
 <body>
-	<c:redirect url="/views/main/mainPage.jsp"/>
+	<c:redirect url="/meeting/meetingSearchAll.do"/>
 </body>
 </html>

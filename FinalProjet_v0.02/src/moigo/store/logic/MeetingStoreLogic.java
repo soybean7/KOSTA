@@ -11,6 +11,7 @@ import moigo.domain.Meeting;
 import moigo.store.MeetingStore;
 import moigo.store.mybatis.MoigoSessionFactory;
 import moigo.store.mybatis.mapper.MeetingMapper;
+import oracle.net.aso.e;
 
 @Repository
 public class MeetingStoreLogic implements MeetingStore{
@@ -172,6 +173,28 @@ public class MeetingStoreLogic implements MeetingStore{
 	}
 
 	@Override
+	public List<String> selectMeetingUserByMeetingId(int meetingId) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		List<String> meetingUser = mapper.selectMeetingUserByMeetingId(meetingId);
+		
+		return meetingUser;
+	}
+
+	@Override
+	public List<Meeting> selectMeetingByEmail(String email) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		List<Meeting> meeting = mapper.selectMeetingByEmail(email);
+		
+		return meeting;
+	}
+
+	@Override
 	public void registRequestMeeting(int meetingId, String userEmail) {
 		SqlSession session = MoigoSessionFactory.getInstance().getSession();
 
@@ -196,5 +219,106 @@ public class MeetingStoreLogic implements MeetingStore{
 		mapper.deleteRequestMeeting(map);
 		session.close();
 	}
+
+	@Override
+	public List<String> selectCategory() {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		List<String> category = mapper.selectCategory();
+		session.close();
+		
+		return category;
+	}
+	
+	@Override
+	public String selectMyCategory(int meetingId) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		String myCategory = mapper.selectMyCategory(meetingId);
+		
+		session.close();
+		
+		return myCategory;
+	}
+
+	@Override
+	public int selectCategoryIdByCategory(String category) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		int categoryId = mapper.selectCategoryIdByCategory(category);
+		
+		session.close();
+		
+		return categoryId;
+	}
+
+	@Override
+	public List<String> selectHashtag(int meetingId) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		List<String> hashtag = mapper.selectHashtag(meetingId);
+		session.close();
+		
+		return hashtag;
+	}
+
+	@Override
+	public int checkHashtag(String hashtag) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		int id;
+		try {
+			id = mapper.checkHashtag(hashtag);
+		} catch(Exception e) {
+			id = -1;
+		}
+		session.close();
+		
+		return id;
+	}
+
+	@Override
+	public int insertHashtag(String hashtag) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("hashtag", hashtag);
+		map.put("hashtagId", null);
+		
+		mapper.insertHashtag(map);
+		session.close();
+		
+		return (int)map.get("hashtagId");
+	}
+
+	@Override
+	public boolean insertMeetingHashtag(HashMap<String, Object> map) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		int insertCount = mapper.insertMeetingHashtag(map);
+		session.close();
+		
+		return insertCount > 0;
+	}
+
+	@Override
+	public boolean insertMeetingCategory(HashMap<String, Object> map) {
+		SqlSession session = MoigoSessionFactory.getInstance().getSession();
+		
+		MeetingMapper mapper = session.getMapper(MeetingMapper.class);
+		int insertCount = mapper.insertMeetingCategory(map);
+		session.close();
+		
+		return insertCount > 0;
+	
+	}	
 	
 }

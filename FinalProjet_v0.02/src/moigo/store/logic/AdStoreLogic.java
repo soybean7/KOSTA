@@ -19,7 +19,7 @@ public class AdStoreLogic implements AdStore{
 	public int insertAd(Ad ad) {
 		SqlSession session = MoigoSessionFactory.getInstance().getSession();
 		AdMapper mapper = session.getMapper(AdMapper.class);
-		
+
 		mapper.insertAd(ad);
 		session.close();
 
@@ -44,6 +44,7 @@ public class AdStoreLogic implements AdStore{
 		int updateCount = mapper.updateAd(ad);
 		session.close();
 		return updateCount;
+		
 	}
 
 	@Override

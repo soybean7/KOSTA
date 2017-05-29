@@ -33,7 +33,27 @@ public interface MeetingMapper {
 
 	List<Meeting> selectMeetingByDone(String email);
 
+	List<String> selectMeetingUserByMeetingId(int meetingId);
+
+	List<Meeting> selectMeetingByEmail(String email);
+
 	void registRequestMeeting(HashMap<String, Object> map);
 
 	void deleteRequestMeeting(HashMap<String, Object> map);
+
+	List<String> selectCategory();
+	
+	String selectMyCategory(int meetingId);
+	
+	int selectCategoryIdByCategory(String category);
+
+	List<String> selectHashtag(int meetingId);
+
+	int checkHashtag(String hashtag);
+
+	int insertHashtag(HashMap<String, Object> map);
+
+	int insertMeetingHashtag(HashMap<String, Object> map);
+	
+	int insertMeetingCategory(HashMap<String, Object> map);
 }

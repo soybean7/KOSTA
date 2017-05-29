@@ -1,9 +1,8 @@
 package moigo.store;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
 
 import moigo.domain.Meeting;
 
@@ -22,7 +21,17 @@ public interface MeetingStore {
 	List<Meeting> selectMeetingByHashtag(String hashtag);
 	List<Meeting> selectMeetingByReqeust(String email);
 	List<Meeting> selectMeetingByDone(String email);
+	List<String> selectMeetingUserByMeetingId(int meetingId);
+	List<Meeting> selectMeetingByEmail(String email);
 	void registRequestMeeting(int meetingId, String userEmail);
 	void deleteRequestMeeting(int meetingId, String userEmail);
-
+	List<String> selectCategory();
+	String selectMyCategory(int meetingId);
+	int selectCategoryIdByCategory(String category);
+	List<String> selectHashtag(int meetingId);
+	int checkHashtag(String hashtag);
+	int insertHashtag(String hashtag);
+	boolean insertMeetingHashtag(HashMap<String, Object> map);
+	boolean insertMeetingCategory(HashMap<String, Object> map);
+	
 }

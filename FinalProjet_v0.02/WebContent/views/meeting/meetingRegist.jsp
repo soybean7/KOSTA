@@ -42,7 +42,7 @@
 <!-- SIDE MENU -->
 <link rel="stylesheet" href="${ctx}/resources/css/jquery.sidr.dark.css">
 <link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 
 <style>
 #btn_div {
@@ -300,7 +300,7 @@
 	<!--Banner Wrap End-->
 
 	<!--Content Wrap Start-->
-	<form id="frm" name="frm" enctype="multipart/form-data">
+	<form id="frm" name="frm" onsubmit="return check_submit();" enctype="multipart/form-data" action="${ctx}/meeting/registMeeting.do" method="POST">
 	
 	<div class="kf_content_wrap">
 		<section>
@@ -323,7 +323,7 @@
 										<!-- 모임 대표 이미지 끝 --> <br> <br>
 										<button id="changeBtn">이미지 변경</button> --%>
 										<img id="preview" src="" width="300" alt="이미지">
-										<input type="file" id="getfile" accept="image/*">
+										<input type="file" name="file" id="getfile" accept="image/*">
 									</td>
 									<td width="90%" class="td_center">
 										<!-- 모임 내용 -->
@@ -339,17 +339,15 @@
 																<div class="col-md-8">
 																	<div class="row">
 																		<div class="col-md-3">
-																			<select name="" class="form-control">
-																				<option value="">카테고리</option>
-																				<option value="">카테고리</option>
-																				<option value="">카테고리</option>
-																				<option value="">카테고리</option>
-																				<option value="">카테고리</option>
-																				<option selected value="">카테고리</option>
+																			<select name="category" id="category" class="form-control">
+																				 <option selected value="카테고리">카테고리</option>
+																				 <c:forEach items="${category}" var="list">
+																				 	<option value="${list}">${list}</option>
+																				 </c:forEach>
 																			</select>
 																		</div>
 																		<div class="col-md-9">
-																			<input type="text" class="form-control" />
+																			<input type="text" id="title" name="title" class="form-control" />
 																		</div>
 																	</div>
 																</div>
@@ -359,14 +357,15 @@
 															<div class="form-group">
 																<span class="col-md-2 control-label"> 모임일시</span>
 																<div class="col-md-8">
-																	<input type="text" class="form-control" />
+																	<input type="date" id="date" name="date" class="form-control" />
 																</div>
 															</div>
 
 															<div class="form-group">
 																<span class="col-md-2 control-label"> 신청일시</span>
 																<div class="col-md-8">
-																	<input type="text" class="form-control" />
+																	<input type="date" id="startDate" name="startDate" class="form-control" />
+																	<input type="date" id="endDate" name="endDate" class="form-control" />
 																</div>
 															</div>
 
@@ -375,10 +374,10 @@
 																<div class="col-md-8">
 																	<div class="row">
 																		<div class="col-md-10">
-																			<input type="text" class="form-control" />
+																			<input type="text" id="place" name="place" class="form-control" />
 																		</div>
 																		<div class="col-md-2">
-																			<button>검색</button>
+																			<button onclick="placeSearch()">검색</button>
 																		</div>
 																	</div>
 																</div>
@@ -387,76 +386,45 @@
 															<div class="form-group">
 																<span class="col-md-2 control-label"> 유/무료선택</span>
 																<div class="col-md-8">
+																	<input type="hidden" id="fee" name="fee" value="0">
 																	<div class="row">
 																		<div class="col-md-3 ">
-																			<label> <input type="radio" name="gender">
+																			<label> <input type="radio" name="check" value="유료">
 																				유료 신청
 																			</label>
 																		</div>
 																		<div class="col-md-3 ">
-																			<label> <input type="radio" name="gender">
+																			<label> <input type="radio" name="check" checked="checked" value="무료">
 																				무료 신청
 																			</label>
 																		</div>
+																	</div>
+																	<div id="moneyEdit" class="row">
+																	
 																	</div>
 																</div>
 															</div>
 
 
 															<div class="form-group">
-																<span class="col-md-2 control-label"> 그룹설정</span>
-																<div class="col-md-8">
-
-
-																	<table
-																		class="table table-striped table-bordered table-hover">
-
-																		<thead>
-																			<tr>
-																				<th>총인원</th>
-																				<th>참가비용</th>
-																				<th>선정방법</th>
-																				<th>동반인원</th>
-
-																			</tr>
-																		</thead>
-																		<tbody>
-																			<tr class="odd gradeX">
-																				<td><input type="number" size="5"
-																					class="form-control" /> <span>명</span></td>
-																				<td><input type="number" size="5"
-																					class="form-control" />원</td>
-																				<td><select name="" class="form-control">
-																						<option value="">010</option>
-																						<option value="">011</option>
-																						<option value="">017</option>
-																						<option selected value="">선착순</option>
-																				</select></td>
-																				<td><select name="" class="form-control">
-																						<option value="">010</option>
-																						<option value="">011</option>
-																						<option value="">017</option>
-																						<option selected value="">없음</option>
-																				</select></td>
-
-																			</tr>
-
-																		</tbody>
-																	</table>
+																<span class="col-md-2 -control-label"> 총인원</span>
+																<div class="col-md-2">
+																	<input class="form-control" type="text" id="participants" name="participants" placeholder="ex)50"/>
 																</div>
+																<span class="col-md-1 control-label">명</span>
 															</div>
 
 															<div class="form-group">
 																<span class="col-md-2 control-label"> 간단한 모임소개 입력</span>
 																<div class="col-md-8">
-																	<textarea class="form-control" rows="5"></textarea>
+																	<textarea id="guidence" name="guidence" class="form-control" rows="5"></textarea>
 																</div>
 															</div>
 
 															<div class="form-group">
 																<span class="col-md-2 control-label"> 상세내용 입력</span>
 																<div class="col-md-8">
-																	<textarea class="form-control" rows="5"></textarea>
+																	<textarea id="content" name="content" class="form-control" rows="5"></textarea>
 																</div>
 															</div>
 
@@ -465,10 +433,10 @@
 																<div class="col-md-8">
 																	<div class="row">
 																		<div class="col-md-10">
-																			<input type="text" name="hashtag" class="form-control" />
+																			<input type="text" name="hashtags" class="form-control" />
 																		</div>
 																		<div class="col-md-2">
-																			<button>추가</button>
+																			<button onclick="addHashtag()">추가</button>
 																		</div>
 																	</div>
 																</div>
@@ -485,19 +453,19 @@
 																		</div>
 
 																		<div class="col-md-2">
-																			<select name="" class="form-control">
-																				<option value="">010</option>
-																				<option value="">011</option>
-																				<option value="">017</option>
+																			<select id="firstNum" name="firstNum" class="form-control">
+																				<option value="010">010</option>
+																				<option value="011">011</option>
+																				<option value="017">017</option>
 																			</select>
 																		</div>
 
 																		<div class="col-md-3">
-																			<input type="text" class="form-control" />
+																			<input id="secondNum" name="secondNum" type="text" class="form-control" />
 																		</div>
 
 																		<div class="col-md-3">
-																			<input type="text" class="form-control" />
+																			<input id="thirdNum" name="thirdNum" type="text" class="form-control" />
 																		</div>
 																	</div>
 
@@ -512,16 +480,16 @@
 
 
 																		<div class="col-md-3">
-																			<input type="text" class="form-control" />
+																			<input id="firstEmail" name="firstEmail" type="text" class="form-control" />
 																		</div>
 																		<div class="col-md-1">
 																			<span>@</span>
 																		</div>
 																		<div class="col-md-3">
-																			<select name="" class="form-control">
-																				<option value="">네이버</option>
-																				<option value="">다음</option>
-																				<option value="">네이트</option>
+																			<select id="lastEmail" name="lastEmail" class="form-control">
+																				<option value="naver.com">네이버</option>
+																				<option value="daum.net">다음</option>
+																				<option value="nate.com">네이트</option>
 																				<option selected value="">선택</option>
 																			</select>
 																		</div>
@@ -529,7 +497,7 @@
 
 
 																	</div>
-
+																	<input type="hidden" name="contact" id="contact"/>
 																</div>
 															</div>
 
@@ -539,7 +507,7 @@
 													</div>
 
 													<div class="form-group">
-														<button class="btn btn-primary" type="submit">등록</button>
+														<button id="regist" type="submit" class="btn btn-primary">등록</button>
 													</div>
 
 												</div>
@@ -565,7 +533,7 @@
 
 		</section>
 	</div>
-	</form>
+	 </form>
 	<!--Content Wrap End-->
 	<%@ include file="/views/header/footer.jspf"%>
 
@@ -600,28 +568,122 @@
 	<!--Map-->
 	<script
 		src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false?key=AIzaSyDR4TBGOfhyhldkwQ17KVIbS0pf36J8X6w"></script>
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#datetimepicker1').datetimepicker();
+			$(function() {
+				$("#date, #startDate, #endDate").datepicker({
+					dateFormat : 'yy-mm-dd'
+				});
+			})
 		});
 		
 		var file = document.querySelector('#getfile');
-
+		
 		file.onchange = function () {
-		    var fileList = file.files ;
-
+			
+			var maxFileSize = 512000;
+			var fileList = file.files;
+			if(fileList[0].size > maxFileSize) {
+				alert('선택하신 그림 파일은 허용 최대크기인 ' + maxFileSize/1024 + ' KB 를 초과하였습니다.');
+				return;
+			}
 		    // 읽기
 		    var reader = new FileReader();
 		    reader.readAsDataURL(fileList [0]);
 
 		    //로드 한 후
-		    reader.onload = function  () {
+		    reader.onload = function() {
 		        document.querySelector('#preview').src = reader.result ;
 		    };
 		};
+	</script>
+	<script>
+		var radioBtn = document.querySelectorAll('input[type=radio][name="check"]');
+
+		function changeHandler(event) {
+		   if ( this.value === '유료' ) {
+			   $('#moneyEdit').append("<div class='col-md-2'> <span>비용: </span></div> <div class='col-md-5'><input type='text' id='bill' class='form-control'></div>");
+		   } else if ( this.value === '무료' ) {
+			   $('#moneyEdit').empty();
+		   }  
+		}
+
+		Array.prototype.forEach.call(radioBtn, function(radioBtn) {
+		   radioBtn.addEventListener('change', changeHandler);
+		});
+		
+	</script>
+	
+	<script type="text/javascript">
+		function check_submit() {
+			var title = $('#title').val();
+			var category = $("select[name=category]").val();
+			var date = $('#date').val();
+			var startDate = $('#startDate').val();
+			var endDate = $('#endDate').val();
+			var place = $('#place').val();
+			var fee = $('#fee').val($('#bill').val());
+			var participants = $('#participants').val();
+			var guidence = $('#guidence').val();
+			var content = $('#content').val();
+			var firstNum = $("select[name=firstNum]").val();
+			var secondNum = $('#secondNum').val();
+			var thirdNum = $('#thirdNum').val();
+			var firstEmail = $('#firstEmail').val();
+			var lastEmail = $('#lastEmail').val();
+			
+			if(title === '') {
+				$('#title').focus();
+				return false;
+			} else if(category === '카테고리') {
+				$("select[name=category]").focus();
+				return false;
+			} else if(date === '') {
+				$('#date').focus();
+				return false;
+			} else if(startDate === '') {
+				$('#startDate').focus();
+				return false;
+			} else if(endDate === '') {
+				$('#endDate').focus();
+				return false;
+			} else if(place === '') {
+				$('#place').focus();
+				return false;
+			} else if(participants === '') {
+				$('#participants').focus();
+				return false;
+			} else if(guidence === '') {
+				$('#guidence').focus();
+				return false;
+			} else if(content === '') {
+				$('#content').focus();
+				return false;
+			} else if(firstNum === '') {
+				$('#firstNum').focus();
+				return false;
+			} else if(secondNum === '') {
+				$('#secondNum').focus();
+				return false;
+			} else if(thirdNum === '') {
+				$('#thirdNum').focus();
+				return false;
+			} else if(firstEmail === '') {
+				$('#firstEmail').focus();
+				return false;
+			} else if(lastEmail === '') {
+				$('#lastEmail').focus();
+				return false;
+			} else {
+				$('#contact').val(firstNum + "-" + secondNum + "-" + thirdNum + "/" + firstEmail + "@" + lastEmail);
+				$('#fee').val($('#bill').val());
+				return true;
+			}
+		}
 	</script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package moigo.controller.web;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,26 +11,86 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import moigo.domain.Ad;
+import moigo.domain.Meeting;
 import moigo.service.AdService;
+import moigo.service.MeetingService;
 
 @Controller
-@RequestMapping("Ad")
+@RequestMapping("/Ad") // web page 주소 끝에 추가해 주기 위한 값. 임의로 정해도 상관없다.
 public class AdController {
 	
 	@Autowired
-	private AdService service;
+	private AdService adService;
 	
-	@RequestMapping(value="registAd.do")
-	public String registAd(Ad ad, HttpSession  Session, Model model){
+	@Autowired
+	private MeetingService meetingService; 
+	
+	@RequestMapping(value="/registAd.do", method=RequestMethod.GET)
+	public String registAdScreen(Ad ad, HttpSession  session, Model model){
+		//사용자가 meeting page 광고등록을 클릭했을 때 전해준 meetingID
+		int meetingId = (int)session.getAttribute("meetingId");
 		
-		
-		return null;
+		Meeting meeting = meetingService.searchMeetingById(meetingId);
+		model.addAttribute("meeting", meeting);
+		return "Advertisement/AdRegist";
 	}
 	
-	public String approvedAd(String adId, Model model){
-		return null;
+	@RequestMapping(value="/registAd.do", method=RequestMethod.POST)
+	public String registAd(Ad ad, HttpSession session, Model model){
+		
+		Ad recv = ad;
+		recv.setName((String)session.getAttribute("name"));
+		recv.setEmail((String)session.getAttribute("email"));
+		recv.setPhoneNumber((String)session.getAttribute("phoneNumber"));
+		recv.setStartDate((Date)session.getAttribute("startDate"));
+		recv.setEndDate((Date)session.getAttribute("endDate"));
+		recv.setProduct((String)session.getAttribute("product"));
+		recv.setQuestion((String)session.getAttribute("question"));
+		recv.setApproval("N");
+		
+		int result = adService.registAd(recv);
+		System.out.println(result);
+		
+		model.addAttribute("Ad", recv);
+		
+		return "Advertisement/AdDetail";
+	}
+	
+	@RequestMapping(value="/detailAd.do", method=RequestMethod.GET)
+	public String detailAd(int adId, Model model){
+		
+		//사용자가 ad list page에서 상세정보 보기를 클릭했을 때 전해준 ad ID
+		int recievedAdId = adId;
+		
+		Ad ad = adService.searchAdById(recievedAdId);
+		model.addAttribute("ad", ad);
+		
+		int meetingId = adService.searchAdById(recievedAdId).getMeetingId();
+		Meeting meeting = meetingService.searchMeetingById(meetingId);
+		model.addAttribute("meeting", meeting);
+		
+		return "Advertisement/AdDetail";
+	}
+	
+	
+	@RequestMapping(value="/approvedAd.do", method=RequestMethod.GET)
+	public String approvedAd(int adId, Model model){
+		//사용자가 ad list page에서 상세정보 보기를 클릭했을 때 전해준 ad ID
+		int recievedAdId = adId;
+		
+		Ad ad = adService.searchAdById(recievedAdId);
+		String approval = ad.getApproval();
+		if(approval == "Y"){
+			return "Advertisement/approvalDeny";
+		}else {
+			int result = 0;
+			result = adService.modifyAd(ad);
+			model.addAttribute("ad", ad);
+			return "Advertisement/AdList";
+		}
 	}
 	
 	public String showModifyAd(int adId, Model  model){
@@ -37,23 +98,50 @@ public class AdController {
 		return null;
 	}
 	
+	@RequestMapping(value="/adEdit.do", method=RequestMethod.GET)
 	public String modifyAd(Ad ad, Model  model){
 		return null;
 	}
 	
+	@RequestMapping(value="/adDelete.do", method=RequestMethod.GET)
 	public Boolean deleteAd(int adId){
 		return null;
 	}
 	
+	@RequestMapping(value="/approvedAd.do", method=RequestMethod.GET)
 	public String searchByAdId(int adId, Model  model){
-		return null;
+		
+		//사용자가 ad list page에서 상세정보 보기를 클릭했을 때 전해준 ad ID
+		int recievedAdId = adId;
+		
+		Ad ad = adService.searchAdById(recievedAdId);
+		model.addAttribute("ad", ad);
+		
+		int meetingId = adService.searchAdById(recievedAdId).getMeetingId();
+		Meeting meeting = meetingService.searchMeetingById(meetingId);
+		model.addAttribute("meeting", meeting);
+		
+		return "Advertisement/AdList";
 	}
 	
-	@RequestMapping("AdListAll.do")
+	@RequestMapping(value="/AdListAll.do", method=RequestMethod.GET)
 	public String searchAll(Model model){
-		List<Ad> adLists = service.searchAllAd();
+		List<Ad> adLists = adService.searchAllAd();
+		List<Meeting> meetingLists = new ArrayList<>();
+		
+		for(int i = 0; i < adLists.size(); i++){
+			
+			int mtId = adLists.get(i).getMeetingId(); // 광고가 등록된 meeting Id들을 찾아내서 mtId에 하나씩 입력해 준다.
+			System.out.println(i+1 +" 번째 "  + "meeting ID : " + mtId);
+			
+			Meeting meetingList = meetingService.searchMeetingById(mtId); // meetingList를 하나씩 찾아낸다.
+			meetingLists.add(meetingList); // 찾아낸 meetingList를 meetingLists에 한개씩 입력해 준다.
+		}
+		
 		model.addAttribute("adLists", adLists); // ("좌" : jsp, "우" : DB에서 가져온 값 )
-		return "team/AdList";
+		model.addAttribute("meetingLists", meetingLists);
+		
+		return "Advertisement/AdList";
 	}
 	
 	public String searchAdByPhoneNumber(String phoneNumber, Model  model){

@@ -1,6 +1,7 @@
 package moigo.service.logic;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,6 +81,16 @@ public class MeetingServiceLogic implements MeetingService{
 	public List<Meeting> searchMeetingByDone(String email) {
 		return store.selectMeetingByDone(email);
 	}
+	
+	@Override
+	public List<String> searchMeetingUserByMeetingId(int meetingId) {
+		return store.selectMeetingUserByMeetingId(meetingId);
+	}
+	
+	@Override
+	public List<Meeting> searchMeetingByEmail(String email) {
+		return store.selectMeetingByEmail(email);
+	}
 
 	@Override
 	public void cancelRequestMeeting(int meetingId, String userEmail) {
@@ -90,4 +101,47 @@ public class MeetingServiceLogic implements MeetingService{
 	public void joinRequestMeeting(int meetingId, String userEmail) {
 		store.registRequestMeeting(meetingId, userEmail);
 	}
+
+	@Override
+	public List<String> searchCategory() {
+		return store.selectCategory();
+	}
+	
+	@Override
+	public String searchMyCategory(int meetingId) {
+		return store.selectMyCategory(meetingId);
+	}
+
+	@Override
+	public List<String> searchHashtag(int meetingId) {
+		return store.selectHashtag(meetingId);
+	}
+
+	@Override
+	public int checkHashtag(String hashtag) {
+		return store.checkHashtag(hashtag);
+	}
+
+	@Override
+	public int registHashtag(String hashtag) {
+		return store.insertHashtag(hashtag);
+	}
+
+	@Override
+	public boolean registMeetingHashtag(int meetingId, int hashtagId) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("hashtag_id", hashtagId);
+		map.put("meeting_id", meetingId);
+		return store.insertMeetingHashtag(map);
+	}
+
+	@Override
+	public boolean registMeetingCategory(int meetingId, String category) {
+		HashMap<String, Object> map = new HashMap<>();
+		int categoryId = store.selectCategoryIdByCategory(category);
+		map.put("categoryId", categoryId);
+		map.put("meetingId", meetingId);
+		return store.insertMeetingCategory(map);
+	}
+	
 }

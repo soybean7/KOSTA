@@ -6,7 +6,6 @@ public class Report {
 
 	private int reportId;
 	private Meeting meeting;
-	private String reportReason;
 	private Date reportDate;
 
 	public int getReportId() {
@@ -23,14 +22,6 @@ public class Report {
 
 	public void setMeeting(Meeting meeting) {
 		this.meeting = meeting;
-	}
-
-	public String getReportReason() {
-		return reportReason;
-	}
-
-	public void setReportReason(String reportReason) {
-		this.reportReason = reportReason;
 	}
 
 	public Date getReportDate() {

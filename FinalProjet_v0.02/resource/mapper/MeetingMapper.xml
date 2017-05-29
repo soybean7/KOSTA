@@ -6,6 +6,7 @@
 	<resultMap type="Meeting" id="meetingMap">
 		<id column="meeting_id" property="meetingId" />
 		<result column="title" property="title" />
+		<result column="image" property="image" />
 		<result column="meeting_date" property="date" />
 		<result column="start_date" property="startDate" />
 		<result column="end_date" property="endDate" />
@@ -24,8 +25,8 @@
 		<selectKey keyProperty="meetingId" resultType="int" order="BEFORE">
 	  		SELECT meeting_seq.nextval FROM DUAL
 	  	</selectKey>
-		INSERT INTO MEETING_TB(meeting_id, title, meeting_date, start_date, end_date, place, fee, guidence, content, contact, reg_date, user_email, meet_sugget)
-		VALUES(#{meetingId}, #{title}, #{date}, #{startDate}, #{endDate}, #{place}, #{fee}, #{guidence}, #{content}, #{contact}, #{regDate}, #{regUser}, 'meeting')
+		INSERT INTO MEETING_TB(meeting_id, title, image, meeting_date, start_date, end_date, place, fee, guidence, content, contact, reg_date, user_email, meet_sugget)
+		VALUES(#{meetingId}, #{title}, #{image}, #{date}, #{startDate}, #{endDate}, #{place}, #{fee}, #{guidence}, #{content}, #{contact}, sysdate, #{regUser}, 'meeting')
 	</insert>
 	
 	<update id="updateMeeting" parameterType="Meeting">
@@ -50,6 +51,7 @@
 	<select id="selectAllMeeting" resultMap="meetingMap">
 		SELECT meeting_id,
 			   title,
+			   image,
 			   meeting_date,
 			   start_date,
 			   end_date,
@@ -69,6 +71,7 @@
 	<select id="selectMeetingById" parameterType="int" resultMap="meetingMap">
 		SELECT meeting_id,
 			   title,
+			   image,
 			   meeting_date,
 			   start_date,
 			   end_date,
@@ -88,6 +91,7 @@
 	<select id="selectMeetingByTitle" parameterType="String" resultMap="meetingMap">
 		SELECT meeting_id,
 			   title,
+			   image,
 			   meeting_date,
 			   start_date,
 			   end_date,
@@ -107,6 +111,7 @@
 	<select id="selectMeetingByContent" parameterType="String" resultMap="meetingMap">
 		SELECT meeting_id,
 			   title,
+			   image,
 			   meeting_date,
 			   start_date,
 			   end_date,
@@ -126,6 +131,7 @@
 	<select id="selectMeetingByDate" parameterType="Date" resultMap="meetingMap">
 		SELECT meeting_id,
 			   title,
+			   image,
 			   meeting_date,
 			   start_date,
 			   end_date,
@@ -145,6 +151,7 @@
 	<select id="selectMeetingByPlace" parameterType="String" resultMap="meetingMap">
 		SELECT meeting_id,
 			   title,
+			   image,
 			   meeting_date,
 			   start_date,
 			   end_date,
@@ -158,12 +165,13 @@
 			   reg_date,
 			   user_email
 		FROM MEETING_TB
-		WHERE place = #{place} AND meet_sugget = 'meeting'
+		WHERE upper(place) LIKE '%' || upper(#{place}) || '%' AND meet_sugget = 'meeting'
 	</select>
 	
 	<select id="selectMeetingByCategory" parameterType="String" resultMap="meetingMap">
 		SELECT M.meeting_id,
 			   M.title,
+			   M.image,
 			   M.meeting_date,
 			   M.start_date,
 			   M.end_date,
@@ -183,6 +191,7 @@
 	<select id="selectMeetingByHashtag" parameterType="String" resultMap="meetingMap">
 		SELECT M.meeting_id,
 			   M.title,
+			   M.image,
 			   M.meeting_date,
 			   M.start_date,
 			   M.end_date,
@@ -202,6 +211,7 @@
 	<select id="selectMeetingByReqeust" parameterType="String" resultMap="meetingMap">
 		SELECT M.meeting_id,
 			   M.title,
+			   M.image,
 			   M.meeting_date,
 			   M.start_date,
 			   M.end_date,
@@ -221,6 +231,7 @@
 	<select id="selectMeetingByDone" parameterType="String" resultMap="meetingMap">
 		SELECT M.meeting_id,
 			   M.title,
+			   M.image,
 			   M.meeting_date,
 			   M.start_date,
 			   M.end_date,
@@ -237,6 +248,31 @@
 		WHERE U.user_email = #{email} AND U.meeting_id = M.meeting_id AND M.meet_sugget = 'meeting'
 
 	</select>
+	
+	<select id="selectMeetingByEmail" resultType="String" resultMap="meetingMap">
+		SELECT meeting_id,
+			   title,
+			   image,
+			   meeting_date,
+			   start_date,
+			   end_date,
+			   place,
+			   fee,
+			   participants,
+			   guidence,
+			   content,
+			   contact,
+			   report_count,
+			   reg_date,
+			   user_email
+		FROM MEETING_TB
+		WHERE user_email = #{email} AND meet_sugget = 'meeting'
+	</select>
+	
+	<select id="selectMeetingUserByMeetingId" parameterType="int" resultType="String">
+		SELECT user_email
+		FROM MEETING_USER_TB WHERE meeting_id = #{meetingId}
+	</select>
 		
 	<insert id="registRequestMeeting" parameterType="hashmap">
 		INSERT INTO MEETING_USER_TB(meeting_id, user_email)
@@ -247,4 +283,50 @@
 		DELETE FROM MEETING_USER_TB
 		WHERE meeting_id = #{meetingId} AND user_email = #{userEmail}
 	</delete>
+	
+	<select id="selectCategory" resultType="String">
+		SELECT category FROM CATEGORY_TB
+	</select>
+	
+	<select id="selectMyCategory" resultType="String" parameterType="int">
+		SELECT C.category
+		FROM CATEGORY_TB C, CATEGORY_MEETING_TB CM
+		WHERE C.category_id = CM.category_id AND CM.meeting_id = #{meetingId}
+	</select>
+	
+	<insert id="insertMeetingCategory" parameterType="hashMap">
+		INSERT INTO CATEGORY_MEETING_TB(category_id, meeting_id)
+		VALUES(#{categoryId}, #{meetingId})
+	</insert>
+	
+	<select id="selectCategoryIdByCategory" parameterType="String" resultType="int">
+		SELECT category_id
+		FROM CATEGORY_TB
+		WHERE category = #{category}
+	</select>
+	
+	<select id="selectHashtag" parameterType="int" resultType="String">
+		SELECT H.hashtag 
+		FROM HASHTAG_TB H, HASHTAG_MEETING_TB HM
+		WHERE HM.meeting_id = #{meetingId} AND H.hashtag_id = HM.hastag_id
+	</select>
+	
+	<select id="checkHashtag" parameterType="String" resultType="int">
+		SELECT hashtag_id
+		FROM HASHTAG_TB
+		WHERE hashtag = #{hashtag}
+	</select>
+	
+	<insert id="insertHashtag" parameterType="hashMap">
+		<selectKey keyProperty="hashtagId" resultType="int" order="BEFORE">
+	  		SELECT hashtag_seq.nextval FROM DUAL
+	  	</selectKey>
+		INSERT INTO HASHTAG_TB(hashtag_id, hashtag)
+		VALUES(#{hashtagId}, #{hashtag})
+	</insert>
+	
+	<insert id="insertMeetingHashtag" parameterType="hashMap">
+		INSERT INTO HASHTAG_MEETING_TB(hastag_id, meeting_id)
+		VALUES(#{hashtag_id}, #{meeting_id})
+	</insert>
 </mapper>
