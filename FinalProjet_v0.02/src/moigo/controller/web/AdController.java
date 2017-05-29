@@ -28,55 +28,13 @@ public class AdController {
 	@Autowired
 	private MeetingService meetingService; 
 	
-	@RequestMapping(value="/registAd.do", method=RequestMethod.GET)
-	public String registAdScreen(Ad ad, HttpSession  session, Model model){
-		//사용자가 meeting page 광고등록을 클릭했을 때 전해준 meetingID
-		int meetingId = (int)session.getAttribute("meetingId");
+	@RequestMapping(value="registAd.do")
+	public String registAd(Ad ad, HttpSession  Session, Model model){
 		
-		Meeting meeting = meetingService.searchMeetingById(meetingId);
-		model.addAttribute("meeting", meeting);
-		return "Advertisement/AdRegist";
+		return null;
 	}
 	
-	@RequestMapping(value="/registAd.do", method=RequestMethod.POST)
-	public String registAd(Ad ad, HttpSession session, Model model){
-		
-		Ad recv = ad;
-		recv.setName((String)session.getAttribute("name"));
-		recv.setEmail((String)session.getAttribute("email"));
-		recv.setPhoneNumber((String)session.getAttribute("phoneNumber"));
-		recv.setStartDate((Date)session.getAttribute("startDate"));
-		recv.setEndDate((Date)session.getAttribute("endDate"));
-		recv.setProduct((String)session.getAttribute("product"));
-		recv.setQuestion((String)session.getAttribute("question"));
-		
-		int result = adService.registAd(recv);
-		System.out.println(result);
-		
-		model.addAttribute("Ad", recv);
-		
-		return "Advertisement/AdDetail";
-	}
-	
-	@RequestMapping(value="/detailAd.do", method=RequestMethod.GET)
-	public String detailAd(int adId, Model model){
-		
-		//사용자가 ad list page에서 상세정보 보기를 클릭했을 때 전해준 ad ID
-		int recievedAdId = adId;
-		
-		Ad ad = adService.searchAdById(recievedAdId);
-		model.addAttribute("ad", ad);
-		
-		int meetingId = adService.searchAdById(recievedAdId).getMeetingId();
-		Meeting meeting = meetingService.searchMeetingById(meetingId);
-		model.addAttribute("meeting", meeting);
-		
-		return "Advertisement/AdDetail";
-	}
-	
-	
-	@RequestMapping(value="/approvedAd.do", method=RequestMethod.GET)
-	public String approvedAd(int adId, Model model){
+	public String approvedAd(String adId, Model model){
 		return null;
 	}
 	
@@ -85,12 +43,10 @@ public class AdController {
 		return null;
 	}
 	
-	@RequestMapping(value="/adEdit.do", method=RequestMethod.GET)
 	public String modifyAd(Ad ad, Model  model){
 		return null;
 	}
 	
-	@RequestMapping(value="/adDelete.do", method=RequestMethod.GET)
 	public Boolean deleteAd(int adId){
 		return null;
 	}
@@ -110,6 +66,11 @@ public class AdController {
 			System.out.println(i+1 +" 번째 "  + "meeting ID : " + mtId);
 			
 			Meeting meetingList = meetingService.searchMeetingById(mtId); // meetingList를 하나씩 찾아낸다.
+			System.out.println("===============================");
+			System.out.println(meetingList.getMeetingId());
+			System.out.println(meetingList.getTitle());
+			System.out.println(meetingList.getContent());
+			System.out.println("===============================");
 			meetingLists.add(meetingList); // 찾아낸 meetingList를 meetingLists에 한개씩 입력해 준다.
 		}
 		
