@@ -134,6 +134,7 @@ public class RecommendController {
 //			모임 업데이트
 //			------------------------------------------------------------------------------------------------
 		}
+		
 
 		return "redirect:/recommend/detail.do?meetingId="+meetingId;
 	}
